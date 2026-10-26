@@ -335,4 +335,52 @@ export const CHARACTERS: Puzzle[] = [
     "Fans nicknamed him Baby Yoda when he appeared in The Mandalorian.",
     1,
   ),
+  character(
+    "SIMBA",
+    "A lion cub must reclaim his father's kingdom.",
+    "Matthew Broderick voiced adult Simba in Disney's 1994 film.",
+    1,
+  ),
+  character(
+    "WOODY",
+    "A cowboy doll leads Andy's toys.",
+    "Tom Hanks has voiced Woody since Toy Story in 1995.",
+    1,
+  ),
+  character(
+    "SHREK",
+    "An ogre rescues a princess and befriends a talking donkey.",
+    "Mike Myers voiced him; the 2001 film won the first Best Animated Feature Oscar.",
+    1,
+  ),
+  character(
+    "HARRY POTTER",
+    "A boy wizard attends Hogwarts and battles a dark lord.",
+    "Daniel Radcliffe played him in all eight Harry Potter films.",
+    1,
+  ),
+  character(
+    "HERMIONE GRANGER",
+    "A brilliant witch and Harry's closest friend.",
+    "Emma Watson played her across the eight Harry Potter films.",
+    2,
+  ),
+  character(
+    "GANDALF",
+    "A wizard guides the Fellowship against Sauron.",
+    "Ian McKellen played him in The Lord of the Rings and The Hobbit trilogies.",
+    2,
+  ),
+  character(
+    "KATNISS EVERDEEN",
+    "A tribute becomes the Mockingjay against a dystopian capital.",
+    "Jennifer Lawrence starred in The Hunger Games films.",
+    2,
+  ),
+  character(
+    "THOMAS SHELBY",
+    "A Birmingham gang leader returns from World War I.",
+    "Cillian Murphy played him in Peaky Blinders.",
+    2,
+  ),
 ];

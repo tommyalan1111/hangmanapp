@@ -8,15 +8,16 @@ Name the film, show, star, character, director, or famous screen family before t
 
 ## What is inside
 
-- **347 hand-written puzzles** across seven categories:
-  - Movies — 68
-  - TV Series — 60
-  - Actors — 46
-  - Actresses — 52
-  - Characters — 55
-  - Directors — 40
-  - Film Families — 26
-- **A proper hangman round** with six takes, an animated gallows, on-screen and physical keyboards, and punctuation-friendly answers.
+- **397 hand-written puzzles** across seven categories:
+  - Movies — 78
+  - TV Series — 70
+  - Actors — 53
+  - Actresses — 59
+  - Characters — 63
+  - Directors — 44
+  - Film Families — 30
+- **A proper hangman round** with six takes, an animated gallows, large readable clues, on-screen and physical keyboards, and punctuation-friendly answers.
+- **Replay on a miss** — when you run out of takes, the failed question stays on screen and **Replay this puzzle** resets the same board; the next question is never loaded automatically.
 - **Clues and a "behind the scenes" fact** for every answer.
 - **Daily Feature** — one date-seeded puzzle per day, worth double points.
 - **One free hint per round** — reveals a useful missing letter and costs 40 points, never a take.
@@ -38,11 +39,11 @@ Name the film, show, star, character, director, or famous screen family before t
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.0.0-debug.apk
+release/ReelHangman-1.0.1-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.0.0-debug.apk
+adb install -r release/ReelHangman-1.0.1-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.
@@ -129,7 +130,7 @@ The iOS project is configured for iPhone, portrait orientation, iOS 15+, dark ap
 ```text
 reel-hangman/
 ├─ src/
-│  ├─ data/              # 347 puzzles, split by category
+│  ├─ data/              # 397 puzzles, split by category
 │  ├─ core/game.ts       # pure game rules, scoring, daily seeding
 │  ├─ core/storage.ts    # versioned localStorage persistence
 │  ├─ core/audio.ts      # Web Audio sound synthesis (no audio files)

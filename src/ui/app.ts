@@ -34,6 +34,7 @@ import {
 } from "../core/storage";
 import { sounds } from "../core/audio";
 import { haptic } from "../core/platform";
+import { APP_VERSION } from "../version";
 import { icon } from "./icons";
 
 type Screen = "home" | "game" | "stats" | "settings" | "howto";
@@ -164,6 +165,9 @@ export class ReelHangmanApp {
         break;
       case "next":
         this.nextRound();
+        break;
+      case "retry":
+        this.retryRound();
         break;
       case "home":
         this.goHome();
@@ -373,6 +377,17 @@ export class ReelHangmanApp {
     this.round = null;
     this.puzzle = null;
     this.beginRound(mode === "category" ? category : null, mode === "category" ? "category" : "quick", true);
+  }
+
+  private retryRound(): void {
+    if (!this.puzzle || !this.round) return;
+    const puzzle = this.puzzle;
+    // A Daily Feature is a once-per-day scored round. Retrying it becomes
+    // unscored practice so the daily double is not awarded repeatedly.
+    const mode = this.round.mode === "daily" ? "quick" : this.round.mode;
+    this.round = null;
+    this.puzzle = null;
+    this.startPuzzle(puzzle, mode, true);
   }
 
   private handleLetter(letter: string): void {
@@ -947,21 +962,29 @@ export class ReelHangmanApp {
 
           <div class="result-actions">
             ${
-              round.mode === "daily"
+              !won
                 ? `
-                  <button class="primary-button compact" type="button" data-action="home" data-autofocus>
-                    <span class="primary-copy"><strong>Back to the lobby</strong></span>
-                    ${icon("arrow")}
-                  </button>
-                  <button class="text-button" type="button" data-action="result-stats">View your stats</button>
-                `
-                : `
-                  <button class="primary-button compact" type="button" data-action="next" data-autofocus>
-                    <span class="primary-copy"><strong>Next puzzle</strong></span>
+                  <button class="primary-button compact" type="button" data-action="retry" data-autofocus>
+                    <span class="primary-copy"><strong>Replay this puzzle</strong></span>
                     ${icon("arrow")}
                   </button>
                   <button class="text-button" type="button" data-action="home">Back to the lobby</button>
                 `
+                : round.mode === "daily"
+                  ? `
+                    <button class="primary-button compact" type="button" data-action="home" data-autofocus>
+                      <span class="primary-copy"><strong>Back to the lobby</strong></span>
+                      ${icon("arrow")}
+                    </button>
+                    <button class="text-button" type="button" data-action="result-stats">View your stats</button>
+                  `
+                  : `
+                    <button class="primary-button compact" type="button" data-action="next" data-autofocus>
+                      <span class="primary-copy"><strong>Next puzzle</strong></span>
+                      ${icon("arrow")}
+                    </button>
+                    <button class="text-button" type="button" data-action="home">Back to the lobby</button>
+                  `
             }
           </div>
         </div>
@@ -1099,7 +1122,7 @@ export class ReelHangmanApp {
             <div class="about-mark">${icon("clapper")}</div>
             <div class="about-copy">
               <h2>Reel Hangman</h2>
-              <p>Version 1.0.0 · ${PUZZLES.length} hand-written clues</p>
+              <p>Version ${APP_VERSION} · ${PUZZLES.length} hand-written clues</p>
             </div>
             <p class="about-note">Built for movie lovers who quote the credits. No ads, no accounts, no tracking—just you, the clue, and the letters.</p>
             <p class="about-fine">Movie titles, show titles, and names are used for trivia purposes and belong to their respective owners.</p>

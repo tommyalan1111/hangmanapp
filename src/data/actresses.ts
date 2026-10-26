@@ -317,4 +317,46 @@ export const ACTRESSES: Puzzle[] = [
     "She has played several British monarchs on screen and stage.",
     2,
   ),
+  actress(
+    "JUDI DENCH",
+    "She won an Oscar for a brief role in Shakespeare in Love.",
+    "She played M in seven James Bond films and earned eight Oscar nominations.",
+    2,
+  ),
+  actress(
+    "MAGGIE SMITH",
+    "She won Oscars for The Prime of Miss Jean Brodie and California Suite.",
+    "She played Professor McGonagall in Harry Potter and the Dowager Countess in Downton Abbey.",
+    2,
+  ),
+  actress(
+    "EMMA WATSON",
+    "She played Hermione Granger across eight Harry Potter films.",
+    "She graduated from Brown University and became a UN Women goodwill ambassador.",
+    1,
+  ),
+  actress(
+    "JENNIFER ANISTON",
+    "She played Rachel Green on Friends and won an Emmy for the role.",
+    "Her hairstyle on Friends became known as 'The Rachel'.",
+    1,
+  ),
+  actress(
+    "ANGELINA JOLIE",
+    "She won an Oscar for Girl, Interrupted and later played Maleficent.",
+    "She is also known for her humanitarian work with the United Nations.",
+    1,
+  ),
+  actress(
+    "AMY ADAMS",
+    "She earned six Oscar nominations for films including Doubt and The Fighter.",
+    "She starred in Enchanted, Arrival, and American Hustle without a competitive Oscar win.",
+    2,
+  ),
+  actress(
+    "EMILY BLUNT",
+    "She earned an Oscar nomination for Oppenheimer and starred in A Quiet Place.",
+    "She also played the fashion assistant in The Devil Wears Prada and Mary Poppins in the 2018 sequel.",
+    2,
+  ),
 ];

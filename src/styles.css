@@ -1033,7 +1033,7 @@ a:focus-visible {
 .clue-card {
   flex: none;
   margin-bottom: 4px;
-  padding: 11px 13px;
+  padding: 12px 14px;
   border: 1px solid var(--line);
   border-left: 2px solid var(--accent, var(--gold));
   border-radius: 11px;
@@ -1077,10 +1077,10 @@ a:focus-visible {
 .clue-text {
   margin: 0;
   color: #e9e4da;
-  font-size: 13.5px;
+  font-size: clamp(15.5px, 4.3vw, 17.5px);
   font-weight: 500;
   letter-spacing: 0.002em;
-  line-height: 1.43;
+  line-height: 1.5;
 }
 
 .stage {
@@ -2456,12 +2456,12 @@ a:focus-visible {
   }
 
   .clue-card {
-    padding: 8px 11px;
+    padding: 9px 12px;
   }
 
   .clue-text {
-    font-size: 12.5px;
-    line-height: 1.38;
+    font-size: clamp(14.5px, 4.1vw, 16px);
+    line-height: 1.45;
   }
 
   .hangman {

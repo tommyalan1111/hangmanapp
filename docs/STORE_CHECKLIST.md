@@ -58,7 +58,7 @@
 
 ## Release metadata
 
-- Version: `1.0.0` (build `1`)
+- Version: `1.0.1` (build `2`)
 - Android minimum SDK: 24
 - Android target/compile SDK: 36
 - iOS deployment target: 15.0

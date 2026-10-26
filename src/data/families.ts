@@ -161,4 +161,28 @@ export const FAMILIES: Puzzle[] = [
     "Jeff won Best Actor for Crazy Heart, and Lloyd earned an Oscar nomination for The Last Picture Show.",
     2,
   ),
+  family(
+    "WAHLBERG",
+    "Mark and his older brother Donnie share this surname.",
+    "Donnie found fame with New Kids on the Block; Mark starred in Boogie Nights and The Departed.",
+    2,
+  ),
+  family(
+    "HAWN",
+    "Goldie and her children Kate and Oliver Hudson are part of this acting family.",
+    "Goldie Hawn won an Oscar for Cactus Flower; Kate Hudson was nominated for Almost Famous.",
+    3,
+  ),
+  family(
+    "REINER",
+    "Carl and his son Rob share this comedy surname.",
+    "Carl Reiner created The Dick Van Dyke Show; Rob directed When Harry Met Sally.",
+    2,
+  ),
+  family(
+    "MURPHY",
+    "Eddie and his older brother Charlie share this comedy surname.",
+    "Eddie became an SNL star; Charlie is also an actor and comedian.",
+    2,
+  ),
 ];

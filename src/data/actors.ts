@@ -281,4 +281,46 @@ export const ACTORS: Puzzle[] = [
     "He won Best Director for Ordinary People.",
     2,
   ),
+  actor(
+    "JACKIE CHAN",
+    "He broke into Hollywood with Rush Hour after starring in Police Story.",
+    "The martial artist and stunt performer received an honorary Oscar in 2016.",
+    2,
+  ),
+  actor(
+    "SYLVESTER STALLONE",
+    "He wrote and starred in the original Rocky and later played Rambo.",
+    "He earned an Oscar nomination for the Rocky screenplay.",
+    2,
+  ),
+  actor(
+    "ARNOLD SCHWARZENEGGER",
+    "He played a cyborg assassin and later served as California's governor.",
+    "The bodybuilder-turned-actor starred in The Terminator and Predator.",
+    2,
+  ),
+  actor(
+    "BRUCE WILLIS",
+    "He played a wisecracking cop in a Los Angeles skyscraper.",
+    "Die Hard turned him from a television star into an action hero.",
+    2,
+  ),
+  actor(
+    "MICHAEL CAINE",
+    "He won Oscars for Hannah and Her Sisters and The Cider House Rules.",
+    "The British actor is also known for Alfie, The Italian Job, and The Dark Knight.",
+    2,
+  ),
+  actor(
+    "TOM HOLLAND",
+    "He swings through the Marvel universe as Peter Parker.",
+    "Before Spider-Man, he trained as a dancer and played Billy Elliot on stage.",
+    1,
+  ),
+  actor(
+    "DANIEL CRAIG",
+    "He played a British spy in five films, from Casino Royale onward.",
+    "He also starred in Knives Out and The Girl with the Dragon Tattoo.",
+    2,
+  ),
 ];

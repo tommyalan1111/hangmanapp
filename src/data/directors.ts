@@ -245,4 +245,28 @@ export const DIRECTORS: Puzzle[] = [
     "He is one of the few people to win an Emmy, Grammy, Oscar, and Tony.",
     3,
   ),
+  director(
+    "ANG LEE",
+    "He directed Brokeback Mountain and Crouching Tiger, Hidden Dragon.",
+    "He won Best Director for Brokeback Mountain and Life of Pi.",
+    2,
+  ),
+  director(
+    "GEORGE MILLER",
+    "He directed Mad Max and Happy Feet.",
+    "He created the Mad Max franchise and won Best Animated Feature for Happy Feet.",
+    3,
+  ),
+  director(
+    "ROB REINER",
+    "He directed When Harry Met Sally and A Few Good Men.",
+    "He is the son of Carl Reiner and directed This Is Spinal Tap.",
+    2,
+  ),
+  director(
+    "DAVID CRONENBERG",
+    "He directed The Fly and A History of Violence.",
+    "The Canadian filmmaker is known for body horror and psychological thrillers.",
+    3,
+  ),
 ];

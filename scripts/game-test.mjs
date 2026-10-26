@@ -220,6 +220,10 @@ async function main() {
   })`);
   check("category round starts", started.mode === "CATEGORY ROUND" && started.category === "Movies");
   check("active round is persisted", Boolean(started.active), JSON.stringify(started));
+  const clueSize = await cdp.evaluate(
+    `parseFloat(getComputedStyle(document.querySelector('.clue-text')).fontSize)`,
+  );
+  check("clue text is easy to read", clueSize >= 16, `clue font-size ${clueSize}px`);
   await cdp.evaluate(`document.querySelector('[data-action="letter"][data-letter="Z"]')?.click(); true`);
   await sleep(350);
   await reload();
@@ -288,7 +292,29 @@ async function main() {
   check("loss shows result", loss.heading === "Out of takes.", JSON.stringify(loss));
   check("loss reveals answer", loss.answer === "JAWS", loss.answer);
   check("loss marks missing letters", loss.missed === 4, `missed ${loss.missed}`);
+  const lossActions = await cdp.evaluate(`({
+    retry: document.querySelector('[data-action="retry"]')?.textContent?.replace(/\\s+/g, ' ').trim(),
+    next: !!document.querySelector('[data-action="next"]')
+  })`);
+  check("loss offers replay", lossActions.retry?.includes("Replay this puzzle"), JSON.stringify(lossActions));
+  check("loss does not offer a different question", lossActions.next === false, JSON.stringify(lossActions));
   await screenshot("test-loss-result.png");
+
+  await click('[data-action="retry"]');
+  const retried = await cdp.evaluate(`(() => {
+    const saved = JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}));
+    return {
+      puzzle: saved.activeRound?.puzzleId,
+      status: saved.activeRound?.status,
+      guessed: saved.activeRound?.guessed?.length,
+      wrong: saved.activeRound?.wrong,
+      lives: document.querySelector('.lives-label')?.textContent
+    };
+  })()`);
+  check("retry opens the same puzzle", retried.puzzle === "movies-jaws", JSON.stringify(retried));
+  check("retry resets the board", retried.status === "playing" && retried.guessed === 0 && retried.wrong === 0, JSON.stringify(retried));
+  check("retry restores all six takes", retried.lives === "6 TAKES LEFT", retried.lives);
+  await screenshot("test-retry.png");
 
   console.log("Hint");
   await setSave(
