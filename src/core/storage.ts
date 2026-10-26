@@ -32,6 +32,7 @@ export function defaultSave(): SaveData {
     },
     activeRound: null,
     daily: null,
+    removeAds: false,
   };
 }
 
@@ -96,7 +97,7 @@ function asActiveRound(value: unknown): Round | null {
     category: round.category as CategoryId,
     guessed: round.guessed.filter((letter): letter is string => typeof letter === "string"),
     wrong: Math.max(0, Math.min(6, asNumber(round.wrong))),
-    hintUsed: Boolean(round.hintUsed),
+    hintsUsed: Math.max(0, asNumber(round.hintsUsed, (round as { hintUsed?: unknown }).hintUsed === true ? 1 : 0)),
     status: round.status,
     startedAt: asNumber(round.startedAt, Date.now()),
     score: Math.max(0, asNumber(round.score)),
@@ -131,6 +132,7 @@ export function loadSave(): SaveData {
       settings: asSettings(parsed.settings),
       activeRound: asActiveRound(parsed.activeRound),
       daily: asDaily(parsed.daily),
+      removeAds: parsed.removeAds === true,
     };
   } catch {
     return fallback;
@@ -212,6 +214,7 @@ export function resetProgress(data: SaveData): SaveData {
   return {
     ...defaultSave(),
     settings: data.settings,
+    removeAds: data.removeAds,
   };
 }
 

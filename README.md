@@ -1,8 +1,8 @@
 # Reel Hangman
 
-**An offline movie & TV hangman game for Android and iOS.**
+**An offline-first movie & TV hangman game for Android and iOS.**
 
-Name the film, show, star, character, director, or famous screen family before the credits roll. No accounts, no ads, no signal required.
+Name the film, show, star, character, director, or famous screen family before the credits roll. No accounts. Optional ads. The puzzles play offline.
 
 ![Reel Hangman home screen](docs/screenshots/home.png)
 
@@ -20,11 +20,14 @@ Name the film, show, star, character, director, or famous screen family before t
 - **Replay on a miss** — when you run out of takes, the failed question stays on screen and **Replay this puzzle** resets the same board; the next question is never loaded automatically.
 - **Clues and a "behind the scenes" fact** for every answer.
 - **Daily Feature** — one date-seeded puzzle per day, worth double points.
-- **One free hint per round** — reveals a useful missing letter and costs 40 points, never a take.
+- **Unlimited hints** — each one reveals a useful missing letter and immediately deducts 40 total points; hints never cost a take.
+- **Optional rewarded video** — watch an ad for a free hint without spending points.
+- **Capped interstitial** — only after a win, at most once every 3 completed rounds and 90 seconds; never after a loss or replay.
+- **One-time Remove Ads purchase** — disables interstitials and the rewarded hint, with restore-purchase support.
 - **Progress that stays put** — solved puzzles, category completion, win rate, current and best streak, total points, recent history, and an in-progress round survive an app restart.
 - **Accessible by design** — semantic buttons, focus rings, dialog focus trapping, a polite live region for game events, reduced-motion support, and keyboard controls.
 - **Native-feeling details** — generated app icon and splash screen, status-bar styling, light haptics, synthesized sound effects, and the Android back button.
-- **Truly offline** — all puzzles, artwork, audio, and code ship inside the app. The Android build has no internet permission at all.
+- **Offline-first** — all puzzles, artwork, audio, and code ship inside the app. The game, hints, stats, and replay work without a signal. Ads, consent forms, and purchase restore need a connection; if they are unavailable, gameplay continues normally.
 
 | Game | Win screen |
 | --- | --- |
@@ -34,16 +37,22 @@ Name the film, show, star, character, director, or famous screen family before t
 | --- | --- |
 | ![Stats screen](docs/screenshots/stats.png) | ![Settings screen](docs/screenshots/settings.png) |
 
+| Rewarded hint (native) | Remove Ads (native) |
+| --- | --- |
+| ![Rewarded hint](docs/screenshots/ads-game.png) | ![Remove Ads](docs/screenshots/ads-settings.png) |
+
+The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available only in the Android and iOS builds.
+
 ## Play the Android build
 
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.0.1-debug.apk
+release/ReelHangman-1.1.0-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.0.1-debug.apk
+adb install -r release/ReelHangman-1.1.0-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.
@@ -123,7 +132,27 @@ In Xcode:
 
 Capacitor 8 uses Swift Package Manager for its iOS plugins, so CocoaPods is not required.
 
-The iOS project is configured for iPhone, portrait orientation, iOS 15+, dark appearance, and a generated 1024×1024 app icon and launch image.
+The iOS project is configured for iPhone, portrait orientation, iOS 15+, dark appearance, a generated 1024×1024 app icon and launch image, and the In-App Purchase capability.
+
+## Ads, consent, and purchases
+
+Reel Hangman includes:
+
+- Google AdMob rewarded video (optional free hint)
+- Google AdMob interstitial, capped to one per 3 completed rounds and 90 seconds
+- A one-time Remove Ads purchase via Google Play Billing / StoreKit 2
+
+The checked-in build uses **Google's official test ad IDs**. It will not earn revenue until you create your own AdMob apps, replace the IDs, configure UMP consent messages, and create the Remove Ads product in both stores.
+
+Full setup instructions: [docs/ADS_SETUP.md](docs/ADS_SETUP.md).
+
+The ad-free product ID is:
+
+```text
+com.reelhangman.game.removeads
+```
+
+Copy `.env.example` to `.env` and fill in your production AdMob IDs before building. The current debug APK uses test ads; it is not a production monetization build.
 
 ## Project layout
 
@@ -131,8 +160,10 @@ The iOS project is configured for iPhone, portrait orientation, iOS 15+, dark ap
 reel-hangman/
 ├─ src/
 │  ├─ data/              # 397 puzzles, split by category
+│  ├─ config/ads.ts      # AdMob IDs, caps, Remove Ads product
 │  ├─ core/game.ts       # pure game rules, scoring, daily seeding
 │  ├─ core/storage.ts    # versioned localStorage persistence
+│  ├─ core/ads.ts        # AdMob, UMP/ATT, purchases, offline fallback
 │  ├─ core/audio.ts      # Web Audio sound synthesis (no audio files)
 │  ├─ core/platform.ts   # Capacitor status bar, haptics, splash
 │  ├─ ui/app.ts          # screens, rendering, input handling
@@ -143,7 +174,7 @@ reel-hangman/
 ├─ scripts/              # content validation, PWA build, asset generation, browser tests
 ├─ android/              # Capacitor Android project
 ├─ ios/                  # Capacitor iOS project
-├─ docs/                 # screenshots, store checklist, privacy policy
+├─ docs/                 # screenshots, ad setup, store checklist, privacy policy
 └─ release/              # installable APK
 ```
 
@@ -167,7 +198,7 @@ Rules:
 - Run `npm run validate:data` to check for duplicate IDs/answers, unsupported characters, short clues, and long answers.
 - Keep clues useful but don't put the full answer in the clue.
 
-The interface uses only system fonts and hand-authored CSS/SVG. There are no remote fonts, image packs, trackers, or runtime network calls.
+The interface uses only system fonts and hand-authored CSS/SVG. There are no remote fonts or image packs. The native builds make network calls only for ads, consent, and purchase restore.
 
 ## Testing
 
@@ -212,7 +243,7 @@ See [docs/STORE_CHECKLIST.md](docs/STORE_CHECKLIST.md) for a pre-flight list.
 
 ## Privacy
 
-Reel Hangman collects nothing. Progress is stored only in local storage on the device. The Android manifest requests only `VIBRATE` (for haptics); it has no internet permission. See [docs/PRIVACY.md](docs/PRIVACY.md).
+Progress and settings are stored locally on the device. The Android and iOS builds use Google AdMob for optional ads and Google Play Billing / StoreKit for the Remove Ads purchase; those services may process device identifiers, approximate location, ad interactions, and purchase confirmation data. Consent is requested through Google UMP, and iOS ATT permission is requested before tracking-based ads. The app requests `VIBRATE`, `INTERNET`, `ACCESS_NETWORK_STATE`, and Android `BILLING`. See [docs/PRIVACY.md](docs/PRIVACY.md).
 
 ## License
 

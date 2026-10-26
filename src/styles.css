@@ -846,18 +846,18 @@ a:focus-visible {
 
 .genre-count {
   position: absolute;
-  top: 13px;
+  top: 12px;
   right: 12px;
-  color: #6b6d7f;
+  color: #a9aabb;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .genre-count small {
-  color: #4d4f5f;
-  font-size: 7px;
+  color: #737587;
+  font-size: 9px;
 }
 
 .genre-card-wide {
@@ -889,11 +889,11 @@ a:focus-visible {
   margin-left: auto;
   align-self: flex-start;
   padding-top: 2px;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .genre-card-wide .genre-count small {
-  font-size: 7.5px;
+  font-size: 9px;
 }
 
 .home-footer {
@@ -1074,6 +1074,36 @@ a:focus-visible {
   color: var(--gold);
 }
 
+.game-points {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding: 3px 6px;
+  border: 1px solid rgba(244, 201, 93, 0.18);
+  border-radius: 5px;
+  background: rgba(244, 201, 93, 0.06);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.game-points .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.game-points small {
+  color: #948d79;
+  font-family: var(--font-body);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
 .clue-text {
   margin: 0;
   color: #e9e4da;
@@ -1155,21 +1185,21 @@ a:focus-visible {
 }
 
 .lives-label {
-  color: #6e7082;
+  color: #9a9cae;
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9.5px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .lives-dots {
   display: flex;
-  gap: 3px;
+  gap: 4px;
 }
 
 .lives-dots i {
-  width: 11px;
-  height: 3px;
+  width: 14px;
+  height: 4px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.11);
   transition: background 200ms ease;
@@ -1182,7 +1212,7 @@ a:focus-visible {
 
 .word-wrap {
   display: flex;
-  min-height: 61px;
+  min-height: 68px;
   flex: none;
   align-items: center;
   justify-content: center;
@@ -1207,15 +1237,15 @@ a:focus-visible {
 
 .tile {
   display: flex;
-  width: clamp(16px, 4.5vw, 24px);
-  height: clamp(27px, 6.8vw, 34px);
+  width: clamp(18px, 5vw, 27px);
+  height: clamp(30px, 7.5vw, 38px);
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.23);
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: clamp(15px, 4.3vw, 21px);
+  font-size: clamp(17px, 4.8vw, 23px);
   font-weight: 600;
   line-height: 1;
 }
@@ -1240,10 +1270,10 @@ a:focus-visible {
 .punct {
   align-self: flex-end;
   margin: 0 -1px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: clamp(15px, 4.4vw, 21px);
+  font-size: clamp(17px, 4.8vw, 23px);
   font-weight: 500;
   line-height: 1;
 }
@@ -1312,41 +1342,42 @@ a:focus-visible {
 
 .game-actions {
   display: flex;
-  min-height: 33px;
+  min-height: 38px;
   flex: none;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
   padding: 2px 2px 0;
 }
 
 .hint-button {
   display: inline-flex;
+  flex: none;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   padding: 5px 0;
   border: 0;
   background: none;
   color: var(--gold);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 750;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .hint-button .icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .hint-button small {
   margin-left: 1px;
-  color: #636576;
+  color: #c6b270;
   font-family: var(--font-mono);
-  font-size: 7px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .hint-button:disabled {
@@ -1359,11 +1390,62 @@ a:focus-visible {
 }
 
 .game-tip {
-  max-width: 190px;
-  color: #535566;
-  font-size: 7.5px;
+  max-width: 170px;
+  color: #858798;
+  font-size: 9.5px;
   line-height: 1.35;
   text-align: right;
+}
+
+.rewarded-hint {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  padding: 6px 11px;
+  border: 1px solid rgba(244, 201, 93, 0.24);
+  border-radius: 999px;
+  background: rgba(244, 201, 93, 0.055);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.rewarded-hint .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.rewarded-hint:hover {
+  border-color: rgba(244, 201, 93, 0.42);
+  background: rgba(244, 201, 93, 0.09);
+}
+
+.rewarded-hint-inline {
+  display: none;
+  flex: none;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.rewarded-hint-inline .icon {
+  width: 12px;
+  height: 12px;
 }
 
 /* Result sheet */
@@ -2013,6 +2095,84 @@ a:focus-visible {
   transform: translateX(17px);
 }
 
+.remove-ads-panel {
+  border-color: rgba(244, 201, 93, 0.17);
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(244, 201, 93, 0.09), transparent 52%),
+    rgba(244, 201, 93, 0.02);
+}
+
+.remove-ads-panel.is-owned {
+  border-color: rgba(130, 190, 150, 0.2);
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(130, 190, 150, 0.08), transparent 52%),
+    rgba(130, 190, 150, 0.02);
+}
+
+.ad-free-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.ad-free-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: none;
+  place-items: center;
+  border: 1px solid rgba(244, 201, 93, 0.2);
+  border-radius: 10px;
+  color: var(--gold);
+}
+
+.is-owned .ad-free-icon {
+  border-color: rgba(130, 190, 150, 0.24);
+  color: #a9d6b4;
+}
+
+.ad-free-icon .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ad-free-heading h2 {
+  margin: 2px 0 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.ad-free-copy {
+  margin: 11px 0 12px;
+  color: #8f91a2;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.remove-ads-button {
+  margin-top: 2px;
+}
+
+.remove-ads-button .primary-copy span {
+  color: rgba(20, 18, 12, 0.68);
+  font-size: 10px;
+}
+
+.ad-restore {
+  margin-top: 7px;
+  color: #b9a66b;
+  font-size: 10.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ad-restore:hover {
+  color: var(--gold);
+}
+
 .link-panel {
   padding: 1px 14px;
 }
@@ -2479,8 +2639,25 @@ a:focus-visible {
   }
 
   .word-wrap {
-    min-height: 52px;
-    padding: 2px 1px 5px;
+    min-height: 58px;
+    padding: 1px 1px 3px;
+  }
+
+  .word-display {
+    column-gap: 10px;
+    row-gap: 5px;
+  }
+
+  .tile {
+    width: clamp(16px, 4.8vw, 24px);
+    height: 27px;
+    padding-bottom: 3px;
+    font-size: 15px;
+  }
+
+  .punct {
+    padding-bottom: 4px;
+    font-size: 15px;
   }
 
   .key {
@@ -2500,7 +2677,15 @@ a:focus-visible {
   }
 
   .game-tip {
-    font-size: 7px;
+    display: none;
+  }
+
+  .stage .rewarded-hint {
+    display: none;
+  }
+
+  .rewarded-hint-inline {
+    display: inline-flex;
   }
 }
 

@@ -209,7 +209,7 @@ async function main() {
         category: "movies",
         guessed: winGuesses,
         wrong: 2,
-        hintUsed: false,
+        hintsUsed: 0,
         status: "playing",
         startedAt: Date.now(),
         score: 0,

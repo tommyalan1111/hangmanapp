@@ -66,7 +66,7 @@ export interface Round {
   category: CategoryId;
   guessed: string[];
   wrong: number;
-  hintUsed: boolean;
+  hintsUsed: number;
   status: "playing" | "won" | "lost";
   startedAt: number;
   score: number;
@@ -111,4 +111,6 @@ export interface SaveData {
   settings: Settings;
   activeRound: Round | null;
   daily: DailyRecord | null;
+  /** Cached store entitlement; restored from the store at startup. */
+  removeAds: boolean;
 }

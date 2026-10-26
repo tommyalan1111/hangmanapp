@@ -33,6 +33,7 @@ import {
   solvedInCategory,
 } from "../core/storage";
 import { sounds } from "../core/audio";
+import { ads } from "../core/ads";
 import { haptic } from "../core/platform";
 import { APP_VERSION } from "../version";
 import { icon } from "./icons";
@@ -106,6 +107,18 @@ export class ReelHangmanApp {
     }
 
     sounds.setEnabled(this.save.settings.sound);
+    ads.setRemoveAds(this.save.removeAds);
+    ads.setCallbacks({
+      onEntitlementChange: (owned) => {
+        if (!owned || this.save.removeAds) return;
+        this.save = { ...this.save, removeAds: true };
+        persistSave(this.save);
+        if (this.screen === "settings" || this.screen === "game") this.render();
+      },
+      onCatalogChange: () => {
+        if (this.screen === "settings") this.render();
+      },
+    });
   }
 
   start(): void {
@@ -114,6 +127,14 @@ export class ReelHangmanApp {
     window.addEventListener("popstate", this.handlePopState);
     history.replaceState({ screen: "home" }, "", "#home");
     this.render();
+
+    if (ads.isSupported()) {
+      // Ads must never delay the first screen. Give the lobby a beat to settle
+      // while UMP/ATT and the first ad requests happen in the background.
+      window.setTimeout(() => {
+        void ads.initialize(this.save.removeAds);
+      }, 900);
+    }
   }
 
   onNativeBack(): void {
@@ -164,10 +185,22 @@ export class ReelHangmanApp {
         this.startDaily();
         break;
       case "next":
-        this.nextRound();
+        void this.nextRound();
         break;
       case "retry":
         this.retryRound();
+        break;
+      case "rewarded-hint":
+        void this.watchRewardedHint();
+        break;
+      case "purchase-remove-ads":
+        void this.purchaseRemoveAds();
+        break;
+      case "restore-purchases":
+        void this.restoreRemoveAds();
+        break;
+      case "ad-privacy":
+        void this.showAdPrivacy();
         break;
       case "home":
         this.goHome();
@@ -366,7 +399,7 @@ export class ReelHangmanApp {
     this.startPuzzle(feature, "daily");
   }
 
-  private nextRound(): void {
+  private async nextRound(): Promise<void> {
     if (!this.round) return;
     const mode = this.round.mode;
     const category = this.round.category;
@@ -374,6 +407,11 @@ export class ReelHangmanApp {
       this.leaveResult();
       return;
     }
+
+    // The result sheet stays visible while a capped interstitial loads. If no
+    // ad is ready, this resolves immediately and the next puzzle starts.
+    await ads.maybeShowInterstitial(this.save.stats.played);
+
     this.round = null;
     this.puzzle = null;
     this.beginRound(mode === "category" ? category : null, mode === "category" ? "category" : "quick", true);
@@ -427,6 +465,14 @@ export class ReelHangmanApp {
     if (next === this.round) return;
 
     this.round = next;
+    const deduction = Math.min(40, this.save.stats.points);
+    this.save = {
+      ...this.save,
+      stats: {
+        ...this.save.stats,
+        points: Math.max(0, this.save.stats.points - deduction),
+      },
+    };
     sounds.hint();
     void haptic("light", this.save.settings.haptics);
 
@@ -434,12 +480,86 @@ export class ReelHangmanApp {
       this.save = saveActiveRound(this.save, next);
       persistSave(this.save);
       const revealed = next.guessed[next.guessed.length - 1];
-      this.announce(`Hint revealed ${revealed}. Forty points deducted.`);
+      this.announce(
+        `Hint revealed ${revealed}. ${deduction > 0 ? `${deduction} points deducted.` : "No points left to deduct."}`,
+      );
       this.render();
       return;
     }
 
     this.finishRound();
+  }
+
+  private async watchRewardedHint(): Promise<void> {
+    if (!this.round || !this.puzzle || this.round.status !== "playing") return;
+    if (!ads.isSupported() || this.save.removeAds) return;
+
+    const earned = await ads.showRewarded();
+    if (!earned) {
+      this.showToast("No ad available right now. Try again in a moment.");
+      return;
+    }
+
+    const next = revealHint(this.puzzle, this.round);
+    if (next === this.round) return;
+
+    this.round = next;
+    sounds.hint();
+    void haptic("light", this.save.settings.haptics);
+
+    if (next.status === "playing") {
+      this.save = saveActiveRound(this.save, next);
+      persistSave(this.save);
+      const revealed = next.guessed[next.guessed.length - 1];
+      this.announce(`Free hint revealed ${revealed}.`);
+      this.render();
+      return;
+    }
+
+    this.finishRound();
+  }
+
+  private async purchaseRemoveAds(): Promise<void> {
+    if (!ads.isSupported() || this.save.removeAds) return;
+
+    const result = await ads.purchaseRemoveAds();
+    if (result === "cancelled") return;
+    if (result === "unavailable") {
+      this.showToast("Remove Ads is not available yet. Please try again later.");
+      return;
+    }
+    if (result === "error") {
+      this.showToast("The purchase could not be completed. Please try again.");
+      return;
+    }
+
+    if (!this.save.removeAds) {
+      this.save = { ...this.save, removeAds: true };
+      persistSave(this.save);
+    }
+    this.showToast("Ads removed. Thank you for supporting the game.");
+    this.render();
+  }
+
+  private async restoreRemoveAds(): Promise<void> {
+    if (!ads.isSupported()) return;
+    const restored = await ads.restoreRemoveAds();
+    if (restored) {
+      if (!this.save.removeAds) {
+        this.save = { ...this.save, removeAds: true };
+        persistSave(this.save);
+      }
+      this.showToast("Your ad-free purchase was restored.");
+      this.render();
+      return;
+    }
+    this.showToast("No previous purchase was found on this store account.");
+  }
+
+  private async showAdPrivacy(): Promise<void> {
+    if (!ads.isSupported()) return;
+    const shown = await ads.showPrivacyOptions();
+    if (!shown) this.showToast("Ad privacy options are not available right now.");
   }
 
   private finishRound(): void {
@@ -494,6 +614,7 @@ export class ReelHangmanApp {
     this.round = null;
     this.puzzle = null;
     this.resetConfirm = false;
+    ads.resetFrequencyCaps();
     persistSave(this.save);
     sounds.setEnabled(this.save.settings.sound);
     this.go("home", true);
@@ -683,7 +804,7 @@ export class ReelHangmanApp {
             <h1>Name the<br><em>screen classic.</em></h1>
             <p class="hero-copy">A movie and TV hangman game for people who quote the credits. Every answer is a film, show, star, character, director, or famous screen family.</p>
             <div class="hero-actions">${heroAction}</div>
-            <p class="hero-note">${icon("lock")} No ads. No accounts. No signal needed.</p>
+            <p class="hero-note">${icon("lock")} No accounts. Optional ads. Offline play.</p>
           </section>
 
           ${this.renderDailyCard()}
@@ -702,7 +823,7 @@ export class ReelHangmanApp {
           </section>
 
           <footer class="home-footer">
-            <span>NO ADS</span><i></i><span>NO ACCOUNTS</span><i></i><span>NO SIGNAL</span>
+            <span>OPTIONAL ADS</span><i></i><span>NO ACCOUNTS</span><i></i><span>OFFLINE PLAY</span>
           </footer>
         </main>
         ${this.bottomNav("home")}
@@ -801,6 +922,11 @@ export class ReelHangmanApp {
               <span class="clue-category">${category.name}</span>
               <span class="clue-difficulty">${DIFFICULTY_LABEL[puzzle.difficulty]}</span>
               ${round.mode === "daily" ? '<span class="clue-double">2×</span>' : ""}
+              <span class="game-points" aria-label="Total points: ${formatNumber(this.save.stats.points)}">
+                ${icon("ticket")}
+                <small>TOTAL</small>
+                ${formatNumber(this.save.stats.points)} PTS
+              </span>
             </div>
             <h1 class="clue-text">${escapeHtml(puzzle.clue)}</h1>
           </section>
@@ -814,6 +940,14 @@ export class ReelHangmanApp {
                 ${Array.from({ length: MAX_LIVES }, (_, index) => `<i class="${index < remaining ? "is-full" : ""}"></i>`).join("")}
               </span>
             </div>
+            ${
+              ads.isSupported() && !this.save.removeAds
+                ? `<button class="rewarded-hint" type="button" data-action="rewarded-hint" aria-label="Watch an ad for a free hint">
+                    ${icon("play")}
+                    <span>Watch ad for a free hint</span>
+                  </button>`
+                : ""
+            }
           </section>
 
           <section class="word-wrap" aria-label="Answer">
@@ -825,12 +959,20 @@ export class ReelHangmanApp {
           </section>
 
           <div class="game-actions">
-            <button class="hint-button" type="button" data-action="hint" ${round.hintUsed || ended ? "disabled" : ""}>
+            <button class="hint-button" type="button" data-action="hint" aria-label="Reveal a letter for 40 points" ${ended ? "disabled" : ""}>
               ${icon("bulb")}
-              <span>${round.hintUsed ? "Hint used" : "Reveal a letter"}</span>
-              <small>${round.hintUsed ? "ONE PER ROUND" : "−40 PTS"}</small>
+              <span>Reveal a letter</span>
+              <small>−40 PTS</small>
             </button>
-            <span class="game-tip">${usedLetters.size === 0 ? "Tap a letter to begin" : `${plural(remaining, "take")} between you and the credits`}</span>
+            ${
+              ads.isSupported() && !this.save.removeAds
+                ? `<button class="rewarded-hint-inline" type="button" data-action="rewarded-hint" aria-label="Watch an ad for a free hint">
+                    ${icon("play")}
+                    <span>Free hint</span>
+                  </button>`
+                : ""
+            }
+            <span class="game-tip">${usedLetters.size === 0 ? "Tap a letter to begin" : remaining === 1 ? "One wrong letter left" : `${remaining} wrong letters left`}</span>
           </div>
         </main>
         ${this.resultOverlay()}
@@ -1096,7 +1238,7 @@ export class ReelHangmanApp {
           <section class="page-intro">
             <p class="kicker">PREFERENCES</p>
             <h1>Make it yours.</h1>
-            <p>Reel Hangman runs entirely on this device. Your progress, streaks, and settings never leave it.</p>
+            <p>Your progress, streaks, and settings live on this device. Optional ads and the ad-free upgrade are the only parts that use a connection.</p>
           </section>
 
           <section class="panel settings-panel">
@@ -1104,6 +1246,8 @@ export class ReelHangmanApp {
             ${this.settingRow("haptics", "haptic", "Haptics", "A small tap when a letter lands.")}
             ${this.settingRow("reduceMotion", "motion", "Reduced motion", "Calmer transitions and no falling confetti.")}
           </section>
+
+          ${this.renderAdsPanel()}
 
           <section class="panel link-panel">
             <button class="link-row" type="button" data-action="howto">
@@ -1116,6 +1260,15 @@ export class ReelHangmanApp {
               <span class="link-copy"><strong>Reset progress</strong><small>Clear stats, streaks, and solved puzzles</small></span>
               ${icon("arrow")}
             </button>
+            ${
+              ads.privacyOptionsAvailable()
+                ? `<button class="link-row" type="button" data-action="ad-privacy">
+                    <span class="link-icon">${icon("lock")}</span>
+                    <span class="link-copy"><strong>Ad privacy options</strong><small>Review your consent choices</small></span>
+                    ${icon("arrow")}
+                  </button>`
+                : ""
+            }
           </section>
 
           <section class="about-card">
@@ -1124,12 +1277,45 @@ export class ReelHangmanApp {
               <h2>Reel Hangman</h2>
               <p>Version ${APP_VERSION} · ${PUZZLES.length} hand-written clues</p>
             </div>
-            <p class="about-note">Built for movie lovers who quote the credits. No ads, no accounts, no tracking—just you, the clue, and the letters.</p>
+            <p class="about-note">Built for movie lovers who quote the credits. No accounts, no data selling, and no nonsense—just you, the clue, and the letters.</p>
             <p class="about-fine">Movie titles, show titles, and names are used for trivia purposes and belong to their respective owners.</p>
           </section>
         </main>
         ${this.bottomNav("settings")}
       </div>
+    `;
+  }
+
+  private renderAdsPanel(): string {
+    if (!ads.isSupported()) return "";
+
+    if (this.save.removeAds) {
+      return `
+        <section class="panel remove-ads-panel is-owned">
+          <div class="ad-free-heading">
+            <span class="ad-free-icon">${icon("check")}</span>
+            <div><p class="kicker">AD-FREE EDITION</p><h2>Ads removed.</h2></div>
+          </div>
+          <p class="ad-free-copy">Thank you for supporting Reel Hangman. Interstitials and the rewarded hint are switched off on this device.</p>
+          <button class="text-button ad-restore" type="button" data-action="restore-purchases">Restore purchase</button>
+        </section>
+      `;
+    }
+
+    const price = ads.getRemoveAdsPrice();
+    return `
+      <section class="panel remove-ads-panel">
+        <div class="ad-free-heading">
+          <span class="ad-free-icon">${icon("heart")}</span>
+          <div><p class="kicker">SUPPORT THE PROJECT</p><h2>Play without ads.</h2></div>
+        </div>
+        <p class="ad-free-copy">One-time purchase. Removes interstitials and the optional rewarded hint. Your puzzles and progress stay exactly where they are.</p>
+        <button class="primary-button compact remove-ads-button" type="button" data-action="purchase-remove-ads">
+          <span class="primary-copy"><strong>Remove ads</strong><span>${price ?? "Price shown at checkout"}</span></span>
+          ${icon("arrow")}
+        </button>
+        <button class="text-button ad-restore" type="button" data-action="restore-purchases">Restore purchase</button>
+      </section>
     `;
   }
 
@@ -1181,14 +1367,14 @@ export class ReelHangmanApp {
               <div><span>Base solve</span><strong>100</strong></div>
               <div><span>Each take left</span><strong>+25</strong></div>
               <div><span>Difficulty bonus</span><strong>+0 to +80</strong></div>
-              <div><span>Hint</span><strong>−40</strong></div>
+              <div><span>Hint (each)</span><strong>−40</strong></div>
               <div><span>Daily feature</span><strong>2×</strong></div>
             </div>
-            <p class="panel-note">A hint reveals the most common missing letter and never costs a take. The daily feature pays double once per day.</p>
+            <p class="panel-note">Each hint reveals the most common missing letter and deducts 40 total points immediately. Hints never cost a take, and you can use as many as you like. The daily feature pays double once per day.</p>
           </section>
 
           <section class="panel short-panel">
-            <div class="hint-line">${icon("bulb")}<p>Stuck? Use the hint. Careless? Use the backspace. There is no timer—only the streak.</p></div>
+            <div class="hint-line">${icon("bulb")}<p>Stuck? Use as many hints as you need—each one costs 40 points. There is no timer—only the streak.</p></div>
           </section>
 
           <button class="primary-button compact howto-button" type="button" data-action="back">

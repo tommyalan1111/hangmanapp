@@ -38,7 +38,7 @@ export function createRound(puzzle: Puzzle, mode: GameMode): Round {
     category: puzzle.category,
     guessed: [],
     wrong: 0,
-    hintUsed: false,
+    hintsUsed: 0,
     status: "playing",
     startedAt: Date.now(),
     score: 0,
@@ -48,9 +48,8 @@ export function createRound(puzzle: Puzzle, mode: GameMode): Round {
 export function scoreRound(puzzle: Puzzle, round: Round): number {
   if (round.status !== "won") return 0;
   const base = 100 + livesLeft(round) * 25 + (puzzle.difficulty - 1) * 40;
-  const hintPenalty = round.hintUsed ? 40 : 0;
   const multiplier = round.mode === "daily" ? 2 : 1;
-  return Math.max(25, base - hintPenalty) * multiplier;
+  return Math.max(25, base) * multiplier;
 }
 
 function settle(puzzle: Puzzle, next: Round): Round {
@@ -83,7 +82,7 @@ export function guessLetter(puzzle: Puzzle, round: Round, letter: string): Round
 }
 
 export function revealHint(puzzle: Puzzle, round: Round): Round {
-  if (round.status !== "playing" || round.hintUsed) return round;
+  if (round.status !== "playing") return round;
 
   const guessed = new Set(round.guessed);
   const remaining = answerLetters(puzzle.answer).filter((letter) => !guessed.has(letter));
@@ -100,7 +99,7 @@ export function revealHint(puzzle: Puzzle, round: Round): Round {
   const next: Round = {
     ...round,
     guessed: [...round.guessed, choice],
-    hintUsed: true,
+    hintsUsed: round.hintsUsed + 1,
   };
 
   return settle(puzzle, next);

@@ -5,6 +5,10 @@ dist/
 .screens/
 .chrome-*/
 .tmp*
+.env
+.env.local
+.env.*.local
+.native-*
 .android/
 .android-platform*/
 .tools/

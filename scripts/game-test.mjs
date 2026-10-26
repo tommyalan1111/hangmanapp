@@ -175,13 +175,13 @@ async function setSave(data) {
   await navigate();
 }
 
-const round = (puzzleId, category, mode, guessed, wrong = 0, hintUsed = false) => ({
+const round = (puzzleId, category, mode, guessed, wrong = 0, hintsUsed = 0) => ({
   puzzleId,
   mode,
   category,
   guessed,
   wrong,
-  hintUsed,
+  hintsUsed,
   status: "playing",
   startedAt: Date.now(),
   score: 0,
@@ -319,23 +319,35 @@ async function main() {
   console.log("Hint");
   await setSave(
     save({
+      stats: { played: 0, won: 0, currentStreak: 0, bestStreak: 0, points: 1000 },
       activeRound: round("tv-sherlock", "tv", "category", [], 0),
     }),
   );
   await click('[data-action="resume"]');
   await click('[data-action="hint"]');
+  await click('[data-action="hint"]');
+  await click('[data-action="hint"]');
   const hint = await cdp.evaluate(`(() => {
     const saved = JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}));
+    const button = document.querySelector('.hint-button');
     return {
-      hintUsed: saved.activeRound.hintUsed,
+      hintsUsed: saved.activeRound.hintsUsed,
       wrong: saved.activeRound.wrong,
       guessed: saved.activeRound.guessed,
-      label: document.querySelector('.hint-button span')?.textContent
+      points: saved.stats.points,
+      label: button?.querySelector('span')?.textContent,
+      cost: button?.querySelector('small')?.textContent,
+      disabled: button?.disabled,
+      chip: document.querySelector('.game-points')?.textContent?.replace(/\\s+/g, ' ').trim()
     };
   })()`);
-  check("hint is used", hint.hintUsed && hint.label === "Hint used", JSON.stringify(hint));
+  check("hint is used", hint.hintsUsed === 3, JSON.stringify(hint));
+  check("hints remain unlimited", hint.disabled === false && hint.label === "Reveal a letter", JSON.stringify(hint));
   check("hint does not cost a take", hint.wrong === 0, JSON.stringify(hint));
-  check("hint reveals a letter", hint.guessed.length === 1, JSON.stringify(hint));
+  check("each hint reveals a letter", hint.guessed.length === 3, JSON.stringify(hint));
+  check("each hint deducts 40 total points", hint.points === 880, JSON.stringify(hint));
+  check("points chip updates immediately", hint.chip?.includes("880 PTS"), JSON.stringify(hint));
+  check("hint still shows its cost", hint.cost === "−40 PTS", JSON.stringify(hint));
   await screenshot("test-hint.png");
 
   console.log("Daily feature");

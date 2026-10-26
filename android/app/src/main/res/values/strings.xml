@@ -4,4 +4,6 @@
     <string name="title_activity_main">Reel Hangman</string>
     <string name="package_name">com.reelhangman.game</string>
     <string name="custom_url_scheme">com.reelhangman.game</string>
+    <!-- Google's official test app id. Replace with the production AdMob app id. -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
 </resources>

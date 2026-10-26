@@ -189,7 +189,7 @@ const activeRound = {
   category: "movies",
   guessed: ["T", "H", "E", "G", "D", "F", "A", "R"],
   wrong: 2,
-  hintUsed: false,
+  hintsUsed: 0,
   status: "playing",
   startedAt: Date.now(),
   score: 0,
@@ -209,7 +209,18 @@ await reload();
 await sleep(500);
 await screenshot("home.png");
 
-await setSave(baseSave({ activeRound }));
+await setSave(
+  baseSave({
+    activeRound,
+    stats: {
+      played: 14,
+      won: 10,
+      currentStreak: 3,
+      bestStreak: 6,
+      points: 3820,
+    },
+  }),
+);
 await click('[data-action="resume"]');
 await sleep(400);
 await screenshot("game.png");

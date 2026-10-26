@@ -22,7 +22,7 @@
 - [ ] Test the signed release build on a physical device.
 - [ ] Google Play target API requirement is met (currently target SDK 36).
 - [ ] Upload an AAB, screenshots, feature graphic, short/full description, and privacy policy URL.
-- [ ] Complete the Data safety form: no data collected, no data shared.
+- [ ] Complete the Data safety form: declare advertising/device identifiers, approximate location, purchase history, and network access used by AdMob and Google Play Billing.
 - [ ] Complete the content rating questionnaire. The game contains no violence, despite the hangman drawing.
 - [ ] Verify the app installs and opens with airplane mode enabled.
 
@@ -34,10 +34,23 @@
 - [ ] Test on a physical iPhone and at least one small-screen simulator.
 - [ ] Confirm portrait-only behavior and safe areas on a notched device.
 - [ ] Archive and upload to TestFlight.
-- [ ] Provide the privacy policy URL and App Privacy answers ("Data Not Collected").
+- [ ] Provide the privacy policy URL and App Privacy answers for advertising data, purchases, and diagnostics. Do not select "Data Not Collected."
 - [ ] Supply 6.7-inch and 6.1-inch screenshots. The files in `docs/screenshots/` are 780×1688 (390×844 logical), so render store-sized captures from a device or simulator.
 - [ ] Add the support URL and marketing URL.
 - [ ] Confirm `ITSAppUsesNonExemptEncryption` is false (no custom encryption).
+
+## Monetization
+
+- [ ] Replace the AdMob test app IDs and test ad unit IDs with production values. See [ADS_SETUP.md](ADS_SETUP.md).
+- [ ] Configure UMP GDPR, US states, and IDFA messages in AdMob.
+- [ ] Confirm `NSUserTrackingUsageDescription` is present and ATT is requested on iOS.
+- [ ] Create the non-consumable product `com.reelhangman.game.removeads` in Google Play Console and App Store Connect.
+- [ ] Test purchase, restore, and ad removal on a store-signed build.
+- [ ] Confirm no ads appear after Remove Ads is active.
+- [ ] Verify airplane mode: gameplay works, ads fail gracefully, and no blocking dialogs remain.
+- [ ] Verify interstitial caps: no ad after a loss/retry, and no more than one per 3 rounds/90 seconds.
+- [ ] Verify the app is not marked child-directed, or reconfigure AdMob and the stores for a families audience.
+- [ ] Host the updated privacy policy and add the support email.
 
 ## Content
 
@@ -58,10 +71,10 @@
 
 ## Release metadata
 
-- Version: `1.0.1` (build `2`)
+- Version: `1.1.0` (build `6`)
 - Android minimum SDK: 24
 - Android target/compile SDK: 36
 - iOS deployment target: 15.0
 - Orientation: portrait
 - Category: Games / Word
-- Offline: yes
+- Offline: core gameplay yes; ads, consent, and purchase restore need a connection
