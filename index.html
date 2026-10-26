@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#08090f" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Reel Hangman is an offline movie and TV hangman game. Guess films, shows, actors, actresses, characters, directors, and famous screen families."
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Reel Hangman" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" />
+    <title>Reel Hangman — Movie &amp; TV Hangman</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #08090f;
+      }
+      .boot-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 0;
+        text-align: center;
+        background:
+          radial-gradient(520px 440px at 50% 38%, rgba(244, 201, 93, 0.12), transparent 68%),
+          #08090f;
+        color: #f4c95d;
+        transition: opacity 420ms ease;
+      }
+      .boot-screen.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .boot-icon {
+        width: 88px;
+        height: 88px;
+        border-radius: 22px;
+        box-shadow:
+          0 0 0 1px rgba(244, 201, 93, 0.22),
+          0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+      .boot-title {
+        margin: 22px 0 0;
+        color: #f7f1e3;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+      }
+      .boot-tagline {
+        margin: 8px 0 0;
+        color: #9d8e69;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 7px;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="boot-screen" id="boot-screen" aria-hidden="true">
+      <img class="boot-icon" src="./icons/icon-192.png" alt="" width="88" height="88" />
+      <p class="boot-title">REEL HANGMAN</p>
+      <p class="boot-tagline">LIGHTS. CAMERA. MISSING LETTERS.</p>
+    </div>
+    <div id="app"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="live-region" class="sr-only" aria-live="polite"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

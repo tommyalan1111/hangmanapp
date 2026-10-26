@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Reel Hangman</string>
+    <string name="title_activity_main">Reel Hangman</string>
+    <string name="package_name">com.reelhangman.game</string>
+    <string name="custom_url_scheme">com.reelhangman.game</string>
+</resources>

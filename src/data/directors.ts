@@ -1,0 +1,248 @@
+import type { Puzzle } from "../types";
+import { makePuzzle } from "./helpers";
+
+const director = (answer: string, clue: string, fact: string, difficulty: 1 | 2 | 3): Puzzle =>
+  makePuzzle("directors", answer, clue, fact, difficulty);
+
+export const DIRECTORS: Puzzle[] = [
+  director(
+    "ALFRED HITCHCOCK",
+    "The Master of Suspense, behind Psycho and Vertigo.",
+    "He was nominated for Best Director five times but never won a competitive Oscar.",
+    2,
+  ),
+  director(
+    "STEVEN SPIELBERG",
+    "He directed Jaws, E.T., and Schindler's List.",
+    "He won Best Director for Schindler's List and Saving Private Ryan.",
+    1,
+  ),
+  director(
+    "MARTIN SCORSESE",
+    "He directed Taxi Driver, Goodfellas, and The Departed.",
+    "He won his first Best Director Oscar for The Departed.",
+    1,
+  ),
+  director(
+    "FRANCIS FORD COPPOLA",
+    "He directed The Godfather and Apocalypse Now.",
+    "He won Best Director for The Godfather Part II.",
+    2,
+  ),
+  director(
+    "STANLEY KUBRICK",
+    "He directed 2001, The Shining, and Full Metal Jacket.",
+    "He earned 13 Oscar nominations and won one, for 2001's visual effects.",
+    2,
+  ),
+  director(
+    "AKIRA KUROSAWA",
+    "He directed Seven Samurai and Rashomon.",
+    "His films influenced Westerns, Star Wars, and generations of filmmakers.",
+    3,
+  ),
+  director(
+    "BILLY WILDER",
+    "He directed Some Like It Hot and The Apartment.",
+    "He won six Oscars, including Best Director for The Lost Weekend and The Apartment.",
+    3,
+  ),
+  director(
+    "ORSON WELLES",
+    "He directed and starred in Citizen Kane at age 25.",
+    "Citizen Kane won Best Original Screenplay and is often ranked among the greatest films.",
+    3,
+  ),
+  director(
+    "DAVID FINCHER",
+    "He directed Fight Club, Se7en, and The Social Network.",
+    "He also directed the first episodes of House of Cards and earned an Emmy.",
+    2,
+  ),
+  director(
+    "CHRISTOPHER NOLAN",
+    "He directed Inception, Interstellar, and Oppenheimer.",
+    "He won Best Director for Oppenheimer.",
+    1,
+  ),
+  director(
+    "QUENTIN TARANTINO",
+    "He directed Pulp Fiction and Kill Bill.",
+    "He won screenwriting Oscars for Pulp Fiction and Django Unchained.",
+    1,
+  ),
+  director(
+    "RIDLEY SCOTT",
+    "He directed Alien and Gladiator.",
+    "He was nominated for Best Director for Thelma & Louise, Gladiator, and Black Hawk Down without a win.",
+    2,
+  ),
+  director(
+    "JAMES CAMERON",
+    "He directed Titanic and Avatar.",
+    "He won Best Director for Titanic, and Avatar became one of the highest-grossing films ever.",
+    1,
+  ),
+  director(
+    "GEORGE LUCAS",
+    "He created Star Wars and Indiana Jones.",
+    "He founded Industrial Light & Magic, the visual-effects company behind many modern blockbusters.",
+    2,
+  ),
+  director(
+    "PETER JACKSON",
+    "He directed The Lord of the Rings trilogy.",
+    "He won Best Director for The Return of the King, which swept 11 Oscars.",
+    1,
+  ),
+  director(
+    "SPIKE LEE",
+    "He directed Do the Right Thing and BlacKkKlansman.",
+    "He won Best Adapted Screenplay for BlacKkKlansman and an honorary Oscar in 2015.",
+    2,
+  ),
+  director(
+    "JORDAN PEELE",
+    "He directed Get Out and Us.",
+    "He won Best Original Screenplay for Get Out, becoming the first Black winner in that category.",
+    2,
+  ),
+  director(
+    "GRETA GERWIG",
+    "She directed Lady Bird, Little Women, and Barbie.",
+    "She was nominated for Best Director for Lady Bird.",
+    2,
+  ),
+  director(
+    "KATHRYN BIGELOW",
+    "She became the first woman to win Best Director, for The Hurt Locker.",
+    "She also directed Point Break and Zero Dark Thirty.",
+    3,
+  ),
+  director(
+    "JANE CAMPION",
+    "She won Best Director for The Power of the Dog.",
+    "Her film The Piano won the Palme d'Or at Cannes.",
+    3,
+  ),
+  director(
+    "SOFIA COPPOLA",
+    "She won an Oscar for Lost in Translation.",
+    "She is the daughter of Francis Ford Coppola and a member of one of cinema's famous families.",
+    2,
+  ),
+  director(
+    "CHLOE ZHAO",
+    "She won Best Director for Nomadland.",
+    "She was the second woman, and the first woman of color, to win the directing Oscar.",
+    3,
+  ),
+  director(
+    "BONG JOON HO",
+    "He directed Parasite and won Best Director.",
+    "Parasite became the first non-English-language film to win Best Picture.",
+    2,
+  ),
+  director(
+    "PARK CHAN WOOK",
+    "He directed Oldboy and The Handmaiden.",
+    "Oldboy won the Grand Prix at the 2004 Cannes Film Festival.",
+    3,
+  ),
+  director(
+    "WONG KAR WAI",
+    "He directed In the Mood for Love.",
+    "He won Best Director at Cannes for Happy Together in 1997.",
+    3,
+  ),
+  director(
+    "HAYAO MIYAZAKI",
+    "He co-founded Studio Ghibli and directed Spirited Away.",
+    "Spirited Away won Best Animated Feature and became a global animation landmark.",
+    2,
+  ),
+  director(
+    "GUILLERMO DEL TORO",
+    "He directed Pan's Labyrinth and The Shape of Water.",
+    "He won Best Director and Best Picture for The Shape of Water.",
+    2,
+  ),
+  director(
+    "ALFONSO CUARON",
+    "He directed Gravity and Roma.",
+    "He won Best Director for Gravity and Roma.",
+    2,
+  ),
+  director(
+    "PEDRO ALMODOVAR",
+    "He directed Volver and Talk to Her.",
+    "He won Best Original Screenplay for Talk to Her.",
+    3,
+  ),
+  director(
+    "WES ANDERSON",
+    "He directed The Grand Budapest Hotel and Moonrise Kingdom.",
+    "He won an Oscar for the live-action short The Wonderful Story of Henry Sugar.",
+    2,
+  ),
+  director(
+    "DAVID LYNCH",
+    "He directed Blue Velvet and Twin Peaks.",
+    "He received an honorary Oscar in 2019 and won the Palme d'Or for Wild at Heart.",
+    2,
+  ),
+  director(
+    "TIM BURTON",
+    "He directed Beetlejuice and Edward Scissorhands.",
+    "His gothic visual style became instantly recognizable in films such as Batman.",
+    1,
+  ),
+  director(
+    "DENIS VILLENEUVE",
+    "He directed Arrival, Blade Runner 2049, and Dune.",
+    "His adaptation of Dune won six Academy Awards.",
+    2,
+  ),
+  director(
+    "TAIKA WAITITI",
+    "He directed Thor: Ragnarok and Jojo Rabbit.",
+    "He won Best Adapted Screenplay for Jojo Rabbit.",
+    2,
+  ),
+  director(
+    "JOHN CARPENTER",
+    "He directed Halloween and The Thing.",
+    "He also composed many of his films' eerie synth scores.",
+    2,
+  ),
+  director(
+    "FRANK CAPRA",
+    "He directed It's a Wonderful Life and Mr. Smith Goes to Washington.",
+    "He won Best Director three times.",
+    3,
+  ),
+  director(
+    "JOHN FORD",
+    "He directed The Searchers and won four Best Director Oscars.",
+    "His four directing wins remain an Academy record.",
+    3,
+  ),
+  director(
+    "SIDNEY LUMET",
+    "He directed 12 Angry Men and Network.",
+    "He was nominated for Best Director for 12 Angry Men, Dog Day Afternoon, and Network, among others.",
+    3,
+  ),
+  director(
+    "ROBERT ALTMAN",
+    "He directed M*A*S*H and Nashville.",
+    "He received an honorary Oscar in 2006 for his influence on American film.",
+    3,
+  ),
+  director(
+    "MIKE NICHOLS",
+    "He directed The Graduate and won an Oscar for it.",
+    "He is one of the few people to win an Emmy, Grammy, Oscar, and Tony.",
+    3,
+  ),
+];
