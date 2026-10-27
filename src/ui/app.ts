@@ -1100,11 +1100,7 @@ export class ReelHangmanApp {
           ${
             won
               ? `<p class="result-answer">${escapeHtml(puzzle.answer)}</p>
-                 <p class="result-copy">The answer was hiding in plain sight. Cue the applause.</p>
-                 <div class="result-fact">
-                   <span class="fact-label">BEHIND THE SCENES</span>
-                   <p>${escapeHtml(puzzle.fact)}</p>
-                 </div>`
+                 <p class="result-copy">The answer was hiding in plain sight. Cue the applause.</p>`
               : `<p class="result-copy">No more takes. The answer stays under wraps until you replay the puzzle.</p>`
           }
 

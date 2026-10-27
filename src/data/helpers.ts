@@ -13,7 +13,7 @@ export function makePuzzle(
   category: CategoryId,
   answer: string,
   clue: string,
-  fact: string,
+  _fact: string,
   difficulty: Difficulty,
 ): Puzzle {
   return {
@@ -21,7 +21,6 @@ export function makePuzzle(
     category,
     answer: answer.toUpperCase(),
     clue,
-    fact,
     difficulty,
   };
 }

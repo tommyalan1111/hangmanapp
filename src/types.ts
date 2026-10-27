@@ -56,7 +56,6 @@ export interface Puzzle {
   category: CategoryId;
   answer: string;
   clue: string;
-  fact: string;
   difficulty: Difficulty;
 }
 

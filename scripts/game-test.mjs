@@ -286,7 +286,6 @@ async function main() {
   const loss = await cdp.evaluate(`({
     heading: document.querySelector('.result-sheet h2')?.textContent,
     answerBox: !!document.querySelector('.result-answer'),
-    factBox: !!document.querySelector('.result-fact'),
     sheetText: document.querySelector('.result-sheet')?.textContent?.replace(/\\s+/g, ' ').trim(),
     missed: document.querySelectorAll('.tile.is-missed').length,
     revealed: document.querySelectorAll('.tile.is-revealed').length,
@@ -294,7 +293,6 @@ async function main() {
   })`);
   check("loss shows result", loss.heading === "Out of takes.", JSON.stringify(loss));
   check("loss hides the answer", loss.answerBox === false && !loss.sheetText?.includes("JAWS"), JSON.stringify(loss));
-  check("loss hides the fact", loss.factBox === false, JSON.stringify(loss));
   check("loss keeps unguessed letters hidden", loss.revealed === 0, JSON.stringify(loss));
   check("loss marks missing letters", loss.missed === 4, `missed ${loss.missed}`);
   const lossActions = await cdp.evaluate(`({

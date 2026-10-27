@@ -8,8 +8,8 @@ Name the film, show, star, character, director, or famous screen family before t
 
 ## What is inside
 
-- **439 hand-written puzzles** across seven categories:
-  - Movies — 107
+- **846 hand-written puzzles** across seven categories:
+  - Movies — 514
   - TV Series — 76
   - Actors — 53
   - Actresses — 59
@@ -18,7 +18,7 @@ Name the film, show, star, character, director, or famous screen family before t
   - Film Families — 30
 - **A proper hangman round** with six takes, an animated gallows, large readable clues, on-screen and physical keyboards, and punctuation-friendly answers.
 - **Replay on a miss** — when you run out of takes, the failed question stays on screen with the answer hidden, and **Replay this puzzle** resets the same board; the next question is never loaded automatically.
-- **Clues and a "behind the scenes" fact** for every answer.
+- **A hand-written clue** for every answer.
 - **Daily Feature** — one date-seeded puzzle per day, worth double points.
 - **Repeatable hints** — each one reveals a useful missing letter and requires at least 40 total points, deducted immediately; hints never cost a take.
 - **Optional rewarded video** — watch an ad for a free hint without spending points.
@@ -48,11 +48,11 @@ The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available on
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.2.3-debug.apk
+release/ReelHangman-1.2.5-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.2.3-debug.apk
+adb install -r release/ReelHangman-1.2.5-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.
@@ -159,7 +159,7 @@ The current debug APK uses test ads; it is not a production monetization build. 
 ```text
 reel-hangman/
 ├─ src/
-│  ├─ data/              # 439 puzzles, split by category
+│  ├─ data/              # 846 puzzles, split by category
 │  ├─ config/ads.ts      # AdMob IDs, caps, Remove Ads product
 │  ├─ core/game.ts       # pure game rules, scoring, daily seeding
 │  ├─ core/storage.ts    # versioned localStorage persistence

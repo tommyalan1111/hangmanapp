@@ -57,8 +57,8 @@
 
 - [ ] Run `npm run validate:data`; it must report zero errors.
 - [ ] Spot-check new clues for accuracy and spoilers.
-- [ ] Confirm no answer duplicates across categories unless intentional.
-- [ ] Review the "behind the scenes" facts for the release date; they are written to be evergreen.
+- [ ] Confirm duplicate answers are intentional; duplicates are warnings, not build errors.
+- [ ] Spot-check the new movie-trivia clues for accuracy and spoilers.
 - [ ] Confirm the disclaimer in Settings and the README is acceptable for your listing.
 
 ## Accessibility and quality
@@ -72,7 +72,7 @@
 
 ## Release metadata
 
-- Version: `1.2.3` (build `11`)
+- Version: `1.2.5` (build `12`)
 - Android minimum SDK: 24
 - Android target/compile SDK: 36
 - iOS deployment target: 15.0
