@@ -425,4 +425,40 @@ export const TV: Puzzle[] = [
     "Julianna Margulies starred; the series later spawned The Good Fight.",
     2,
   ),
+  tv(
+    "HOW I MET YOUR MOTHER",
+    "A father tells his kids the long, roundabout story of how he met their mother.",
+    "The CBS sitcom ran for nine seasons from 2005 to 2014 and starred Josh Radnor and Neil Patrick Harris.",
+    1,
+  ),
+  tv(
+    "PRISON BREAK",
+    "A structural engineer gets himself locked up to break his brother out.",
+    "Wentworth Miller and Dominic Purcell led the Fox series, which began in 2005.",
+    2,
+  ),
+  tv(
+    "ONE PUNCH MAN",
+    "A bored hero defeats every monster with a single punch.",
+    "The anime adapts ONE and Yusuke Murata's manga; Saitama is voiced by Makoto Furukawa in Japanese.",
+    2,
+  ),
+  tv(
+    "DRAGON BALL",
+    "A boy with a tail searches for seven wish-granting orbs.",
+    "Akira Toriyama's manga became a 1986 anime and later spawned Dragon Ball Z and Dragon Ball Super.",
+    2,
+  ),
+  tv(
+    "DORAEMON",
+    "A robotic cat from the future helps a clumsy schoolboy.",
+    "Fujiko F. Fujio created the manga in 1969; the blue robot cat has a four-dimensional pocket.",
+    2,
+  ),
+  tv(
+    "NARUTO",
+    "A young ninja chases the title of Hokage while carrying a sealed demon.",
+    "Masashi Kishimoto's manga debuted in 1999 and became an anime in 2002.",
+    2,
+  ),
 ];

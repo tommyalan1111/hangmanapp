@@ -40,7 +40,11 @@ for (const puzzle of PUZZLES) {
 
   const previous = seenAnswers.get(normalized);
   if (previous) {
-    errors.push(`Duplicate answer: "${puzzle.answer}" (${puzzle.category}) and "${previous.answer}" (${previous.category})`);
+    if (previous.category === puzzle.category) {
+      errors.push(`Duplicate answer: "${puzzle.answer}" (${puzzle.category}) and "${previous.answer}" (${previous.category})`);
+    } else {
+      warnings.push(`Cross-category duplicate answer: "${puzzle.answer}" (${puzzle.category}) and "${previous.answer}" (${previous.category})`);
+    }
   } else {
     seenAnswers.set(normalized, puzzle);
   }

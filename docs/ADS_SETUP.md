@@ -13,23 +13,24 @@ Everything is wired through:
 - `src/config/ads.ts` for IDs and caps.
 - `src/core/ads.ts` for consent, ad loading, frequency caps, purchase/restore, and offline fallback.
 
-The checked-in IDs are **Google's official test IDs**, so the current APK earns nothing. Replace them before publishing.
+Android's AdMob app ID and both ad unit IDs are configured. The debug build keeps `VITE_ADMOB_USE_TEST=true`, so it requests test ads and earns nothing. Set it to `false` only for a store release build. iOS still uses Google test IDs.
 
 ## 1. Create the AdMob apps and units
 
-Create one AdMob app for Android and one for iOS, then create:
+Android is already configured:
 
-- one **Rewarded** ad unit per platform
-- one **Interstitial** ad unit per platform
+- App ID: `ca-app-pub-1345063149639557~8575837391`
+- Rewarded: `Android_Rewarded_FreeHint`
+- Interstitial: `Android_Interstitial_AfterWin`
 
-Replace the test IDs in three places:
+For iOS, create one AdMob app and the two corresponding ad units, then replace the test IDs in three places:
 
 ### Android app ID
 
 `android/app/src/main/res/values/strings.xml`
 
 ```xml
-<string name="admob_app_id" translatable="false">ca-app-pub-XXXXXXXX~YYYYYYYY</string>
+<string name="admob_app_id" translatable="false">ca-app-pub-1345063149639557~8575837391</string>
 ```
 
 The manifest already reads it through `@string/admob_app_id`.
@@ -137,14 +138,31 @@ To make the game more conservative, raise `INTERSTITIAL_MIN_ROUNDS` or the inter
 - The game, hints, stats, and replay all work without a connection.
 - A purchased ad-free entitlement is cached locally so the player does not need a connection to keep ads off.
 
-## 6. Test with the official test IDs
+## 6. Test safely
 
-Current defaults:
+**Android app ID:** `ca-app-pub-1345063149639557~8575837391`  
+**Android rewarded:** `ca-app-pub-1345063149639557/4582294056`  
+**Android interstitial:** `ca-app-pub-1345063149639557/4853756790`
 
-**Android app ID:** `ca-app-pub-3940256099942544~3347511713`  
-**iOS app ID:** `ca-app-pub-3940256099942544~1458002511`
+`.env` currently has `VITE_ADMOB_USE_TEST=true`. The debug build requests test ads from those production units, so testing cannot generate invalid traffic.
 
-The rewarded/interstitial defaults are the official Google test units in `src/config/ads.ts`.
+Do **not** set `VITE_ADMOB_USE_TEST=false` and tap your own live ads. Use test mode until the release build is on a store testing track.
+
+**iOS app ID:** still Google's test app ID until the iOS AdMob app is created.
+
+### AdMob account approval
+
+A new AdMob account can return:
+
+```text
+Account not approved yet
+```
+
+with error code `3`. When that happens, your ad units are configured correctly but Google will not serve ads yet. Complete the AdMob payments profile, identity verification, and tax information, then wait for account approval. This can take several days and is not an app bug.
+
+### UMP forms
+
+If no GDPR/US/IDFA message is published in AdMob, `requestConsentInfo()` fails with a “no form(s) configured” error. The debug build falls back to non-personalized test requests so the integration can still be checked. A release build disables ads rather than bypassing consent. Publish the UMP messages before release.
 
 Test checklist:
 

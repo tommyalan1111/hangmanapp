@@ -41,8 +41,9 @@
 
 ## Monetization
 
-- [ ] Replace the AdMob test app IDs and test ad unit IDs with production values. See [ADS_SETUP.md](ADS_SETUP.md).
+- [ ] Confirm the Android AdMob app ID and both Android ad unit IDs match the production account. Create the iOS AdMob app and units, then replace the iOS test IDs. See [ADS_SETUP.md](ADS_SETUP.md).
 - [ ] Configure UMP GDPR, US states, and IDFA messages in AdMob.
+- [ ] Confirm the AdMob account is approved and payments/tax/identity checks are complete; new accounts return “Account not approved yet” until then.
 - [ ] Confirm `NSUserTrackingUsageDescription` is present and ATT is requested on iOS.
 - [ ] Create the non-consumable product `com.reelhangman.game.removeads` in Google Play Console and App Store Connect.
 - [ ] Test purchase, restore, and ad removal on a store-signed build.
@@ -71,7 +72,7 @@
 
 ## Release metadata
 
-- Version: `1.1.0` (build `6`)
+- Version: `1.2.3` (build `11`)
 - Android minimum SDK: 24
 - Android target/compile SDK: 36
 - iOS deployment target: 15.0

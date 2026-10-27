@@ -383,4 +383,46 @@ export const CHARACTERS: Puzzle[] = [
     "Cillian Murphy played him in Peaky Blinders.",
     2,
   ),
+  character(
+    "SAITAMA",
+    "A bald hero who is bored because every fight ends in one punch.",
+    "One Punch Man's hero is voiced by Makoto Furukawa in Japanese and Max Mittelman in English.",
+    2,
+  ),
+  character(
+    "SON GOKU",
+    "A tailed Saiyan raised on Earth who gathers the Dragon Balls.",
+    "Masako Nozawa has voiced him in Japanese since the 1986 Dragon Ball anime.",
+    1,
+  ),
+  character(
+    "NARUTO UZUMAKI",
+    "A loud ninja with a nine-tailed fox sealed inside him.",
+    "Junko Takeuchi voiced him in the Japanese Naruto anime.",
+    2,
+  ),
+  character(
+    "MICHAEL SCOFIELD",
+    "A structural engineer with a prison blueprint tattooed on his body.",
+    "Wentworth Miller played him in Prison Break.",
+    2,
+  ),
+  character(
+    "BARNEY STINSON",
+    "A suit-wearing womanizer who tells his friends to suit up.",
+    "Neil Patrick Harris played him in How I Met Your Mother.",
+    2,
+  ),
+  character(
+    "TED MOSBY",
+    "An architect who narrates the long story of how he met his wife.",
+    "Josh Radnor played him, while Bob Saget voiced the older narrator.",
+    2,
+  ),
+  character(
+    "NOBITA",
+    "Doraemon's clumsy human friend, who dreams of a better life.",
+    "Nobita Nobi is the schoolboy at the center of Fujiko F. Fujio's Doraemon.",
+    2,
+  ),
 ];

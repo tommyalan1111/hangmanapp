@@ -8,19 +8,19 @@ Name the film, show, star, character, director, or famous screen family before t
 
 ## What is inside
 
-- **397 hand-written puzzles** across seven categories:
-  - Movies — 78
-  - TV Series — 70
+- **439 hand-written puzzles** across seven categories:
+  - Movies — 107
+  - TV Series — 76
   - Actors — 53
   - Actresses — 59
-  - Characters — 63
+  - Characters — 70
   - Directors — 44
   - Film Families — 30
 - **A proper hangman round** with six takes, an animated gallows, large readable clues, on-screen and physical keyboards, and punctuation-friendly answers.
-- **Replay on a miss** — when you run out of takes, the failed question stays on screen and **Replay this puzzle** resets the same board; the next question is never loaded automatically.
+- **Replay on a miss** — when you run out of takes, the failed question stays on screen with the answer hidden, and **Replay this puzzle** resets the same board; the next question is never loaded automatically.
 - **Clues and a "behind the scenes" fact** for every answer.
 - **Daily Feature** — one date-seeded puzzle per day, worth double points.
-- **Unlimited hints** — each one reveals a useful missing letter and immediately deducts 40 total points; hints never cost a take.
+- **Repeatable hints** — each one reveals a useful missing letter and requires at least 40 total points, deducted immediately; hints never cost a take.
 - **Optional rewarded video** — watch an ad for a free hint without spending points.
 - **Capped interstitial** — only after a win, at most once every 3 completed rounds and 90 seconds; never after a loss or replay.
 - **One-time Remove Ads purchase** — disables interstitials and the rewarded hint, with restore-purchase support.
@@ -48,11 +48,11 @@ The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available on
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.1.0-debug.apk
+release/ReelHangman-1.2.3-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.1.0-debug.apk
+adb install -r release/ReelHangman-1.2.3-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.
@@ -142,7 +142,7 @@ Reel Hangman includes:
 - Google AdMob interstitial, capped to one per 3 completed rounds and 90 seconds
 - A one-time Remove Ads purchase via Google Play Billing / StoreKit 2
 
-The checked-in build uses **Google's official test ad IDs**. It will not earn revenue until you create your own AdMob apps, replace the IDs, configure UMP consent messages, and create the Remove Ads product in both stores.
+The Android AdMob app ID and both Android ad unit IDs are configured. The debug build keeps `VITE_ADMOB_USE_TEST=true`, so it requests test ads and cannot earn revenue. Set it to `false` for a release build. iOS still uses Google test IDs until the iOS AdMob app and units are configured. A new AdMob account may return “Account not approved yet” until Google completes account verification; ads will not fill until then.
 
 Full setup instructions: [docs/ADS_SETUP.md](docs/ADS_SETUP.md).
 
@@ -152,14 +152,14 @@ The ad-free product ID is:
 com.reelhangman.game.removeads
 ```
 
-Copy `.env.example` to `.env` and fill in your production AdMob IDs before building. The current debug APK uses test ads; it is not a production monetization build.
+The current debug APK uses test ads; it is not a production monetization build. A release build also requires the Remove Ads product, UMP messages, and store-signed testing.
 
 ## Project layout
 
 ```text
 reel-hangman/
 ├─ src/
-│  ├─ data/              # 397 puzzles, split by category
+│  ├─ data/              # 439 puzzles, split by category
 │  ├─ config/ads.ts      # AdMob IDs, caps, Remove Ads product
 │  ├─ core/game.ts       # pure game rules, scoring, daily seeding
 │  ├─ core/storage.ts    # versioned localStorage persistence

@@ -461,16 +461,23 @@ export class ReelHangmanApp {
 
   private handleHint(): void {
     if (!this.round || !this.puzzle || this.round.status !== "playing") return;
+
+    if (this.save.stats.points < 40) {
+      this.showToast("You need 40 points to reveal a letter.");
+      this.announce("Not enough points. Hints cost 40 points.");
+      return;
+    }
+
     const next = revealHint(this.puzzle, this.round);
     if (next === this.round) return;
 
     this.round = next;
-    const deduction = Math.min(40, this.save.stats.points);
+    const deduction = 40;
     this.save = {
       ...this.save,
       stats: {
         ...this.save.stats,
-        points: Math.max(0, this.save.stats.points - deduction),
+        points: this.save.stats.points - deduction,
       },
     };
     sounds.hint();
@@ -575,7 +582,7 @@ export class ReelHangmanApp {
     } else {
       sounds.lose();
       void haptic("error", this.save.settings.haptics);
-      this.announce(`Out of takes. The answer was ${this.puzzle.answer}.`);
+      this.announce("Out of takes. Replay this puzzle to try again.");
     }
 
     this.render();
@@ -1017,7 +1024,9 @@ export class ReelHangmanApp {
 
   private wordMarkup(puzzle: Puzzle, round: Round): string {
     const guessed = new Set(round.guessed);
-    const showAll = round.status === "won" || round.status === "lost";
+    // Never reveal unguessed letters after a loss. The player can replay the
+    // same puzzle, but the answer stays hidden until they earn it.
+    const showAll = round.status === "won";
     const words = puzzle.answer.split(/\s+/);
     let tileIndex = 0;
 
@@ -1088,13 +1097,16 @@ export class ReelHangmanApp {
           <div class="result-seal${won ? " is-win" : ""}">${icon(won ? "trophy" : "ticket")}</div>
           <p class="result-kicker">${won ? "THAT'S A WRAP" : "CURTAIN CALL"}</p>
           <h2 id="result-title">${won ? "You got it." : "Out of takes."}</h2>
-          <p class="result-answer">${escapeHtml(puzzle.answer)}</p>
-          <p class="result-copy">${won ? "The answer was hiding in plain sight. Cue the applause." : "No more takes, but every great flop becomes a cult classic. The answer is above."}</p>
-
-          <div class="result-fact">
-            <span class="fact-label">BEHIND THE SCENES</span>
-            <p>${escapeHtml(puzzle.fact)}</p>
-          </div>
+          ${
+            won
+              ? `<p class="result-answer">${escapeHtml(puzzle.answer)}</p>
+                 <p class="result-copy">The answer was hiding in plain sight. Cue the applause.</p>
+                 <div class="result-fact">
+                   <span class="fact-label">BEHIND THE SCENES</span>
+                   <p>${escapeHtml(puzzle.fact)}</p>
+                 </div>`
+              : `<p class="result-copy">No more takes. The answer stays under wraps until you replay the puzzle.</p>`
+          }
 
           <div class="result-score">
             <span><small>${won ? "SCORE" : "SCORE"}</small><strong>${won ? `+${formatNumber(round.score)}` : "0"}</strong></span>
@@ -1214,7 +1226,7 @@ export class ReelHangmanApp {
                       (item) => `
                         <div class="history-row">
                           <span class="history-mark${item.won ? " is-win" : ""}">${icon(item.won ? "check" : "close")}</span>
-                          <span class="history-copy"><strong>${escapeHtml(item.answer)}</strong><small>${CATEGORY_MAP[item.category]?.name ?? "Screen"} · ${shortDate(item.at)}</small></span>
+                          <span class="history-copy"><strong>${item.won ? escapeHtml(item.answer) : "Missed screening"}</strong><small>${CATEGORY_MAP[item.category]?.name ?? "Screen"} · ${shortDate(item.at)}</small></span>
                           <span class="history-score">${item.won ? `+${formatNumber(item.score)}` : "—"}</span>
                         </div>
                       `,
@@ -1370,7 +1382,7 @@ export class ReelHangmanApp {
               <div><span>Hint (each)</span><strong>−40</strong></div>
               <div><span>Daily feature</span><strong>2×</strong></div>
             </div>
-            <p class="panel-note">Each hint reveals the most common missing letter and deducts 40 total points immediately. Hints never cost a take, and you can use as many as you like. The daily feature pays double once per day.</p>
+            <p class="panel-note">Each hint reveals the most common missing letter and deducts 40 total points immediately. You need at least 40 points to use one. Hints never cost a take, and you can use as many as you like while you can afford them. The daily feature pays double once per day.</p>
           </section>
 
           <section class="panel short-panel">

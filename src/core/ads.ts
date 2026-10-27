@@ -102,6 +102,7 @@ class AdsService {
   private consentReady = false;
   private canRequestAds = false;
   private privacyOptionsRequired = false;
+  private consentFallback = false;
   private removeAds = false;
   private trackingAuthorized = false;
 
@@ -170,19 +171,33 @@ class AdsService {
       await this.restoreEntitlementSilently();
       if (this.removeAds) return;
 
-      const consent = await AdMob.requestConsentInfo();
-      let info = consent;
-      if (
-        info.isConsentFormAvailable &&
-        info.status === AdmobConsentStatus.REQUIRED
-      ) {
-        info = await AdMob.showConsentForm();
+      let info: Awaited<ReturnType<typeof AdMob.requestConsentInfo>> | null = null;
+      try {
+        info = await AdMob.requestConsentInfo();
+        if (
+          info.isConsentFormAvailable &&
+          info.status === AdmobConsentStatus.REQUIRED
+        ) {
+          info = await AdMob.showConsentForm();
+        }
+      } catch {
+        // A brand-new AdMob app can throw here until a UMP message is
+        // published. In production that is a configuration error: do not
+        // bypass consent. In test mode, continue with non-personalized ads so
+        // the integration can still be exercised.
+        if (!USE_TEST_ADS) throw new Error("UMP consent form is not configured");
+        this.consentFallback = true;
+        this.consentReady = true;
+        this.canRequestAds = true;
+        this.privacyOptionsRequired = false;
       }
 
-      this.consentReady = true;
-      this.canRequestAds = info.canRequestAds;
-      this.privacyOptionsRequired =
-        String(info.privacyOptionsRequirementStatus) === "REQUIRED";
+      if (info) {
+        this.consentReady = true;
+        this.canRequestAds = info.canRequestAds;
+        this.privacyOptionsRequired =
+          String(info.privacyOptionsRequirementStatus) === "REQUIRED";
+      }
 
       if (!this.canRequestAds) return;
 
@@ -324,7 +339,7 @@ class AdsService {
   }
 
   private isNonPersonalized(): boolean {
-    return this.platform === "ios" && !this.trackingAuthorized;
+    return this.consentFallback || (this.platform === "ios" && !this.trackingAuthorized);
   }
 
   private async ensureTrackingAuthorization(): Promise<void> {

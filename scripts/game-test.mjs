@@ -285,12 +285,17 @@ async function main() {
   await sleep(500);
   const loss = await cdp.evaluate(`({
     heading: document.querySelector('.result-sheet h2')?.textContent,
-    answer: document.querySelector('.result-answer')?.textContent,
+    answerBox: !!document.querySelector('.result-answer'),
+    factBox: !!document.querySelector('.result-fact'),
+    sheetText: document.querySelector('.result-sheet')?.textContent?.replace(/\\s+/g, ' ').trim(),
     missed: document.querySelectorAll('.tile.is-missed').length,
+    revealed: document.querySelectorAll('.tile.is-revealed').length,
     streak: JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}))?.stats.currentStreak
   })`);
   check("loss shows result", loss.heading === "Out of takes.", JSON.stringify(loss));
-  check("loss reveals answer", loss.answer === "JAWS", loss.answer);
+  check("loss hides the answer", loss.answerBox === false && !loss.sheetText?.includes("JAWS"), JSON.stringify(loss));
+  check("loss hides the fact", loss.factBox === false, JSON.stringify(loss));
+  check("loss keeps unguessed letters hidden", loss.revealed === 0, JSON.stringify(loss));
   check("loss marks missing letters", loss.missed === 4, `missed ${loss.missed}`);
   const lossActions = await cdp.evaluate(`({
     retry: document.querySelector('[data-action="retry"]')?.textContent?.replace(/\\s+/g, ' ').trim(),
@@ -349,6 +354,28 @@ async function main() {
   check("points chip updates immediately", hint.chip?.includes("880 PTS"), JSON.stringify(hint));
   check("hint still shows its cost", hint.cost === "−40 PTS", JSON.stringify(hint));
   await screenshot("test-hint.png");
+
+  console.log("Hint without points");
+  await setSave(
+    save({
+      stats: { played: 0, won: 0, currentStreak: 0, bestStreak: 0, points: 0 },
+      activeRound: round("tv-sherlock", "tv", "category", [], 0),
+    }),
+  );
+  await click('[data-action="resume"]');
+  await click('[data-action="hint"]');
+  const blockedHint = await cdp.evaluate(`(() => {
+    const saved = JSON.parse(localStorage.getItem(${JSON.stringify(SAVE_KEY)}));
+    return {
+      guessed: saved.activeRound.guessed,
+      hintsUsed: saved.activeRound.hintsUsed,
+      points: saved.stats.points,
+      toast: document.getElementById('toast')?.textContent
+    };
+  })()`);
+  check("zero points blocks the hint", blockedHint.guessed.length === 0 && blockedHint.hintsUsed === 0, JSON.stringify(blockedHint));
+  check("zero points does not change points", blockedHint.points === 0, JSON.stringify(blockedHint));
+  check("zero points explains the 40 point cost", blockedHint.toast?.includes("40 points"), JSON.stringify(blockedHint));
 
   console.log("Daily feature");
   await setSave(save());
