@@ -156,7 +156,7 @@ a:focus-visible {
 .kicker {
   margin: 0 0 5px;
   color: var(--gold);
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.2em;
   line-height: 1.2;
@@ -295,11 +295,11 @@ a:focus-visible {
 }
 
 .page-topbar-title {
-  color: #aaaabb;
+  color: #c2c3d0;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-align: center;
   text-transform: uppercase;
 }
@@ -695,9 +695,9 @@ a:focus-visible {
 }
 
 .section-count {
-  color: #9899a9;
+  color: #b0b1c0;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.1;
   text-align: right;
@@ -706,11 +706,11 @@ a:focus-visible {
 .section-count small {
   display: block;
   margin-top: 2px;
-  color: #5d5f70;
+  color: #7f8192;
   font-family: var(--font-body);
-  font-size: 7px;
+  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
@@ -936,13 +936,13 @@ a:focus-visible {
   min-width: 70px;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   padding: 7px 12px 6px;
   border: 0;
   border-radius: 10px;
   background: none;
-  color: #626476;
-  font-size: 7.5px;
+  color: #747687;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -951,8 +951,8 @@ a:focus-visible {
 }
 
 .nav-item .icon {
-  width: 19px;
-  height: 19px;
+  width: 21px;
+  height: 21px;
 }
 
 .nav-item.is-active {
@@ -1662,8 +1662,8 @@ a:focus-visible {
 .page-intro p:last-child {
   max-width: 360px;
   margin: 0;
-  color: var(--muted);
-  font-size: 11px;
+  color: #a3a5b4;
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -1729,10 +1729,10 @@ a:focus-visible {
 }
 
 .ring-label > span {
-  color: #67697b;
-  font-size: 6.5px;
+  color: #858798;
+  font-size: 8.5px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 }
 
 .stats-heading {
@@ -1751,8 +1751,8 @@ a:focus-visible {
 
 .stats-heading p:last-child {
   margin: 0;
-  color: var(--muted);
-  font-size: 10px;
+  color: #a3a5b4;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -1802,10 +1802,10 @@ a:focus-visible {
 
 .stat-tile small {
   grid-column: 1;
-  color: #626476;
-  font-size: 6.5px;
+  color: #858798;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.08em;
   line-height: 1.2;
 }
 
@@ -1848,10 +1848,10 @@ a:focus-visible {
 }
 
 .progress-name {
-  width: 74px;
+  width: 88px;
   flex: none;
-  color: #c4c1ba;
-  font-size: 9px;
+  color: #d0cdc6;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
@@ -1873,17 +1873,17 @@ a:focus-visible {
 }
 
 .progress-value {
-  width: 37px;
+  width: 46px;
   flex: none;
-  color: #868899;
+  color: #a5a7b6;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 11px;
   text-align: right;
 }
 
 .progress-value small {
-  color: #535565;
-  font-size: 7px;
+  color: #77798b;
+  font-size: 9px;
 }
 
 .empty-history {
@@ -1904,8 +1904,8 @@ a:focus-visible {
 .empty-history p {
   max-width: 260px;
   margin: 0 0 3px;
-  color: #747688;
-  font-size: 10px;
+  color: #8b8d9f;
+  font-size: 11.5px;
   line-height: 1.5;
 }
 
@@ -1930,8 +1930,8 @@ a:focus-visible {
 .history-row {
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 9px 0;
+  gap: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.055);
 }
 
@@ -1942,8 +1942,8 @@ a:focus-visible {
 
 .history-mark {
   display: grid;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   flex: none;
   place-items: center;
   border-radius: 50%;
@@ -1957,8 +1957,8 @@ a:focus-visible {
 }
 
 .history-mark .icon {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
 }
 
 .history-copy {
@@ -1971,9 +1971,9 @@ a:focus-visible {
 
 .history-copy strong {
   overflow: hidden;
-  color: #c9c6bf;
+  color: #d6d2ca;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
   text-overflow: ellipsis;
@@ -1981,20 +1981,23 @@ a:focus-visible {
 }
 
 .history-copy small {
-  color: #5e6072;
-  font-size: 7.5px;
+  color: #7f8192;
+  font-size: 10px;
 }
 
 .history-score {
-  color: #888a9a;
+  color: #a5a7b6;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 600;
 }
 
 .stats-play {
   display: flex;
   margin: 2px auto 0;
+  color: #b9a66b;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
 }
 
 /* Settings */
@@ -2338,31 +2341,31 @@ a:focus-visible {
   padding-top: 2px;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.06em;
 }
 
 .step h2 {
-  margin: 0 0 4px;
+  margin: 0 0 5px;
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1;
 }
 
 .step p {
   margin: 0;
-  color: #858798;
-  font-size: 9.5px;
+  color: #a0a2b2;
+  font-size: 12px;
   line-height: 1.55;
 }
 
 .score-table {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .score-table > div {
@@ -2370,28 +2373,28 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  color: #9294a5;
-  font-size: 9px;
+  color: #a8aab9;
+  font-size: 12px;
 }
 
 .score-table strong {
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
 }
 
 .panel-note {
-  margin: 12px 0 0;
-  padding-top: 10px;
+  margin: 13px 0 0;
+  padding-top: 11px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: #6e7082;
-  font-size: 8.5px;
-  line-height: 1.5;
+  color: #9597a8;
+  font-size: 11.5px;
+  line-height: 1.55;
 }
 
 .short-panel {
-  padding: 11px 13px;
+  padding: 13px 15px;
 }
 
 .hint-line {
@@ -2401,8 +2404,8 @@ a:focus-visible {
 }
 
 .hint-line .icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   flex: none;
   margin-top: 1px;
   color: var(--gold);
@@ -2410,9 +2413,9 @@ a:focus-visible {
 
 .hint-line p {
   margin: 0;
-  color: #858798;
-  font-size: 9px;
-  line-height: 1.5;
+  color: #a0a2b2;
+  font-size: 11.5px;
+  line-height: 1.55;
 }
 
 .howto-button {
