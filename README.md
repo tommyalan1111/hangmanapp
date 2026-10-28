@@ -48,11 +48,11 @@ The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available on
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.2.6-debug.apk
+release/ReelHangman-1.2.9-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.2.6-debug.apk
+adb install -r release/ReelHangman-1.2.9-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.

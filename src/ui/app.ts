@@ -1163,7 +1163,7 @@ export class ReelHangmanApp {
     const history = this.save.history.slice(0, 6);
 
     return `
-      <div class="screen page-screen">
+      <div class="screen page-screen stats-screen">
         ${this.pageTopbar("The box office")}
         <main class="scroll-area page-scroll">
           <section class="stats-hero">
@@ -1240,7 +1240,7 @@ export class ReelHangmanApp {
 
   private renderSettings(): string {
     return `
-      <div class="screen page-screen">
+      <div class="screen page-screen settings-screen">
         ${this.pageTopbar("Projection booth")}
         <main class="scroll-area page-scroll">
           <section class="page-intro">
@@ -1345,7 +1345,7 @@ export class ReelHangmanApp {
 
   private renderHowTo(): string {
     return `
-      <div class="screen page-screen">
+      <div class="screen page-screen howto-screen">
         ${this.pageTopbar("How to play", true)}
         <main class="scroll-area page-scroll">
           <section class="page-intro howto-intro">

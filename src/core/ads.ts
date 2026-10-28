@@ -108,8 +108,8 @@ class AdsService {
 
   private rewardedReady = false;
   private interstitialReady = false;
-  private loadingRewarded = false;
-  private loadingInterstitial = false;
+  private rewardedPreparePromise: Promise<void> | null = null;
+  private interstitialPreparePromise: Promise<void> | null = null;
   private showingRewarded = false;
   private showingInterstitial = false;
   private purchasing = false;
@@ -228,11 +228,25 @@ class AdsService {
 
     this.showingRewarded = true;
     try {
-      const reward = await AdMob.showRewardVideoAd({ adId: this.adUnit("rewarded") });
-      this.rewardedReady = false;
-      void this.prepareRewarded();
-      return Boolean(reward && reward.amount > 0);
-    } catch {
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+          const reward = await AdMob.showRewardVideoAd({ adId: this.adUnit("rewarded") });
+          this.rewardedReady = false;
+          void this.prepareRewarded();
+          return Boolean(reward && reward.amount > 0);
+        } catch (error) {
+          // The SDK may invalidate a previously prepared ad. Clear the stale
+          // flag, then prepare once and retry. Do not retry a normal dismissal.
+          this.rewardedReady = false;
+          const retryable = /not prepared|can be shown|not loaded/i.test(errorMessage(error));
+          if (!retryable || attempt === 1) {
+            void this.prepareRewarded();
+            return false;
+          }
+          await this.prepareRewarded();
+          if (!this.rewardedReady) return false;
+        }
+      }
       return false;
     } finally {
       this.showingRewarded = false;
@@ -275,6 +289,8 @@ class AdsService {
       void this.prepareInterstitial();
       return true;
     } catch {
+      this.interstitialReady = false;
+      void this.prepareInterstitial();
       return false;
     } finally {
       this.showingInterstitial = false;
@@ -361,58 +377,66 @@ class AdsService {
   }
 
   private async prepareRewarded(): Promise<void> {
-    if (
-      !this.canRequestAds ||
-      this.removeAds ||
-      this.rewardedReady ||
-      this.loadingRewarded
-    ) {
+    if (!this.canRequestAds || this.removeAds || this.rewardedReady) {
       return;
     }
+    if (this.rewardedPreparePromise) return this.rewardedPreparePromise;
 
-    this.loadingRewarded = true;
+    const promise = (async () => {
+      try {
+        await withTimeout(
+          AdMob.prepareRewardVideoAd({
+            adId: this.adUnit("rewarded"),
+            isTesting: USE_TEST_ADS,
+            npa: this.isNonPersonalized(),
+          }),
+          AD_LOAD_TIMEOUT_MS,
+        );
+        this.rewardedReady = true;
+      } catch {
+        this.rewardedReady = false;
+      }
+    })();
+
+    this.rewardedPreparePromise = promise;
     try {
-      await withTimeout(
-        AdMob.prepareRewardVideoAd({
-          adId: this.adUnit("rewarded"),
-          isTesting: USE_TEST_ADS,
-          npa: this.isNonPersonalized(),
-        }),
-        AD_LOAD_TIMEOUT_MS,
-      );
-      this.rewardedReady = true;
-    } catch {
-      this.rewardedReady = false;
+      await promise;
     } finally {
-      this.loadingRewarded = false;
+      if (this.rewardedPreparePromise === promise) {
+        this.rewardedPreparePromise = null;
+      }
     }
   }
 
   private async prepareInterstitial(): Promise<void> {
-    if (
-      !this.canRequestAds ||
-      this.removeAds ||
-      this.interstitialReady ||
-      this.loadingInterstitial
-    ) {
+    if (!this.canRequestAds || this.removeAds || this.interstitialReady) {
       return;
     }
+    if (this.interstitialPreparePromise) return this.interstitialPreparePromise;
 
-    this.loadingInterstitial = true;
+    const promise = (async () => {
+      try {
+        await withTimeout(
+          AdMob.prepareInterstitial({
+            adId: this.adUnit("interstitial"),
+            isTesting: USE_TEST_ADS,
+            npa: this.isNonPersonalized(),
+          }),
+          AD_LOAD_TIMEOUT_MS,
+        );
+        this.interstitialReady = true;
+      } catch {
+        this.interstitialReady = false;
+      }
+    })();
+
+    this.interstitialPreparePromise = promise;
     try {
-      await withTimeout(
-        AdMob.prepareInterstitial({
-          adId: this.adUnit("interstitial"),
-          isTesting: USE_TEST_ADS,
-          npa: this.isNonPersonalized(),
-        }),
-        AD_LOAD_TIMEOUT_MS,
-      );
-      this.interstitialReady = true;
-    } catch {
-      this.interstitialReady = false;
+      await promise;
     } finally {
-      this.loadingInterstitial = false;
+      if (this.interstitialPreparePromise === promise) {
+        this.interstitialPreparePromise = null;
+      }
     }
   }
 

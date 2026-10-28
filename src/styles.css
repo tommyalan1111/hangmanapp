@@ -156,7 +156,7 @@ a:focus-visible {
 .kicker {
   margin: 0 0 5px;
   color: var(--gold);
-  font-size: 9.5px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.2em;
   line-height: 1.2;
@@ -539,7 +539,7 @@ a:focus-visible {
   align-items: center;
   gap: 5px;
   color: var(--gold-soft);
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 750;
   letter-spacing: 0.15em;
 }
@@ -552,7 +552,7 @@ a:focus-visible {
 .daily-date {
   color: #77798b;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.1em;
 }
 
@@ -850,14 +850,14 @@ a:focus-visible {
   right: 12px;
   color: #a9aabb;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 .genre-count small {
   color: #737587;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .genre-card-wide {
@@ -1051,7 +1051,7 @@ a:focus-visible {
 
 .clue-category {
   color: var(--accent, var(--gold));
-  font-size: 7.5px;
+  font-size: 10.5px;
   font-weight: 750;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1063,7 +1063,7 @@ a:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   color: #898b9e;
-  font-size: 6.5px;
+  font-size: 8.5px;
   font-weight: 750;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1099,7 +1099,7 @@ a:focus-visible {
 .game-points small {
   color: #948d79;
   font-family: var(--font-body);
-  font-size: 7.5px;
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
@@ -1187,7 +1187,7 @@ a:focus-visible {
 .lives-label {
   color: #9a9cae;
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.1em;
 }
@@ -1359,7 +1359,7 @@ a:focus-visible {
   border: 0;
   background: none;
   color: var(--gold);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 750;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -1367,15 +1367,15 @@ a:focus-visible {
 }
 
 .hint-button .icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .hint-button small {
   margin-left: 1px;
   color: #c6b270;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
@@ -1392,7 +1392,7 @@ a:focus-visible {
 .game-tip {
   max-width: 170px;
   color: #858798;
-  font-size: 9.5px;
+  font-size: 11px;
   line-height: 1.35;
   text-align: right;
 }
@@ -1484,8 +1484,8 @@ a:focus-visible {
 
 .result-seal {
   display: grid;
-  width: 49px;
-  height: 49px;
+  width: 79px;
+  height: 79px;
   margin: 0 auto 10px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.13);
@@ -1502,14 +1502,14 @@ a:focus-visible {
 }
 
 .result-seal .icon {
-  width: 22px;
-  height: 22px;
+  width: 62px;
+  height: 62px;
 }
 
 .result-kicker {
   margin: 0 0 4px;
   color: var(--gold);
-  font-size: 7.5px;
+  font-size: 10.5px;
   font-weight: 750;
   letter-spacing: 0.2em;
 }
@@ -1528,7 +1528,7 @@ a:focus-visible {
   margin: 5px 0 6px;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.035em;
   line-height: 1.35;
@@ -1591,7 +1591,7 @@ a:focus-visible {
 
 .result-score small {
   color: #616374;
-  font-size: 6.5px;
+  font-size: 8.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -1600,7 +1600,7 @@ a:focus-visible {
   overflow: hidden;
   color: var(--text);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1877,13 +1877,13 @@ a:focus-visible {
   flex: none;
   color: #a5a7b6;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   text-align: right;
 }
 
 .progress-value small {
   color: #77798b;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .empty-history {
@@ -2223,7 +2223,7 @@ a:focus-visible {
 
 .link-copy strong {
   color: #d7d3ca;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 650;
 }
 
@@ -2298,7 +2298,7 @@ a:focus-visible {
   grid-column: 1 / -1;
   margin: 0;
   color: #7d7f91;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -2308,7 +2308,7 @@ a:focus-visible {
 
 .about-fine {
   color: #4f5162;
-  font-size: 7px;
+  font-size: 12px;
   line-height: 1.45;
 }
 
@@ -2341,7 +2341,7 @@ a:focus-visible {
   padding-top: 2px;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
 }
@@ -2791,4 +2791,37 @@ a:focus-visible {
 
 .reduce-motion .confetti {
   display: none;
+}
+
+/* ===== STATS SCREEN ===== */
+
+.stats-screen .page-topbar-title {
+  font-size: 13px;
+}
+
+.stats-screen .progress-name {
+  color: #ffffff;
+  font-size: 13px;
+}
+
+/* ===== SETTINGS SCREEN ===== */
+
+.settings-screen .setting-copy strong {
+  font-size: 12px;
+}
+
+.settings-screen .setting-copy span {
+  font-size: 10px;
+}
+
+/* ===== HOW TO PLAY SCREEN ===== */
+
+.howto-screen .step p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.howto-screen .panel-note {
+  font-size: 12.5px;
+  color: #b0b2c0;
 }
