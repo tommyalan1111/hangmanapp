@@ -18,13 +18,22 @@ export const USE_TEST_ADS = import.meta.env.VITE_ADMOB_USE_TEST !== "false";
 
 const LIVE_REWARDED_ANDROID = "ca-app-pub-1345063149639557/4582294056";
 const LIVE_INTERSTITIAL_ANDROID = "ca-app-pub-1345063149639557/4853756790";
+const TEST_REWARDED_ANDROID = "ca-app-pub-3940256099942544/5224354917";
+const TEST_INTERSTITIAL_ANDROID = "ca-app-pub-3940256099942544/1033173712";
 const TEST_REWARDED_IOS = "ca-app-pub-3940256099942544/1712485313";
 const TEST_INTERSTITIAL_IOS = "ca-app-pub-3940256099942544/4411468910";
 
 export const AD_UNITS = {
   android: {
-    rewarded: import.meta.env.VITE_ADMOB_ANDROID_REWARDED ?? LIVE_REWARDED_ANDROID,
-    interstitial: import.meta.env.VITE_ADMOB_ANDROID_INTERSTITIAL ?? LIVE_INTERSTITIAL_ANDROID,
+    // Use Google's test units explicitly in test mode. Relying on
+    // isTesting + production IDs causes the plugin to prepare one ID
+    // and try to show a different ID on unregistered devices.
+    rewarded: USE_TEST_ADS
+      ? TEST_REWARDED_ANDROID
+      : (import.meta.env.VITE_ADMOB_ANDROID_REWARDED ?? LIVE_REWARDED_ANDROID),
+    interstitial: USE_TEST_ADS
+      ? TEST_INTERSTITIAL_ANDROID
+      : (import.meta.env.VITE_ADMOB_ANDROID_INTERSTITIAL ?? LIVE_INTERSTITIAL_ANDROID),
   },
   ios: {
     rewarded: import.meta.env.VITE_ADMOB_IOS_REWARDED ?? TEST_REWARDED_IOS,

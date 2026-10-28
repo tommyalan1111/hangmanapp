@@ -202,7 +202,7 @@ class AdsService {
       if (!this.canRequestAds) return;
 
       await AdMob.initialize({
-        initializeForTesting: USE_TEST_ADS,
+        initializeForTesting: false,
         maxAdContentRating: MaxAdContentRating.General,
       });
 
@@ -387,7 +387,7 @@ class AdsService {
         await withTimeout(
           AdMob.prepareRewardVideoAd({
             adId: this.adUnit("rewarded"),
-            isTesting: USE_TEST_ADS,
+            isTesting: false,
             npa: this.isNonPersonalized(),
           }),
           AD_LOAD_TIMEOUT_MS,
@@ -419,7 +419,7 @@ class AdsService {
         await withTimeout(
           AdMob.prepareInterstitial({
             adId: this.adUnit("interstitial"),
-            isTesting: USE_TEST_ADS,
+            isTesting: false,
             npa: this.isNonPersonalized(),
           }),
           AD_LOAD_TIMEOUT_MS,
