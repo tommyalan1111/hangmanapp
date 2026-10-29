@@ -1,74 +1,106 @@
 # ==========================================
-# Script tự động tăng Version, Build APK & Cài vào Máy ảo Android
+# Build Reel Hangman APK, bump versions, install
+# Compatible with Windows PowerShell 5.1
 # ==========================================
 
-Write-Host "1. Đọc và tự động tăng version trong package.json..." -ForegroundColor Cyan
-$packageJsonPath = "package.json"
-$packageJsonText = Get-Content -Path $packageJsonPath -Raw
+$ErrorActionPreference = "Stop"
+$root = "E:\Work\Hangman app"
+Set-Location $root
 
-# Dùng RegEx để tìm và trích xuất version hiện tại (chuẩn Semantic Versioning X.Y.Z)
-if ($packageJsonText -match '"version":\s*"(\d+)\.(\d+)\.(\d+)"') {
-    $major = $Matches[1]
-    $minor = $Matches[2]
-    [int]$patch = $Matches[3]
-    
-    $oldVersion = "$major.$minor.$patch"
-    # Tăng số cuối lên 1
-    $patch++
-    $newVersion = "$major.$minor.$patch"
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
-    Write-Host "   Version cũ: v$oldVersion" -ForegroundColor Yellow
-    Write-Host "   Version mới: v$newVersion" -ForegroundColor Green
-
-    # Thay thế version cũ bằng version mới trong file package.json
-    $updatedJsonText = $packageJsonText -replace '"version":\s*"[^"]+"', "`"version`": `"$newVersion`""
-    Set-Content -Path $packageJsonPath -Value $updatedJsonText -Encoding utf8
-} else {
-    Write-Error "Không tìm thấy định dạng version hợp lệ trong package.json!"
-    exit 1
+function Write-TextNoBom([string]$path, [string]$text) {
+    [System.IO.File]::WriteAllText((Resolve-Path $path).Path, $text, $utf8NoBom)
 }
 
-Write-Host "2. Bắt đầu build ứng dụng web..." -ForegroundColor Cyan
+Write-Host "1. Bumping patch version..." -ForegroundColor Cyan
+
+$oldVersion = (node -p "require('./package.json').version").Trim()
+
+npm version patch --no-git-tag-version | Out-Null
+if ($LASTEXITCODE -ne 0) {
+    throw "npm version failed"
+}
+
+$newVersion = (node -p "require('./package.json').version").Trim()
+Write-Host "   $oldVersion -> $newVersion" -ForegroundColor Green
+
+# Keep the visible app version in sync with package.json.
+$versionTs = Join-Path $root "src\version.ts"
+$versionText = [System.IO.File]::ReadAllText($versionTs)
+$versionText = [regex]::Replace($versionText, 'APP_VERSION = "[^"]+"', "APP_VERSION = `"$newVersion`"")
+Write-TextNoBom $versionTs $versionText
+
+# Keep Android versionCode/versionName in sync.
+$gradlePath = Join-Path $root "android\app\build.gradle"
+$gradleText = [System.IO.File]::ReadAllText($gradlePath)
+$codeMatch = [regex]::Match($gradleText, 'versionCode\s+(\d+)')
+if (-not $codeMatch.Success) {
+    throw "versionCode not found in android/app/build.gradle"
+}
+$newCode = [int]$codeMatch.Groups[1].Value + 1
+$gradleText = [regex]::Replace($gradleText, 'versionCode\s+\d+', "versionCode $newCode")
+$gradleText = [regex]::Replace($gradleText, 'versionName\s+"[^"]+"', "versionName `"$newVersion`"")
+Write-TextNoBom $gradlePath $gradleText
+
+# Keep the iOS project in sync too.
+$pbxPath = Join-Path $root "ios\App\App.xcodeproj\project.pbxproj"
+$pbxText = [System.IO.File]::ReadAllText($pbxPath)
+$pbxText = [regex]::Replace($pbxText, 'CURRENT_PROJECT_VERSION = \d+;', "CURRENT_PROJECT_VERSION = $newCode;")
+$pbxText = [regex]::Replace($pbxText, 'MARKETING_VERSION = [^;]+;', "MARKETING_VERSION = $newVersion;")
+Write-TextNoBom $pbxPath $pbxText
+
+Write-Host "2. Building web app..." -ForegroundColor Cyan
 npm run build
-if ($LASTEXITCODE -ne 0) { Write-Error "Build web thất bại!"; exit $LASTEXITCODE }
+if ($LASTEXITCODE -ne 0) {
+    throw "Web build failed"
+}
 
-Write-Host "3. Đồng bộ Capacitor sang Android..." -ForegroundColor Cyan
+Write-Host "3. Syncing Capacitor Android..." -ForegroundColor Cyan
 npx cap sync android
-if ($LASTEXITCODE -ne 0) { Write-Error "Capacitor sync thất bại!"; exit $LASTEXITCODE }
+if ($LASTEXITCODE -ne 0) {
+    throw "Capacitor sync failed"
+}
 
-Write-Host "4. Cấu hình môi trường Java (JDK 21)..." -ForegroundColor Cyan
+Write-Host "4. Configuring JDK 21..." -ForegroundColor Cyan
 $env:JAVA_HOME = "C:\Users\tommy\AppData\Local\Temp\reel-hangman-jdk21\jdk-21.0.12.1+1"
 $env:Path = "$env:JAVA_HOME\bin;$env:Path"
 
-Write-Host "5. Tiến hành Gradle build APK (Debug)..." -ForegroundColor Cyan
-Set-Location "E:\Work\Hangman app\android"
+Write-Host "5. Gradle assembleDebug..." -ForegroundColor Cyan
+Push-Location (Join-Path $root "android")
 .\gradlew.bat assembleDebug
-if ($LASTEXITCODE -ne 0) { Write-Error "Gradle build thất bại!"; exit $LASTEXITCODE }
-
-Write-Host "6. Copy file APK ra thư mục release với version mới..." -ForegroundColor Cyan
-Set-Location "E:\Work\Hangman app"
-if (!(Test-Path "release")) {
-    New-Item -ItemType Directory -Force -Path "release" | Out-Null
+$gradleExit = $LASTEXITCODE
+Pop-Location
+if ($gradleExit -ne 0) {
+    throw "Gradle build failed"
 }
 
-$destFileName = "release\ReelHangman-$newVersion-debug.apk"
+Write-Host "6. Copying APK to release..." -ForegroundColor Cyan
+$releaseDir = Join-Path $root "release"
+if (!(Test-Path $releaseDir)) {
+    New-Item -ItemType Directory -Force -Path $releaseDir | Out-Null
+}
+$destFileName = Join-Path $releaseDir "ReelHangman-$newVersion-debug.apk"
 Copy-Item "android\app\build\outputs\apk\debug\app-debug.apk" $destFileName -Force
 
-Write-Host "==> BUILD APK THÀNH CÔNG VỚI VERSION v$newVersion!" -ForegroundColor Green
+Write-Host "==> BUILD SUCCESS: v$newVersion" -ForegroundColor Green
+Write-Host "    $destFileName" -ForegroundColor Yellow
 
-Write-Host "7. Tự động cài đặt file APK vào máy ảo Android..." -ForegroundColor Cyan
-# Kiểm tra xem có thiết bị/máy ảo nào đang kết nối không bằng adb devices
-$adbDevices = adb devices
-if ($adbDevices -match "device\s*$") {
-    Write-Host "Đang cài đặt phiên bản v$newVersion lên máy ảo..." -ForegroundColor Yellow
-    # Sử dụng cờ -r để cài đè (re-install) lên bản cũ mà không mất dữ liệu
-    adb install -r $destFileName
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "==> CÀI ĐẶT VÀO MÁY ẢO THÀNH CÔNG! Bạn có thể mở app lên test ngay." -ForegroundColor Green
+Write-Host "7. Installing to a connected Android device..." -ForegroundColor Cyan
+$adb = Get-Command adb -ErrorAction SilentlyContinue
+if ($adb) {
+    $devices = (& adb devices) -join "`n"
+    if ($devices -match "\tdevice") {
+        adb install -r $destFileName
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "==> Installed successfully." -ForegroundColor Green
+        } else {
+            Write-Warning "adb install failed. Install manually: $destFileName"
+        }
     } else {
-        Write-Warning "Cài đặt thất bại qua adb. Bạn có thể tự cài file thủ công tại: $destFileName"
+        Write-Warning "No Android device/emulator connected."
+        Write-Host "APK is ready at: $destFileName" -ForegroundColor Yellow
     }
 } else {
-    Write-Warning "Không tìm thấy máy ảo hoặc thiết bị Android nào đang chạy/kết nối!"
-    Write-Host "File APK đã sẵn sàng tại: $destFileName" -ForegroundColor Yellow
+    Write-Warning "adb was not found. Install manually: $destFileName"
 }

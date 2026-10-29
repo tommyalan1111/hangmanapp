@@ -8,9 +8,9 @@ Name the film, show, star, character, director, or famous screen family before t
 
 ## What is inside
 
-- **976 hand-written puzzles** across seven categories:
-  - Movies — 514
-  - TV Series — 206
+- **1,032 hand-written puzzles** across seven categories:
+  - Movies — 482
+  - TV Series — 294
   - Actors — 53
   - Actresses — 59
   - Characters — 70
@@ -48,11 +48,11 @@ The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available on
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.2.10-debug.apk
+release/ReelHangman-1.3.0-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.2.10-debug.apk
+adb install -r release/ReelHangman-1.3.0-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.
@@ -159,7 +159,7 @@ The current debug APK uses test ads; it is not a production monetization build. 
 ```text
 reel-hangman/
 ├─ src/
-│  ├─ data/              # 976 puzzles, split by category
+│  ├─ data/              # 1,032 puzzles, split by category
 │  ├─ config/ads.ts      # AdMob IDs, caps, Remove Ads product
 │  ├─ core/game.ts       # pure game rules, scoring, daily seeding
 │  ├─ core/storage.ts    # versioned localStorage persistence
