@@ -108,20 +108,19 @@ def clean_answer(raw: object) -> tuple[str | None, str]:
 
 def load_current_puzzles() -> list[dict]:
     try:
-        # Bước 1: Dùng npx esbuild để bundle file TypeScript
+        # Thêm shell=True để Windows hiểu và chạy được lệnh npx/node qua command prompt
         subprocess.run(
             ["npx", "esbuild", "src/data/index.ts", "--bundle", "--platform=node",
              "--format=cjs", f"--outfile={BUNDLE}", "--log-level=error"],
-            cwd=ROOT, check=True, capture_output=True, text=True,
+            cwd=ROOT, check=True, capture_output=True, text=True, shell=True,
         )
         
-        # Bước 2: Dùng node để đọc kết quả bundle vừa tạo
         script = (
             f"const {{PUZZLES}} = require({json.dumps(str(BUNDLE))});"
             "process.stdout.write(JSON.stringify(PUZZLES));"
         )
         result = subprocess.run(
-            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True,
+            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True, shell=True,
         )
         return json.loads(result.stdout)
     finally:
