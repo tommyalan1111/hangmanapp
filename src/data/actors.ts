@@ -7820,4 +7820,11 @@ export const ACTORS: Puzzle[] = [
     clue: "Daniel Craig: What action thriller film cast him as sergeant Andrew Yetter in The Trench?",
     difficulty: 3,
   },
+  {
+    id: "actors-daniel-craig-51",
+    category: "actors",
+    answer: "TEST",
+    clue: "Daniel Craig: Test",
+    difficulty: 3,
+  },
 ];

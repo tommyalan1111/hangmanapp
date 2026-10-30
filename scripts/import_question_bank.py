@@ -107,23 +107,21 @@ def clean_answer(raw: object) -> tuple[str | None, str]:
 
 
 def load_current_puzzles() -> list[dict]:
-    if not ESBUILD.exists():
-        raise SystemExit(f"esbuild not found: {ESBUILD}")
-    node = shutil.which("node")
-    if not node:
-        raise SystemExit("node was not found on PATH")
     try:
+        # Bước 1: Dùng npx esbuild để bundle file TypeScript
         subprocess.run(
-            [node, str(ESBUILD), "src/data/index.ts", "--bundle", "--platform=node",
+            ["npx", "esbuild", "src/data/index.ts", "--bundle", "--platform=node",
              "--format=cjs", f"--outfile={BUNDLE}", "--log-level=error"],
             cwd=ROOT, check=True, capture_output=True, text=True,
         )
+        
+        # Bước 2: Dùng node để đọc kết quả bundle vừa tạo
         script = (
             f"const {{PUZZLES}} = require({json.dumps(str(BUNDLE))});"
             "process.stdout.write(JSON.stringify(PUZZLES));"
         )
         result = subprocess.run(
-            [node, "-e", script], cwd=ROOT, check=True, capture_output=True, text=True,
+            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True,
         )
         return json.loads(result.stdout)
     finally:
