@@ -20,7 +20,7 @@ Name the film, show, star, character, director, or famous screen family before t
 - **Replay on a miss** — when you run out of takes, the failed question stays on screen with the answer hidden, and **Replay this puzzle** resets the same board; the next question is never loaded automatically.
 - **A hand-written clue** for every answer.
 - **Daily Feature** — one date-seeded puzzle per day, worth double points.
-- **Repeatable hints** — each one reveals a useful missing letter and requires at least 40 total points, deducted immediately; hints never cost a take.
+- **Repeatable hints** — each one reveals a useful missing letter and requires at least 200 total points, deducted immediately; hints never cost a take.
 - **Optional rewarded video** — watch an ad for a free hint without spending points.
 - **Capped interstitial** — only after a win, at most once every 3 completed rounds and 90 seconds; never after a loss or replay.
 - **One-time Remove Ads purchase** — disables interstitials and the rewarded hint, with restore-purchase support.

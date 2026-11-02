@@ -348,9 +348,9 @@ async function main() {
   check("hints remain unlimited", hint.disabled === false && hint.label === "Reveal a letter", JSON.stringify(hint));
   check("hint does not cost a take", hint.wrong === 0, JSON.stringify(hint));
   check("each hint reveals a letter", hint.guessed.length === 3, JSON.stringify(hint));
-  check("each hint deducts 40 total points", hint.points === 880, JSON.stringify(hint));
-  check("points chip updates immediately", hint.chip?.includes("880 PTS"), JSON.stringify(hint));
-  check("hint still shows its cost", hint.cost === "−40 PTS", JSON.stringify(hint));
+  check("each hint deducts 200 total points", hint.points === 400, JSON.stringify(hint));
+  check("points chip updates immediately", hint.chip?.includes("400 PTS"), JSON.stringify(hint));
+  check("hint still shows its cost", hint.cost === "−200 PTS", JSON.stringify(hint));
   await screenshot("test-hint.png");
 
   console.log("Hint without points");
@@ -373,7 +373,7 @@ async function main() {
   })()`);
   check("zero points blocks the hint", blockedHint.guessed.length === 0 && blockedHint.hintsUsed === 0, JSON.stringify(blockedHint));
   check("zero points does not change points", blockedHint.points === 0, JSON.stringify(blockedHint));
-  check("zero points explains the 40 point cost", blockedHint.toast?.includes("40 points"), JSON.stringify(blockedHint));
+  check("zero points explains the 200 point cost", blockedHint.toast?.includes("200 points"), JSON.stringify(blockedHint));
 
   console.log("Daily feature");
   await setSave(save());

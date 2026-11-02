@@ -1,6 +1,8 @@
 import type { CategoryId, GameMode, Puzzle, Round } from "../types";
 
 export const MAX_LIVES = 6;
+/** Points deducted from the player's total for each paid hint. */
+export const HINT_COST = 200;
 export const KEY_ROWS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"] as const;
 
 export function normalizeAnswer(value: string): string {

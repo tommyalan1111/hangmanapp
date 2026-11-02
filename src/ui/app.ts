@@ -14,6 +14,7 @@ import {
   createRound,
   dailyPuzzle,
   guessLetter,
+  HINT_COST,
   isCorrectGuess,
   letterState,
   livesLeft,
@@ -462,9 +463,9 @@ export class ReelHangmanApp {
   private handleHint(): void {
     if (!this.round || !this.puzzle || this.round.status !== "playing") return;
 
-    if (this.save.stats.points < 40) {
-      this.showToast("You need 40 points to reveal a letter.");
-      this.announce("Not enough points. Hints cost 40 points.");
+    if (this.save.stats.points < HINT_COST) {
+      this.showToast(`You need ${HINT_COST} points to reveal a letter.`);
+      this.announce(`Not enough points. Hints cost ${HINT_COST} points.`);
       return;
     }
 
@@ -472,7 +473,7 @@ export class ReelHangmanApp {
     if (next === this.round) return;
 
     this.round = next;
-    const deduction = 40;
+    const deduction = HINT_COST;
     this.save = {
       ...this.save,
       stats: {
@@ -966,10 +967,10 @@ export class ReelHangmanApp {
           </section>
 
           <div class="game-actions">
-            <button class="hint-button" type="button" data-action="hint" aria-label="Reveal a letter for 40 points" ${ended ? "disabled" : ""}>
+            <button class="hint-button" type="button" data-action="hint" aria-label="Reveal a letter for ${HINT_COST} points" ${ended ? "disabled" : ""}>
               ${icon("bulb")}
               <span>Reveal a letter</span>
-              <small>−40 PTS</small>
+              <small>−${HINT_COST} PTS</small>
             </button>
             ${
               ads.isSupported() && !this.save.removeAds
@@ -1375,14 +1376,14 @@ export class ReelHangmanApp {
               <div><span>Base solve</span><strong>100</strong></div>
               <div><span>Each take left</span><strong>+25</strong></div>
               <div><span>Difficulty bonus</span><strong>+0 to +80</strong></div>
-              <div><span>Hint (each)</span><strong>−40</strong></div>
+              <div><span>Hint (each)</span><strong>−${HINT_COST}</strong></div>
               <div><span>Daily feature</span><strong>2×</strong></div>
             </div>
-            <p class="panel-note">Each hint reveals the most common missing letter and deducts 40 total points immediately. You need at least 40 points to use one. Hints never cost a take, and you can use as many as you like while you can afford them. The daily feature pays double once per day.</p>
+            <p class="panel-note">Each hint reveals the most common missing letter and deducts ${HINT_COST} total points immediately. You need at least ${HINT_COST} points to use one. Hints never cost a take, and you can use as many as you like while you can afford them. The daily feature pays double once per day.</p>
           </section>
 
           <section class="panel short-panel">
-            <div class="hint-line">${icon("bulb")}<p>Stuck? Use as many hints as you need—each one costs 40 points. There is no timer—only the streak.</p></div>
+            <div class="hint-line">${icon("bulb")}<p>Stuck? Use as many hints as you need—each one costs ${HINT_COST} points. There is no timer—only the streak.</p></div>
           </section>
 
           <button class="primary-button compact howto-button" type="button" data-action="back">
