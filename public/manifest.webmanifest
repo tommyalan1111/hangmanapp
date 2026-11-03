@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Reel Hangman — Movie & TV Hangman",
-  "short_name": "Reel Hangman",
+  "name": "Hangman Movie Trivia",
+  "short_name": "Movie Hangman",
   "description": "An offline movie and TV hangman game. Guess films, shows, actors, actresses, characters, directors, and famous screen families.",
   "start_url": "./",
   "scope": "./",

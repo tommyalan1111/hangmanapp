@@ -1,4 +1,4 @@
-"""Generate Reel Hangman icons and splash screens.
+"""Generate Hangman Movie Trivia icons and splash screens.
 
 Run with: python scripts/generate-assets.py
 Requires Pillow. Re-run after `npx cap add android` / `npx cap add ios`
@@ -251,14 +251,14 @@ def make_splash(width: int, height: int, portrait: bool) -> Image.Image:
     draw = ImageDraw.Draw(image)
     title_font = serif_regular(title_size)
     tracking = title_size * 0.20
-    tracked_text(draw, width / 2, title_y, "REEL HANGMAN", title_font, CREAM, tracking)
+    tracked_text(draw, width / 2, title_y, "HANGMAN", title_font, CREAM, tracking)
 
     tagline_font = sans_bold(tagline_size)
     tracked_text(
         draw,
         width / 2,
         tagline_y,
-        "LIGHTS. CAMERA. MISSING LETTERS.",
+        "MOVIE TRIVIA",
         tagline_font,
         (190, 171, 126, 255),
         tagline_size * 0.42,

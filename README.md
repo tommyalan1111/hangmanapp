@@ -1,10 +1,10 @@
-# Reel Hangman
+# Hangman Movie Trivia
 
 **An offline-first movie & TV hangman game for Android and iOS.**
 
 Name the film, show, star, character, director, or famous screen family before the credits roll. No accounts. Optional ads. The puzzles play offline.
 
-![Reel Hangman home screen](docs/screenshots/home.png)
+![Hangman Movie Trivia home screen](docs/screenshots/home.png)
 
 ## What is inside
 
@@ -38,10 +38,6 @@ Name the film, show, star, character, director, or famous screen family before t
 | --- | --- |
 | ![Stats screen](docs/screenshots/stats.png) | ![Settings screen](docs/screenshots/settings.png) |
 
-| Rewarded hint (native) | Remove Ads (native) |
-| --- | --- |
-| ![Rewarded hint](docs/screenshots/ads-game.png) | ![Remove Ads](docs/screenshots/ads-settings.png) |
-
 The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available only in the Android and iOS builds.
 
 ## Play the Android build
@@ -49,11 +45,11 @@ The web/PWA build has no ad UI. Ads and the Remove Ads purchase are available on
 A debug-signed, installable APK is included:
 
 ```text
-release/ReelHangman-1.3.0-debug.apk
+release/ReelHangman-1.3.20-debug.apk
 ```
 
 ```bash
-adb install -r release/ReelHangman-1.3.0-debug.apk
+adb install -r release/ReelHangman-1.3.20-debug.apk
 ```
 
 This is a **testing build**, not a Play Store upload. See [signing a release](#signing-for-the-stores) below.
@@ -137,7 +133,7 @@ The iOS project is configured for iPhone, portrait orientation, iOS 15+, dark ap
 
 ## Ads, consent, and purchases
 
-Reel Hangman includes:
+Hangman Movie Trivia includes:
 
 - Google AdMob rewarded video (optional free hint)
 - Google AdMob interstitial, capped to one per 3 completed rounds and 90 seconds

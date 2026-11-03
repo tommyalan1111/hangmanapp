@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Reel Hangman</string>
-    <string name="title_activity_main">Reel Hangman</string>
+    <string name="app_name">Hangman Movie Trivia</string>
+    <string name="title_activity_main">Hangman Movie Trivia</string>
     <string name="package_name">com.reelhangman.game</string>
     <string name="custom_url_scheme">com.reelhangman.game</string>
-    <!-- Reel Hangman Android AdMob app id. -->
+    <!-- Hangman Movie Trivia Android AdMob app id. -->
     <string name="admob_app_id" translatable="false">ca-app-pub-1345063149639557~8575837391</string>
 </resources>

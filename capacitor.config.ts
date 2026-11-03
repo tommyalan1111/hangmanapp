@@ -2,7 +2,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
   appId: "com.reelhangman.game",
-  appName: "Reel Hangman",
+  appName: "Hangman Movie Trivia",
   webDir: "dist",
   backgroundColor: "#08090f",
   android: {

@@ -1,8 +1,8 @@
-# Reel Hangman — Privacy Policy
+# Hangman Movie Trivia — Privacy Policy
 
 **Last updated: October 26, 2026**
 
-Reel Hangman is an offline-first movie and TV trivia game. The game itself does not require an account. The Android and iOS builds include optional advertising and an optional one-time purchase, which use network connections and are described below.
+Hangman Movie Trivia is an offline-first movie and TV trivia game. The game itself does not require an account. The Android and iOS builds include optional advertising and an optional one-time purchase, which use network connections and are described below.
 
 ## What the app stores on your device
 
@@ -16,7 +16,7 @@ The game stores the following locally, using the platform's storage:
 - whether the ad-free upgrade is active
 - ad frequency-cap timestamps
 
-This gameplay data is not sent to a Reel Hangman server. There is no account system and no Reel Hangman analytics backend.
+This gameplay data is not sent to a Hangman Movie Trivia server. There is no account system and no Hangman Movie Trivia analytics backend.
 
 ## Advertising
 
@@ -33,7 +33,7 @@ AdMob and its advertising partners may collect or receive information such as:
 - ad impressions, clicks, and other ad interactions
 - diagnostic and fraud-prevention information
 
-This information is used to deliver ads, measure ad performance, prevent invalid traffic, and comply with legal obligations. Reel Hangman does not receive your name, email address, or payment details from AdMob.
+This information is used to deliver ads, measure ad performance, prevent invalid traffic, and comply with legal obligations. Hangman Movie Trivia does not receive your name, email address, or payment details from AdMob.
 
 Where required by law, the app uses Google's User Messaging Platform (UMP) to ask for consent before requesting personalized ads. You can review or change those choices from **Settings → Ad privacy options**. On iOS, the app may ask for App Tracking Transparency permission; if you decline, ads are requested in non-personalized mode.
 
@@ -44,7 +44,7 @@ Google's privacy information is available at:
 
 ## Purchases
 
-The optional **Remove Ads** purchase is processed by Google Play Billing on Android or the App Store on iOS. Reel Hangman does not receive or store your payment card details. The store may provide the app with a purchase confirmation and product entitlement so that ads can be disabled. Restoring a purchase uses the same store account.
+The optional **Remove Ads** purchase is processed by Google Play Billing on Android or the App Store on iOS. Hangman Movie Trivia does not receive or store your payment card details. The store may provide the app with a purchase confirmation and product entitlement so that ads can be disabled. Restoring a purchase uses the same store account.
 
 ## Network access
 
@@ -64,7 +64,7 @@ If no ad is available, the game continues normally. No gameplay progress is lost
 
 ## Children's privacy
 
-Reel Hangman is a general-audience trivia game and is not directed to children under 13. The app does not knowingly collect personal information from children. Advertising is not configured for child-directed treatment. If you intend to publish the app in a children's category, you must change the AdMob settings, store declarations, and consent flow before release.
+Hangman Movie Trivia is a general-audience trivia game and is not directed to children under 13. The app does not knowingly collect personal information from children. Advertising is not configured for child-directed treatment. If you intend to publish the app in a children's category, you must change the AdMob settings, store declarations, and consent flow before release.
 
 ## Your choices
 

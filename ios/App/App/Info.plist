@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>Reel Hangman</string>
+        <string>Hangman Movie Trivia</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -69,7 +69,7 @@
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Allow tracking so Reel Hangman can show more relevant ads. You can change this later in iOS Settings.</string>
+	<string>Allow tracking so Hangman Movie Trivia can show more relevant ads. You can change this later in iOS Settings.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

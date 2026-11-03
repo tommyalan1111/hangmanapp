@@ -721,11 +721,11 @@ export class ReelHangmanApp {
     this.syncBanner();
 
     const titles: Record<Screen, string> = {
-      home: "Reel Hangman — Movie & TV Hangman",
-      game: "Reel Hangman — Play",
-      stats: "Reel Hangman — Your Stats",
-      settings: "Reel Hangman — Settings",
-      howto: "Reel Hangman — How to Play",
+      home: "Hangman Movie Trivia — Movie & TV Hangman",
+      game: "Hangman Movie Trivia — Play",
+      stats: "Hangman Movie Trivia — Your Stats",
+      settings: "Hangman Movie Trivia — Settings",
+      howto: "Hangman Movie Trivia — How to Play",
     };
     document.title = titles[this.screen];
 
@@ -744,9 +744,9 @@ export class ReelHangmanApp {
   private topbar(): string {
     return `
       <header class="topbar">
-        <button class="brand" type="button" data-action="home" aria-label="Reel Hangman home">
+        <button class="brand" type="button" data-action="home" aria-label="Hangman Movie Trivia home">
           <span class="brand-mark">${icon("clapper")}</span>
-          <span class="brand-type"><span>REEL</span><strong>HANGMAN</strong></span>
+          <span class="brand-type"><span>MOVIE TRIVIA</span><strong>HANGMAN</strong></span>
         </button>
         <div class="topbar-actions">
           <span class="streak-chip" title="Current win streak">${icon("spark")}<strong>${this.save.stats.currentStreak}</strong></span>
@@ -1305,7 +1305,7 @@ export class ReelHangmanApp {
           <section class="about-card">
             <div class="about-mark">${icon("clapper")}</div>
             <div class="about-copy">
-              <h2>Reel Hangman</h2>
+              <h2>Hangman Movie Trivia</h2>
               <p>Version ${APP_VERSION} · ${PUZZLES.length} hand-written clues</p>
             </div>
             <p class="about-note">Built for movie lovers who quote the credits. No accounts, no data selling, and no nonsense—just you, the clue, and the letters.</p>
@@ -1327,7 +1327,7 @@ export class ReelHangmanApp {
             <span class="ad-free-icon">${icon("check")}</span>
             <div><p class="kicker">AD-FREE EDITION</p><h2>Ads removed.</h2></div>
           </div>
-          <p class="ad-free-copy">Thank you for supporting Reel Hangman. Interstitials and the rewarded hint are switched off on this device.</p>
+          <p class="ad-free-copy">Thank you for supporting Hangman Movie Trivia. Interstitials and the rewarded hint are switched off on this device.</p>
           <button class="text-button ad-restore" type="button" data-action="restore-purchases">Restore purchase</button>
         </section>
       `;

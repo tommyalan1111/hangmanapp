@@ -1,6 +1,6 @@
 # Ads and Remove Ads setup
 
-Reel Hangman uses four monetization pieces:
+Hangman Movie Trivia uses four monetization pieces:
 
 1. **Rewarded video** — optional free hint in the game screen.
 2. **Capped interstitial** — only after a win, at most once every 3 completed rounds and 90 seconds.
