@@ -1,10 +1,11 @@
 # Ads and Remove Ads setup
 
-Reel Hangman uses three monetization pieces:
+Reel Hangman uses four monetization pieces:
 
 1. **Rewarded video** — optional free hint in the game screen.
 2. **Capped interstitial** — only after a win, at most once every 3 completed rounds and 90 seconds.
-3. **Remove Ads** — one-time non-consumable purchase that disables both ad formats.
+3. **Bottom banner** — an adaptive banner at the bottom edge of non-game screens; hidden during a round.
+4. **Remove Ads** — one-time non-consumable purchase that disables all three ad formats.
 
 Everything is wired through:
 
@@ -22,6 +23,7 @@ Android is already configured:
 - App ID: `ca-app-pub-1345063149639557~8575837391`
 - Rewarded: `Android_Rewarded_FreeHint`
 - Interstitial: `Android_Interstitial_AfterWin`
+- Banner: create an adaptive banner unit (e.g. `Android_Banner_Bottom`) and set `VITE_ADMOB_ANDROID_BANNER`
 
 For iOS, create one AdMob app and the two corresponding ad units, then replace the test IDs in three places:
 
@@ -129,6 +131,19 @@ export const INTERSTITIAL_MIN_INTERVAL_MS = 90_000;
 Interstitials only appear when the player taps **Next puzzle after a win**. They are skipped after losses, retries, and Daily Feature completion. The frequency state is stored in `localStorage`.
 
 To make the game more conservative, raise `INTERSTITIAL_MIN_ROUNDS` or the interval. To remove interstitials entirely, leave `USE_TEST_ADS` false for development but remove the `maybeShowInterstitial` call in `src/ui/app.ts`.
+
+## Banner toggle
+
+The bottom banner is controlled by one flag in `src/config/ads.ts`:
+
+```ts
+export const BANNER_ENABLED = import.meta.env.VITE_BANNER_ENABLED !== "false";
+```
+
+- `BANNER_ENABLED = true` (or leave it as the default) — show the banner.
+- Set `VITE_BANNER_ENABLED=false` in `.env`, or hardcode `false` — hide the banner entirely.
+
+The banner is adaptive, anchored to the bottom edge, and automatically hidden while a round is in progress. It is also removed when the player owns the Remove Ads purchase.
 
 ## 5. Offline fallback
 

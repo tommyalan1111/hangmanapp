@@ -1,7 +1,10 @@
-import { Capacitor } from "@capacitor/core";
+import { Capacitor, type PluginListenerHandle } from "@capacitor/core";
 import {
   AdMob,
   AdmobConsentStatus,
+  BannerAdPosition,
+  BannerAdPluginEvents,
+  BannerAdSize,
   MaxAdContentRating,
 } from "@capacitor-community/admob";
 import {
@@ -14,6 +17,7 @@ import {
   ADS_ENABLED,
   AD_LOAD_TIMEOUT_MS,
   AD_UNITS,
+  BANNER_ENABLED,
   INTERSTITIAL_MIN_INTERVAL_MS,
   INTERSTITIAL_MIN_ROUNDS,
   REMOVE_ADS_PRODUCT_ID,
@@ -32,6 +36,7 @@ interface AdRuntimeState {
 interface AdsCallbacks {
   onEntitlementChange?: (removeAds: boolean) => void;
   onCatalogChange?: () => void;
+  onBannerStateChange?: (visible: boolean, height: number) => void;
 }
 
 const AD_STATE_KEY = "reel-hangman-ad-state-v1";
@@ -114,6 +119,16 @@ class AdsService {
   private showingInterstitial = false;
   private purchasing = false;
 
+  private bannerVisible = false;
+  private bannerCreated = false;
+  private bannerHeight = 0;
+  private bannerSizeListener: PluginListenerHandle | null = null;
+
+  // Reserve space before the native size event arrives. The banner plugin
+  // usually reports its height just after showing, but the navigation must
+  // already be lifted above it on the same frame.
+  private readonly bannerFallbackHeight = 56;
+
   private product: Product | null = null;
 
   setCallbacks(callbacks: AdsCallbacks): void {
@@ -132,6 +147,92 @@ class AdsService {
     return this.supported && this.consentReady && this.canRequestAds && !this.removeAds;
   }
 
+  isBannerEnabled(): boolean {
+    return BANNER_ENABLED;
+  }
+
+  async showBanner(): Promise<void> {
+    if (!BANNER_ENABLED || !this.canShowAds()) return;
+
+    // A re-render replaces the app frame. Re-apply the reserved height even
+    // when the native banner itself was already visible.
+    if (this.bannerVisible) {
+      this.callbacks.onBannerStateChange?.(
+        true,
+        this.bannerHeight || this.bannerFallbackHeight,
+      );
+      return;
+    }
+
+    if (!this.bannerSizeListener) {
+      this.bannerSizeListener = await AdMob.addListener(
+        BannerAdPluginEvents.SizeChanged,
+        (size) => {
+          this.bannerHeight = size.height;
+          this.callbacks.onBannerStateChange?.(
+            this.bannerVisible,
+            size.height || this.bannerFallbackHeight,
+          );
+        },
+      );
+    }
+
+    try {
+      // hideBanner() only hides an existing banner. Use resumeBanner() when
+      // coming back from the game screen; calling showBanner() again can fail
+      // on an already-created native banner.
+      if (this.bannerCreated) {
+        try {
+          await AdMob.resumeBanner();
+        } catch {
+          this.bannerCreated = false;
+        }
+      }
+
+      if (!this.bannerCreated) {
+        await AdMob.showBanner({
+          adId: this.adUnit("banner"),
+          adSize: BannerAdSize.ADAPTIVE_BANNER,
+          position: BannerAdPosition.BOTTOM_CENTER,
+          isTesting: USE_TEST_ADS,
+          npa: this.isNonPersonalized(),
+          margin: 0,
+        });
+        this.bannerCreated = true;
+      }
+
+      this.bannerVisible = true;
+      this.callbacks.onBannerStateChange?.(
+        true,
+        this.bannerHeight || this.bannerFallbackHeight,
+      );
+    } catch {
+      this.bannerVisible = false;
+    }
+  }
+
+  async hideBanner(): Promise<void> {
+    if (!this.bannerVisible) return;
+    try {
+      await AdMob.hideBanner();
+    } catch {
+      // Nothing to hide; keep state consistent below.
+    }
+    this.bannerVisible = false;
+    this.callbacks.onBannerStateChange?.(false, this.bannerHeight);
+  }
+
+  async removeBanner(): Promise<void> {
+    try {
+      await AdMob.removeBanner();
+    } catch {
+      // A banner may already be gone; ignore.
+    }
+    this.bannerCreated = false;
+    this.bannerVisible = false;
+    this.callbacks.onBannerStateChange?.(false, 0);
+  }
+
   privacyOptionsAvailable(): boolean {
     return this.supported && this.privacyOptionsRequired;
   }
@@ -142,6 +243,7 @@ class AdsService {
     if (value) {
       this.rewardedReady = false;
       this.interstitialReady = false;
+      void this.removeBanner();
     }
     this.callbacks.onEntitlementChange?.(value);
   }
@@ -349,7 +451,7 @@ class AdsService {
     }
   }
 
-  private adUnit(kind: "rewarded" | "interstitial"): string {
+  private adUnit(kind: "rewarded" | "interstitial" | "banner"): string {
     const platform: Platform = this.platform === "ios" ? "ios" : "android";
     return AD_UNITS[platform][kind];
   }

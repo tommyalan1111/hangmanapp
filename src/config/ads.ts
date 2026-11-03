@@ -16,12 +16,20 @@ export const ADS_ENABLED = import.meta.env.VITE_ADS_ENABLED !== "false";
 
 export const USE_TEST_ADS = import.meta.env.VITE_ADMOB_USE_TEST !== "false";
 
+/**
+ * Master switch for the bottom banner ad.
+ * Set to false (or set VITE_BANNER_ENABLED=false) to disable the banner.
+ */
+export const BANNER_ENABLED = import.meta.env.VITE_BANNER_ENABLED !== "false";
+
 const LIVE_REWARDED_ANDROID = "ca-app-pub-1345063149639557/4582294056";
 const LIVE_INTERSTITIAL_ANDROID = "ca-app-pub-1345063149639557/4853756790";
 const TEST_REWARDED_ANDROID = "ca-app-pub-3940256099942544/5224354917";
 const TEST_INTERSTITIAL_ANDROID = "ca-app-pub-3940256099942544/1033173712";
+const TEST_BANNER_ANDROID = "ca-app-pub-3940256099942544/6300978111";
 const TEST_REWARDED_IOS = "ca-app-pub-3940256099942544/1712485313";
 const TEST_INTERSTITIAL_IOS = "ca-app-pub-3940256099942544/4411468910";
+const TEST_BANNER_IOS = "ca-app-pub-3940256099942544/2934735716";
 
 export const AD_UNITS = {
   android: {
@@ -34,10 +42,14 @@ export const AD_UNITS = {
     interstitial: USE_TEST_ADS
       ? TEST_INTERSTITIAL_ANDROID
       : (import.meta.env.VITE_ADMOB_ANDROID_INTERSTITIAL ?? LIVE_INTERSTITIAL_ANDROID),
+    banner: USE_TEST_ADS
+      ? TEST_BANNER_ANDROID
+      : (import.meta.env.VITE_ADMOB_ANDROID_BANNER ?? TEST_BANNER_ANDROID),
   },
   ios: {
     rewarded: import.meta.env.VITE_ADMOB_IOS_REWARDED ?? TEST_REWARDED_IOS,
     interstitial: import.meta.env.VITE_ADMOB_IOS_INTERSTITIAL ?? TEST_INTERSTITIAL_IOS,
+    banner: import.meta.env.VITE_ADMOB_IOS_BANNER ?? TEST_BANNER_IOS,
   },
 } as const;
 

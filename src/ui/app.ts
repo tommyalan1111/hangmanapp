@@ -119,6 +119,9 @@ export class ReelHangmanApp {
       onCatalogChange: () => {
         if (this.screen === "settings") this.render();
       },
+      onBannerStateChange: (visible, height) => {
+        this.updateBannerDock(visible, height);
+      },
     });
   }
 
@@ -133,7 +136,9 @@ export class ReelHangmanApp {
       // Ads must never delay the first screen. Give the lobby a beat to settle
       // while UMP/ATT and the first ad requests happen in the background.
       window.setTimeout(() => {
-        void ads.initialize(this.save.removeAds);
+        void ads.initialize(this.save.removeAds).then(() => {
+          this.syncBanner();
+        });
       }, 900);
     }
   }
@@ -668,6 +673,22 @@ export class ReelHangmanApp {
     }
   }
 
+  private syncBanner(): void {
+    if (!ads.isSupported()) return;
+    if (this.save.removeAds || this.screen === "game") {
+      void ads.hideBanner();
+    } else if (ads.isBannerEnabled()) {
+      void ads.showBanner();
+    }
+  }
+
+  private updateBannerDock(visible: boolean, height: number): void {
+    const frame = this.root.querySelector<HTMLElement>(".app-frame");
+    if (!frame) return;
+    frame.style.setProperty("--banner-height", `${Math.max(0, height)}px`);
+    frame.classList.toggle("banner-active", visible && height > 0);
+  }
+
   private render(): void {
     if (this.screen === "game" && (!this.round || !this.puzzle)) {
       this.screen = "home";
@@ -696,7 +717,8 @@ export class ReelHangmanApp {
         break;
     }
 
-    this.root.innerHTML = `<div class="app-frame${reduced ? " reduce-motion" : ""}" data-screen="${this.screen}">${content}${this.resetConfirm ? this.confirmOverlay() : ""}</div>`;
+    this.root.innerHTML = `<div class="app-frame${reduced ? " reduce-motion" : ""}" data-screen="${this.screen}"><div class="banner-dock" aria-hidden="true"></div>${content}${this.resetConfirm ? this.confirmOverlay() : ""}</div>`;
+    this.syncBanner();
 
     const titles: Record<Screen, string> = {
       home: "Reel Hangman — Movie & TV Hangman",

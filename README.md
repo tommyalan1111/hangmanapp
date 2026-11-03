@@ -23,7 +23,8 @@ Name the film, show, star, character, director, or famous screen family before t
 - **Repeatable hints** — each one reveals a useful missing letter and requires at least 200 total points, deducted immediately; hints never cost a take.
 - **Optional rewarded video** — watch an ad for a free hint without spending points.
 - **Capped interstitial** — only after a win, at most once every 3 completed rounds and 90 seconds; never after a loss or replay.
-- **One-time Remove Ads purchase** — disables interstitials and the rewarded hint, with restore-purchase support.
+- **Bottom banner** — an adaptive banner sits at the bottom edge of the lobby, stats, settings, and help screens; it is hidden during a round and can be toggled off in `src/config/ads.ts`.
+- **One-time Remove Ads purchase** — disables the banner, interstitials, and the rewarded hint, with restore-purchase support.
 - **Progress that stays put** — solved puzzles, category completion, win rate, current and best streak, total points, recent history, and an in-progress round survive an app restart.
 - **Accessible by design** — semantic buttons, focus rings, dialog focus trapping, a polite live region for game events, reduced-motion support, and keyboard controls.
 - **Native-feeling details** — generated app icon and splash screen, status-bar styling, light haptics, synthesized sound effects, and the Android back button.
