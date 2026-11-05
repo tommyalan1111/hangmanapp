@@ -208,7 +208,8 @@ def main() -> int:
             if not re.search(r"[A-Z]", answer):
                 errors.append((puzzle_id, f"no letters: {answer!r}"))
                 continue
-            if len(normalized_answer) < 3:
+            # Allow one-word answers such as "US" and short names.
+            if len(normalized_answer) < 2:
                 errors.append((puzzle_id, f"too short: {answer!r}"))
                 continue
             if len(normalized_answer) > 32:

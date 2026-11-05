@@ -32,7 +32,8 @@ for (const puzzle of PUZZLES) {
   seenIds.add(puzzle.id);
 
   const normalized = puzzle.answer.toUpperCase().replace(/[^A-Z0-9]/g, "");
-  if (normalized.length < 3) errors.push(`Too short: ${puzzle.answer}`);
+  // Answers such as "US" are valid one-word answers.
+  if (normalized.length < 2) errors.push(`Too short: ${puzzle.answer}`);
   if (normalized.length > 32) warnings.push(`Long answer (${normalized.length}): ${puzzle.answer}`);
   if (!allowed.test(puzzle.answer)) errors.push(`Unsupported characters: ${puzzle.answer}`);
   if (!/[A-Z]/.test(puzzle.answer)) errors.push(`No letters: ${puzzle.answer}`);

@@ -1,6 +1,6 @@
 # Hangman Movie Trivia — Privacy Policy
 
-**Last updated: October 26, 2026**
+**Last updated: November 4, 2026**
 
 Hangman Movie Trivia is an offline-first movie and TV trivia game. The game itself does not require an account. The Android and iOS builds include optional advertising and an optional one-time purchase, which use network connections and are described below.
 
@@ -24,6 +24,7 @@ The Android and iOS builds use **Google AdMob** to show:
 
 - an optional rewarded video that gives the player a free hint
 - a limited interstitial after some completed rounds
+- an adaptive banner at the bottom of the lobby, stats, settings, and help screens
 
 AdMob and its advertising partners may collect or receive information such as:
 
@@ -68,7 +69,7 @@ Hangman Movie Trivia is a general-audience trivia game and is not directed to ch
 
 ## Your choices
 
-- **Remove Ads** — buy the one-time ad-free upgrade in Settings to disable interstitials and the rewarded hint.
+- **Remove Ads** — buy the one-time ad-free upgrade in Settings to disable the banner, interstitials, and the rewarded hint.
 - **Ad privacy options** — review consent choices in Settings where required.
 - **iOS tracking** — change tracking permission in iOS Settings.
 - **Reset progress** — erase local gameplay statistics and history. The ad-free entitlement is preserved.
@@ -84,6 +85,6 @@ If this policy changes, the updated version will be included with a new release 
 
 ## Contact
 
-Before publishing, replace this placeholder with your support email:
+For support, privacy questions, or data requests:
 
-`[your support email]`
+`reelstudio1989@gmail.com`
