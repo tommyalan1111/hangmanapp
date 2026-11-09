@@ -108,11 +108,11 @@ def clean_answer(raw: object) -> tuple[str | None, str]:
 
 def load_current_puzzles() -> list[dict]:
     try:
-        # Thêm shell=True để Windows hiểu và chạy được lệnh npx/node qua command prompt
+        # Thêm encoding="utf-8" để tránh lỗi đọc ký tự đặc biệt trên Windows
         subprocess.run(
             ["npx", "esbuild", "src/data/index.ts", "--bundle", "--platform=node",
              "--format=cjs", f"--outfile={BUNDLE}", "--log-level=error"],
-            cwd=ROOT, check=True, capture_output=True, text=True, shell=True,
+            cwd=ROOT, check=True, capture_output=True, text=True, encoding="utf-8", shell=True,
         )
         
         script = (
@@ -120,7 +120,7 @@ def load_current_puzzles() -> list[dict]:
             "process.stdout.write(JSON.stringify(PUZZLES));"
         )
         result = subprocess.run(
-            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True, shell=True,
+            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True, encoding="utf-8", shell=True,
         )
         return json.loads(result.stdout)
     finally:
