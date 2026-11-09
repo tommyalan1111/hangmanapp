@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
     "build": "npm run validate:data && tsc --noEmit && vite build && node scripts/build-sw.mjs",
+    "build:dev": "npm run validate:data && tsc --noEmit && vite build --mode development && node scripts/build-sw.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "assets": "python scripts/generate-assets.py",
     "cap:sync": "npm run build && cap sync",

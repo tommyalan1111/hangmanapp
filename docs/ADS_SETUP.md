@@ -14,7 +14,19 @@ Everything is wired through:
 - `src/config/ads.ts` for IDs and caps.
 - `src/core/ads.ts` for consent, ad loading, frequency caps, purchase/restore, and offline fallback.
 
-Android's AdMob app ID and both ad unit IDs are configured. The debug build keeps `VITE_ADMOB_USE_TEST=true`, so it requests test ads and earns nothing. Set it to `false` only for a store release build. iOS still uses Google test IDs.
+Android's AdMob app ID and ad unit IDs are configured. `.env.development` keeps `VITE_ADMOB_USE_TEST=true` for `npm run dev` and dev APKs, so they request test ads and earn nothing. Store builds load `.env` and must set `VITE_ADMOB_USE_TEST=false`. iOS still uses Google test IDs.
+
+## 0. Dev builds vs. production builds
+
+| | Dev (`build-apk-dev.ps1`) | Production (`build-apk.ps1` / AAB) |
+|---|---|---|
+| Env file | `.env.development` | `.env` |
+| Vite mode | `development` | `production` |
+| Ads | Google test units by default | Live units |
+| Version bump | No | Yes (`build-apk.ps1`) |
+| Output | `release/dev/ReelHangman-<version>-dev.apk` | `release/ReelHangman-<version>-debug.apk` / AAB |
+
+The Settings screen shows `dev build (test ads)` or `dev build (live ads)` for dev APKs, so a dev build is never mistaken for a store build. To exercise live units — for example while testing mediation — set `VITE_ADMOB_USE_TEST=false` and add the device's AdMob test device id to `VITE_ADMOB_TESTING_DEVICES` in `.env.development`. Never tap live ads from an unregistered device.
 
 ## 1. Create the AdMob apps and units
 
@@ -62,7 +74,7 @@ VITE_ADMOB_IOS_INTERSTITIAL=ca-app-pub-XXXXXXXX/4444444444
 VITE_REMOVE_ADS_PRODUCT_ID=com.reelhangman.game.removeads
 ```
 
-`VITE_ADMOB_USE_TEST=false` also stops AdMob from being initialized in test mode.
+`VITE_ADMOB_USE_TEST=false` also stops AdMob from being initialized in test mode. Keep `VITE_ADMOB_TESTING_DEVICES` empty in `.env`; it belongs in `.env.development`.
 
 ## 2. Consent and privacy
 
@@ -159,9 +171,9 @@ The banner is adaptive, anchored to the bottom edge, and automatically hidden wh
 **Android rewarded:** `ca-app-pub-1345063149639557/4582294056`  
 **Android interstitial:** `ca-app-pub-1345063149639557/4853756790`
 
-`.env` currently has `VITE_ADMOB_USE_TEST=true`. The debug build requests test ads from those production units, so testing cannot generate invalid traffic.
+`.env.development` sets `VITE_ADMOB_USE_TEST=true`, so `npm run dev` and `build-apk-dev.ps1` request Google test ads and cannot generate invalid traffic. `.env` is the production env and keeps `VITE_ADMOB_USE_TEST=false`.
 
-Do **not** set `VITE_ADMOB_USE_TEST=false` and tap your own live ads. Use test mode until the release build is on a store testing track.
+Do **not** set `VITE_ADMOB_USE_TEST=false` and tap your own live ads on an unregistered device. If you must verify live units, add the device id to `VITE_ADMOB_TESTING_DEVICES` first; Google demand then serves test ads to that device even though the request uses live units. Keep live-ad testing on a store testing track, not on your daily driver.
 
 **iOS app ID:** still Google's test app ID until the iOS AdMob app is created.
 
@@ -193,9 +205,17 @@ Test checklist:
 
 ## 7. Rebuild
 
+Production:
+
 ```bash
 npm run build
 npx cap sync
+```
+
+Dev APK (test ads, no version bump):
+
+```powershell
+.\build-apk-dev.ps1
 ```
 
 Android:

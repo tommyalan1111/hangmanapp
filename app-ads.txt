@@ -1,0 +1,16 @@
+# app-ads.txt for Hangman Movie Trivia (Android).
+#
+# Host this file at the root of the developer website that is listed on the
+# Google Play store listing, i.e. https://<your-domain>/app-ads.txt
+# The store listing "Website" must point at the same domain.
+#
+# Keep only the publishers that actually sell your inventory. When mediation
+# ad sources are added in AdMob (AppLovin, Meta, Unity Ads, ...), AdMob
+# generates the authoritative file including every partner line:
+#   AdMob > Apps > app-ads.txt > View app-ads.txt
+# Replace this file with that generated output instead of hand-editing it.
+#
+# Never guess seller lines. A wrong line can suppress demand from that
+# network, and a missing line can make bidding inventory look unauthorized.
+
+google.com, pub-1345063149639557, DIRECT, f08c47fec0942fa0

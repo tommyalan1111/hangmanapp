@@ -2,9 +2,13 @@
  * AdMob and purchase configuration.
  *
  * Android production ad units are configured below. The Android app id is in
- * android/app/src/main/res/values/strings.xml. The debug build keeps
- * VITE_ADMOB_USE_TEST=true by default, so it requests test ads and cannot
- * generate invalid traffic. For a release build set VITE_ADMOB_USE_TEST=false.
+ * android/app/src/main/res/values/strings.xml. Dev builds load
+ * .env.development (npm run build:dev), which forces test ads so they cannot
+ * generate invalid traffic. Production builds load .env and must set
+ * VITE_ADMOB_USE_TEST=false.
+ *
+ * To exercise live or mediation ad units on one device, add that device's
+ * AdMob test device id to VITE_ADMOB_TESTING_DEVICES.
  *
  * iOS still uses Google's test app/ad unit ids until the iOS AdMob app and
  * units are created in Info.plist and the VITE_ADMOB_IOS_* variables.
@@ -15,6 +19,31 @@
 export const ADS_ENABLED = import.meta.env.VITE_ADS_ENABLED !== "false";
 
 export const USE_TEST_ADS = import.meta.env.VITE_ADMOB_USE_TEST !== "false";
+
+/**
+ * Vite mode this bundle was built with: "development" for
+ * `npm run build:dev`, "production" for `npm run build`.
+ */
+export const BUILD_MODE = import.meta.env.MODE;
+
+/**
+ * True for local/development APKs. Used only to expose the ad mode in the
+ * settings screen and to warn in the logs; it never changes ad behaviour.
+ */
+export const IS_DEV_BUILD = BUILD_MODE !== "production";
+
+/**
+ * Physical devices registered with the Google Mobile Ads SDK as test
+ * devices. Comma- or space-separated AdMob test device ids. Use it to load
+ * live ad units on one device: Google demand then serves test ads instead of
+ * billable impressions. Leave it empty for store builds.
+ */
+export const TEST_DEVICE_IDS: string[] = String(
+  import.meta.env.VITE_ADMOB_TESTING_DEVICES ?? "",
+)
+  .split(/[\s,]+/)
+  .map((id: string) => id.trim())
+  .filter((id: string) => id.length > 0);
 
 /**
  * Master switch for the bottom banner ad.
