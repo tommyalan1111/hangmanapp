@@ -1,0 +1,443 @@
+{
+  "title": "Green Book and Bohemian Rhapsody Trivia",
+  "rules": {
+    "questions_per_movie": 30,
+    "max_answer_words": 5,
+    "unique_answers_per_movie": true,
+    "no_years_in_answers": true,
+    "no_non_english_answers": true,
+    "ids_restart_per_movie": true
+  },
+  "movies": [
+    {
+      "movie": "Green Book",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which real-life guidebook gave the film its title?",
+          "answer": "The Negro Motorist Green Book",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 2,
+          "question": "Who published that guide for Black travelers?",
+          "answer": "Victor Hugo Green",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 3,
+          "question": "What was Tony Lip's birth name?",
+          "answer": "Frank Anthony Vallelonga",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 4,
+          "question": "Why did people call Tony 'Lip'?",
+          "answer": "His gift of gab",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 5,
+          "question": "In which sport was Tony a minor-league player?",
+          "answer": "Baseball",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 6,
+          "question": "How many hot dogs did Tony eat in one sitting?",
+          "answer": "Twenty-six",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 7,
+          "question": "What dual role does Tony take on for Don?",
+          "answer": "Driver and bodyguard",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 8,
+          "question": "Which famous New York nightclub employs Tony?",
+          "answer": "Copacabana",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 9,
+          "question": "What is Tony's wife called?",
+          "answer": "Dolores",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 10,
+          "question": "Above which legendary venue does Don live?",
+          "answer": "Carnegie Hall",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 11,
+          "question": "What instrument does Don master?",
+          "answer": "Piano",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 12,
+          "question": "Which instrument makes Don's trio unusual?",
+          "answer": "Cello",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 13,
+          "question": "What make of car carries the pair through the South?",
+          "answer": "Cadillac",
+          "source": "Hagerty - Green Book's 1962 Cadillac",
+          "url": "https://www.hagerty.com/media/news/green-books-1962-cadillac-deville/"
+        },
+        {
+          "id": 14,
+          "question": "Which whisky does Don demand in his room every night?",
+          "answer": "Cutty Sark",
+          "source": "Green Book transcript - Scraps from the Loft",
+          "url": "https://scrapsfromtheloft.com/movies/green-book-2018-transcript/"
+        },
+        {
+          "id": 15,
+          "question": "In which city does Don's final tour stop take place?",
+          "answer": "Birmingham",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 16,
+          "question": "Which room is Don barred from at the country club?",
+          "answer": "Dining room",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 17,
+          "question": "Where do the men eat after Don refuses to perform?",
+          "answer": "Blues club",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 18,
+          "question": "Which composer's etude does Don play at that club?",
+          "answer": "Chopin",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 19,
+          "question": "What weather event strands the pair near the end?",
+          "answer": "Blizzard",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 20,
+          "question": "Which holiday are they racing home to celebrate?",
+          "answer": "Christmas Eve",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 21,
+          "question": "Who directed the film?",
+          "answer": "Peter Farrelly",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 22,
+          "question": "Which co-writer was Tony Lip's son?",
+          "answer": "Nick Vallelonga",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 23,
+          "question": "How much weight did Viggo Mortensen gain for the role?",
+          "answer": "Forty to fifty pounds",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 24,
+          "question": "Who coached Mahershala Ali on the piano?",
+          "answer": "Kris Bowers",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 25,
+          "question": "How many Oscars did the film win?",
+          "answer": "Three",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 26,
+          "question": "Which Oscar did Mahershala Ali take home?",
+          "answer": "Best Supporting Actor",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 27,
+          "question": "Which festival gave the film its People's Choice Award?",
+          "answer": "Toronto",
+          "source": "Wikipedia - Green Book (film)",
+          "url": "https://en.wikipedia.org/wiki/Green_Book_(film)"
+        },
+        {
+          "id": 28,
+          "question": "Which acclaimed Netflix drama lost Best Picture to Green Book?",
+          "answer": "Roma",
+          "source": "Wikipedia - 91st Academy Awards",
+          "url": "https://en.wikipedia.org/wiki/91st_Academy_Awards"
+        },
+        {
+          "id": 29,
+          "question": "What did Shirley's relatives call the film?",
+          "answer": "A symphony of lies",
+          "source": "History vs. Hollywood - Green Book",
+          "url": "https://www.historyvshollywood.com/reelfaces/green-book/"
+        },
+        {
+          "id": 30,
+          "question": "Where was the real Don Shirley born?",
+          "answer": "Pensacola, Florida",
+          "source": "Wikipedia - Don Shirley",
+          "url": "https://en.wikipedia.org/wiki/Don_Shirley"
+        }
+      ]
+    },
+    {
+      "movie": "Bohemian Rhapsody",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What name was Freddie Mercury born with?",
+          "answer": "Farrokh Bulsara",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        },
+        {
+          "id": 2,
+          "question": "On which island was Freddie Mercury born?",
+          "answer": "Zanzibar",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        },
+        {
+          "id": 3,
+          "question": "What did Freddie name his first school band?",
+          "answer": "The Hectics",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        },
+        {
+          "id": 4,
+          "question": "Which band did Freddie front before it became Queen?",
+          "answer": "Smile",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        },
+        {
+          "id": 5,
+          "question": "What job did Freddie hold at Heathrow Airport?",
+          "answer": "Baggage handler",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        },
+        {
+          "id": 6,
+          "question": "What is the name of Brian May's homemade guitar?",
+          "answer": "Red Special",
+          "source": "Wikipedia - Queen (band)",
+          "url": "https://en.wikipedia.org/wiki/Queen_(band)"
+        },
+        {
+          "id": 7,
+          "question": "Which quiet Queen member anchored the bass?",
+          "answer": "John Deacon",
+          "source": "Wikipedia - Queen (band)",
+          "url": "https://en.wikipedia.org/wiki/Queen_(band)"
+        },
+        {
+          "id": 8,
+          "question": "Which Queen member wrote the hit 'Radio Ga Ga'?",
+          "answer": "Roger Taylor",
+          "source": "Wikipedia - Radio Ga Ga",
+          "url": "https://en.wikipedia.org/wiki/Radio_Ga_Ga"
+        },
+        {
+          "id": 9,
+          "question": "Who designed Queen's elaborate crest?",
+          "answer": "Freddie Mercury",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        },
+        {
+          "id": 10,
+          "question": "On which Queen album does 'Bohemian Rhapsody' first appear?",
+          "answer": "A Night at the Opera",
+          "source": "Wikipedia - A Night at the Opera",
+          "url": "https://en.wikipedia.org/wiki/A_Night_at_the_Opera_(Queen_album)"
+        },
+        {
+          "id": 11,
+          "question": "Which DJ gave 'Bohemian Rhapsody' its first radio airing?",
+          "answer": "Kenny Everett",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 12,
+          "question": "In the film, which label does Queen quit over the single?",
+          "answer": "EMI",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 13,
+          "question": "Which manager guided Queen after Trident?",
+          "answer": "John Reid",
+          "source": "Wikipedia - John Reid (music manager)",
+          "url": "https://en.wikipedia.org/wiki/John_Reid_(music_manager)"
+        },
+        {
+          "id": 14,
+          "question": "Who managed Freddie's day-to-day life?",
+          "answer": "Paul Prenter",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 15,
+          "question": "Who was Freddie's final partner?",
+          "answer": "Jim Hutton",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 16,
+          "question": "Who was Freddie's former fiancee?",
+          "answer": "Mary Austin",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 17,
+          "question": "Which actor was originally set to play Freddie?",
+          "answer": "Sacha Baron Cohen",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 18,
+          "question": "Who finished the film after Bryan Singer was fired?",
+          "answer": "Dexter Fletcher",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 19,
+          "question": "Which actor ultimately played Freddie?",
+          "answer": "Rami Malek",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 20,
+          "question": "What did Rami Malek wear to copy Freddie's overbite?",
+          "answer": "Prosthetic teeth",
+          "source": "Billboard - Rami Malek's fake teeth",
+          "url": "https://www.billboard.com/culture/pride/bohemian-rhapsody-star-rami-malek-gold-plated-fake-freddie-mercury-teeth-8481475/"
+        },
+        {
+          "id": 21,
+          "question": "Which charity concert forms the film's climax?",
+          "answer": "Live Aid",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 22,
+          "question": "At which stadium was that concert staged?",
+          "answer": "Wembley Stadium",
+          "source": "Wikipedia - Queen's performance at Live Aid",
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_performance_at_Live_Aid"
+        },
+        {
+          "id": 23,
+          "question": "How many songs did Queen play in their Live Aid set?",
+          "answer": "Six",
+          "source": "Wikipedia - Queen's performance at Live Aid",
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_performance_at_Live_Aid"
+        },
+        {
+          "id": 24,
+          "question": "Which song opened Queen's Live Aid set?",
+          "answer": "Bohemian Rhapsody",
+          "source": "Wikipedia - Queen's performance at Live Aid",
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_performance_at_Live_Aid"
+        },
+        {
+          "id": 25,
+          "question": "Which anthem closed Queen's Live Aid set?",
+          "answer": "We Are the Champions",
+          "source": "Wikipedia - Queen's performance at Live Aid",
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_performance_at_Live_Aid"
+        },
+        {
+          "id": 26,
+          "question": "What diagnosis does Freddie reveal to the band?",
+          "answer": "HIV",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 27,
+          "question": "How many Academy Awards did the film win?",
+          "answer": "Four",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 28,
+          "question": "Which film beat Bohemian Rhapsody for Best Picture?",
+          "answer": "Green Book",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 29,
+          "question": "What box-office record did the film set among music biopics?",
+          "answer": "Highest-grossing music biopic",
+          "source": "Wikipedia - Bohemian Rhapsody (film)",
+          "url": "https://en.wikipedia.org/wiki/Bohemian_Rhapsody_(film)"
+        },
+        {
+          "id": 30,
+          "question": "What did Freddie study at Ealing Art College?",
+          "answer": "Graphic design",
+          "source": "Wikipedia - Freddie Mercury",
+          "url": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,874 @@
+{
+  "title": "Aquaman, Elemental, Indiana Jones and D&D Trivia",
+  "rules": {
+    "questions_per_movie": 30,
+    "title_in_every_question": true,
+    "max_answer_words": 5,
+    "unique_answers_per_movie": true,
+    "no_years_in_answers": true,
+    "no_non_english_answers": true,
+    "ids_restart_per_movie": true
+  },
+  "movies": [
+    {
+      "movie": "Aquaman and the Lost Kingdom",
+      "questions": [
+        {
+          "id": 1,
+          "question": "In Aquaman and the Lost Kingdom, who directed the film?",
+          "answer": "James Wan",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 2,
+          "question": "In Aquaman and the Lost Kingdom, who plays the title hero?",
+          "answer": "Jason Momoa",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 3,
+          "question": "In Aquaman and the Lost Kingdom, who plays Orm?",
+          "answer": "Patrick Wilson",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 4,
+          "question": "In Aquaman and the Lost Kingdom, who plays Black Manta?",
+          "answer": "Yahya Abdul-Mateen II",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 5,
+          "question": "In Aquaman and the Lost Kingdom, who plays Mera?",
+          "answer": "Amber Heard",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 6,
+          "question": "In Aquaman and the Lost Kingdom, who plays Dr. Stephen Shin?",
+          "answer": "Randall Park",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 7,
+          "question": "In Aquaman and the Lost Kingdom, who voices Kingfish?",
+          "answer": "Martin Short",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 8,
+          "question": "In Aquaman and the Lost Kingdom, who plays Atlanna?",
+          "answer": "Nicole Kidman",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 9,
+          "question": "In Aquaman and the Lost Kingdom, who is the vengeful pirate villain?",
+          "answer": "Black Manta",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 10,
+          "question": "In Aquaman and the Lost Kingdom, what is Black Manta's real name?",
+          "answer": "David Kane",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 11,
+          "question": "In Aquaman and the Lost Kingdom, who is Aquaman's half-brother?",
+          "answer": "Orm",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 12,
+          "question": "In Aquaman and the Lost Kingdom, what is the lost kingdom called?",
+          "answer": "Necrus",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 13,
+          "question": "In Aquaman and the Lost Kingdom, which ancient king rules Necrus?",
+          "answer": "Kordax",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 14,
+          "question": "In Aquaman and the Lost Kingdom, which cursed weapon corrupts Black Manta?",
+          "answer": "Black Trident",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 15,
+          "question": "In Aquaman and the Lost Kingdom, which fuel source powers Manta's machines?",
+          "answer": "Orichalcum",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 16,
+          "question": "In Aquaman and the Lost Kingdom, what is Aquaman's son called?",
+          "answer": "Arthur Jr.",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 17,
+          "question": "In Aquaman and the Lost Kingdom, who is Aquaman's father?",
+          "answer": "Thomas Curry",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 18,
+          "question": "In Aquaman and the Lost Kingdom, who is the marine biologist helping Manta?",
+          "answer": "Stephen Shin",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 19,
+          "question": "In Aquaman and the Lost Kingdom, what pirate haven do Arthur and Orm visit?",
+          "answer": "Sunken Citadel",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 20,
+          "question": "In Aquaman and the Lost Kingdom, in which desert is Orm imprisoned?",
+          "answer": "Sahara",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 21,
+          "question": "In Aquaman and the Lost Kingdom, on which continent is Necrus hidden?",
+          "answer": "Antarctica",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 22,
+          "question": "In Aquaman and the Lost Kingdom, which octopus aids Aquaman?",
+          "answer": "Topo",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 23,
+          "question": "In Aquaman and the Lost Kingdom, what does Topo's acronym stand for?",
+          "answer": "Tactical Observation and Pursuit Operative",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 24,
+          "question": "In Aquaman and the Lost Kingdom, which shared universe ends with the film?",
+          "answer": "DC Extended Universe",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 25,
+          "question": "In Aquaman and the Lost Kingdom, which global crisis drives the plot?",
+          "answer": "Climate change",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 26,
+          "question": "In Aquaman and the Lost Kingdom, who composed the score?",
+          "answer": "Rupert Gregson-Williams",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 27,
+          "question": "In Aquaman and the Lost Kingdom, which X Ambassadors song is on the soundtrack?",
+          "answer": "Deep End",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 28,
+          "question": "In Aquaman and the Lost Kingdom, where did the world premiere take place?",
+          "answer": "The Grove",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 29,
+          "question": "In Aquaman and the Lost Kingdom, which comics era inspired the look?",
+          "answer": "Silver Age",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        },
+        {
+          "id": 30,
+          "question": "In Aquaman and the Lost Kingdom, which stop-motion legend influenced the film?",
+          "answer": "Ray Harryhausen",
+          "source": "Wikipedia - Aquaman and the Lost Kingdom",
+          "url": "https://en.wikipedia.org/wiki/Aquaman_and_the_Lost_Kingdom"
+        }
+      ]
+    },
+    {
+      "movie": "Elemental",
+      "questions": [
+        {
+          "id": 1,
+          "question": "In Elemental, who directed the film?",
+          "answer": "Peter Sohn",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 2,
+          "question": "In Elemental, who voices Ember?",
+          "answer": "Leah Lewis",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 3,
+          "question": "In Elemental, who voices Wade?",
+          "answer": "Mamoudou Athie",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 4,
+          "question": "In Elemental, who voices Bernie?",
+          "answer": "Ronnie del Carmen",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 5,
+          "question": "In Elemental, who voices Brook?",
+          "answer": "Catherine O'Hara",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 6,
+          "question": "In Elemental, who voices Gale?",
+          "answer": "Wendi McLendon-Covey",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 7,
+          "question": "In Elemental, who composed the score?",
+          "answer": "Thomas Newman",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 8,
+          "question": "In Elemental, who wrote and performed 'Steal the Show'?",
+          "answer": "Lauv",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 9,
+          "question": "In Elemental, which song plays during Ember and Wade's dates?",
+          "answer": "Steal the Show",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 10,
+          "question": "In Elemental, which festival hosted its closing premiere?",
+          "answer": "Cannes",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 11,
+          "question": "In Elemental, which Pixar short preceded it in theaters?",
+          "answer": "Carl's Date",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 12,
+          "question": "In Elemental, which number Pixar feature is it?",
+          "answer": "Twenty-seventh",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 13,
+          "question": "In Elemental, what is the fire neighborhood called?",
+          "answer": "Fire Town",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 14,
+          "question": "In Elemental, what is Bernie's store called?",
+          "answer": "The Fireplace",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 15,
+          "question": "In Elemental, what is the Lumen family's sacred flame called?",
+          "answer": "Blue Flame",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 16,
+          "question": "In Elemental, where does Gale Cumulus work?",
+          "answer": "Cyclone Stadium",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 17,
+          "question": "In Elemental, who is Wade's air-element boss?",
+          "answer": "Gale Cumulus",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 18,
+          "question": "In Elemental, which flower do Ember and Wade see?",
+          "answer": "Vivisteria",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 19,
+          "question": "In Elemental, where is the Vivisteria display?",
+          "answer": "Garden Central Station",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 20,
+          "question": "In Elemental, which game do Ember and Wade play to make each other cry?",
+          "answer": "Crying Game",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 21,
+          "question": "In Elemental, what art does Ember dream of?",
+          "answer": "Glassmaking",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 22,
+          "question": "In Elemental, what is Wade's job?",
+          "answer": "City inspector",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 23,
+          "question": "In Elemental, which theme does the film explore?",
+          "answer": "Immigration",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 24,
+          "question": "In Elemental, which culture inspired Ember's family?",
+          "answer": "Korean",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 25,
+          "question": "In Elemental, which city inspired Element City?",
+          "answer": "New York City",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 26,
+          "question": "In Elemental, which film beat it for Best Animated Feature?",
+          "answer": "The Boy and the Heron",
+          "source": "Wikipedia - 96th Academy Awards",
+          "url": "https://en.wikipedia.org/wiki/96th_Academy_Awards"
+        },
+        {
+          "id": 27,
+          "question": "In Elemental, what genre is the film?",
+          "answer": "Romantic comedy",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 28,
+          "question": "In Elemental, which character is Pixar's first non-binary figure?",
+          "answer": "Lake",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 29,
+          "question": "In Elemental, which element is Clod?",
+          "answer": "Earth",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        },
+        {
+          "id": 30,
+          "question": "In Elemental, how long did production take?",
+          "answer": "Seven years",
+          "source": "Wikipedia - Elemental (2023 film)",
+          "url": "https://en.wikipedia.org/wiki/Elemental_(2023_film)"
+        }
+      ]
+    },
+    {
+      "movie": "Indiana Jones and the Dial of Destiny",
+      "questions": [
+        {
+          "id": 1,
+          "question": "In Indiana Jones and the Dial of Destiny, who directed the film?",
+          "answer": "James Mangold",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 2,
+          "question": "In Indiana Jones and the Dial of Destiny, who plays Indy?",
+          "answer": "Harrison Ford",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 3,
+          "question": "In Indiana Jones and the Dial of Destiny, who plays Helena?",
+          "answer": "Phoebe Waller-Bridge",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 4,
+          "question": "In Indiana Jones and the Dial of Destiny, who plays Voller?",
+          "answer": "Mads Mikkelsen",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 5,
+          "question": "In Indiana Jones and the Dial of Destiny, who plays Renaldo?",
+          "answer": "Antonio Banderas",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 6,
+          "question": "In Indiana Jones and the Dial of Destiny, who returns as Sallah?",
+          "answer": "John Rhys-Davies",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 7,
+          "question": "In Indiana Jones and the Dial of Destiny, who plays Basil Shaw?",
+          "answer": "Toby Jones",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 8,
+          "question": "In Indiana Jones and the Dial of Destiny, who returns as Marion?",
+          "answer": "Karen Allen",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 9,
+          "question": "In Indiana Jones and the Dial of Destiny, who built the Dial?",
+          "answer": "Archimedes",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 10,
+          "question": "In Indiana Jones and the Dial of Destiny, what real device inspired the Dial?",
+          "answer": "Antikythera mechanism",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 11,
+          "question": "In Indiana Jones and the Dial of Destiny, what is the villain's surname?",
+          "answer": "Voller",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 12,
+          "question": "In Indiana Jones and the Dial of Destiny, who is Indy's goddaughter?",
+          "answer": "Helena Shaw",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 13,
+          "question": "In Indiana Jones and the Dial of Destiny, who is Helena's father?",
+          "answer": "Basil Shaw",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 14,
+          "question": "In Indiana Jones and the Dial of Destiny, who is Helena's young sidekick?",
+          "answer": "Teddy Kumar",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 15,
+          "question": "In Indiana Jones and the Dial of Destiny, who is the diver who helps Indy?",
+          "answer": "Renaldo",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 16,
+          "question": "In Indiana Jones and the Dial of Destiny, which old friend drives a New York cab?",
+          "answer": "Sallah",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 17,
+          "question": "In Indiana Jones and the Dial of Destiny, who does Indy reconcile with at the end?",
+          "answer": "Marion Ravenwood",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 18,
+          "question": "In Indiana Jones and the Dial of Destiny, whose death is mentioned?",
+          "answer": "Mutt Williams",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 19,
+          "question": "In Indiana Jones and the Dial of Destiny, whom does Voller plan to assassinate?",
+          "answer": "Hitler",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 20,
+          "question": "In Indiana Jones and the Dial of Destiny, which agency employs Voller under a false name?",
+          "answer": "NASA",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 21,
+          "question": "In Indiana Jones and the Dial of Destiny, which mission's parade does Indy run through?",
+          "answer": "Apollo 11",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 22,
+          "question": "In Indiana Jones and the Dial of Destiny, which ancient siege does the Dial lead them to?",
+          "answer": "Siege of Syracuse",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 23,
+          "question": "In Indiana Jones and the Dial of Destiny, in which cave is Archimedes' tomb?",
+          "answer": "Ear of Dionysius",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 24,
+          "question": "In Indiana Jones and the Dial of Destiny, where does Helena try to auction the Dial?",
+          "answer": "Tangier",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 25,
+          "question": "In Indiana Jones and the Dial of Destiny, where was the ancient climax filmed?",
+          "answer": "Sicily",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 26,
+          "question": "In Indiana Jones and the Dial of Destiny, where did the film premiere?",
+          "answer": "Cannes Film Festival",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 27,
+          "question": "In Indiana Jones and the Dial of Destiny, who composed the score?",
+          "answer": "John Williams",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 28,
+          "question": "In Indiana Jones and the Dial of Destiny, who is Voller based on?",
+          "answer": "Wernher von Braun",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 29,
+          "question": "In Indiana Jones and the Dial of Destiny, what does the Dial reveal?",
+          "answer": "Time fissures",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        },
+        {
+          "id": 30,
+          "question": "In Indiana Jones and the Dial of Destiny, what modern object is found on Archimedes' skeleton?",
+          "answer": "Wristwatch",
+          "source": "Wikipedia - Indiana Jones and the Dial of Destiny",
+          "url": "https://en.wikipedia.org/wiki/Indiana_Jones_and_the_Dial_of_Destiny"
+        }
+      ]
+    },
+    {
+      "movie": "Dungeons & Dragons: Honor Among Thieves",
+      "questions": [
+        {
+          "id": 1,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who co-directed the film?",
+          "answer": "Jonathan Goldstein",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 2,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the other co-director?",
+          "answer": "John Francis Daley",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 3,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who plays Edgin?",
+          "answer": "Chris Pine",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 4,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who plays Holga?",
+          "answer": "Michelle Rodriguez",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 5,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who plays Forge?",
+          "answer": "Hugh Grant",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 6,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who plays Doric?",
+          "answer": "Sophia Lillis",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 7,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who plays Simon?",
+          "answer": "Justice Smith",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 8,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who plays Sofina?",
+          "answer": "Daisy Head",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 9,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who cameos as Marlamin?",
+          "answer": "Bradley Cooper",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 10,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the bard?",
+          "answer": "Edgin Darvis",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 11,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the barbarian?",
+          "answer": "Holga Kilgore",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 12,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the sorcerer?",
+          "answer": "Simon Aumar",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 13,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the druid?",
+          "answer": "Doric",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 14,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the rogue con artist?",
+          "answer": "Forge Fitzwilliam",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 15,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the Red Wizard?",
+          "answer": "Sofina",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 16,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is the paladin?",
+          "answer": "Xenk Yendar",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 17,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is Edgin's daughter?",
+          "answer": "Kira Darvis",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 18,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is Edgin's late wife?",
+          "answer": "Zia Darvis",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 19,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which city does Forge rule?",
+          "answer": "Neverwinter",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 20,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which prison holds Edgin and Holga?",
+          "answer": "Revel's End",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 21,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, during which games do they plan the heist?",
+          "answer": "High Sun Games",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 22,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which artifact cancels magic?",
+          "answer": "Helm of Disjunction",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 23,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which artifact resurrects the dead?",
+          "answer": "Tablet of Reawakening",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 24,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which giant red dragon appears?",
+          "answer": "Themberchaud",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 25,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which underground realm do they cross?",
+          "answer": "Underdark",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 26,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, who is Holga's ex-husband?",
+          "answer": "Marlamin",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 27,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which lich rules Thay?",
+          "answer": "Szass Tam",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 28,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which D&D setting does the film use?",
+          "answer": "Forgotten Realms",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 29,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, what class does Edgin play?",
+          "answer": "Bard",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        },
+        {
+          "id": 30,
+          "question": "In Dungeons & Dragons: Honor Among Thieves, which creature does Doric become?",
+          "answer": "Owlbear",
+          "source": "Wikipedia - Dungeons & Dragons: Honor Among Thieves",
+          "url": "https://en.wikipedia.org/wiki/Dungeons_%26_Dragons:_Honor_Among_Thieves"
+        }
+      ]
+    }
+  ]
+}
