@@ -2,10 +2,13 @@ import { Capacitor, type PluginListenerHandle } from "@capacitor/core";
 import {
   AdMob,
   AdmobConsentStatus,
-  BannerAdPosition,
   BannerAdPluginEvents,
+  BannerAdPosition,
   BannerAdSize,
+  InterstitialAdPluginEvents,
   MaxAdContentRating,
+  RewardAdPluginEvents,
+  type AdMobRevenueData,
 } from "@capacitor-community/admob";
 import {
   NativePurchases,
@@ -20,7 +23,9 @@ import {
   BANNER_ENABLED,
   INTERSTITIAL_MIN_INTERVAL_MS,
   INTERSTITIAL_MIN_ROUNDS,
+  IS_DEV_BUILD,
   REMOVE_ADS_PRODUCT_ID,
+  TEST_DEVICE_IDS,
   USE_TEST_ADS,
 } from "../config/ads";
 
@@ -118,6 +123,7 @@ class AdsService {
   private showingRewarded = false;
   private showingInterstitial = false;
   private purchasing = false;
+  private revenueListenersAttached = false;
 
   private bannerVisible = false;
   private bannerCreated = false;
@@ -304,9 +310,15 @@ class AdsService {
       if (!this.canRequestAds) return;
 
       await AdMob.initialize({
-        initializeForTesting: false,
+        // Registering test devices lets a dev build use live ad units (and
+        // therefore mediation) without counting as invalid traffic.
+        initializeForTesting: TEST_DEVICE_IDS.length > 0,
+        testingDevices: TEST_DEVICE_IDS,
         maxAdContentRating: MaxAdContentRating.General,
       });
+
+      await this.attachRevenueListeners();
+      this.logBuildAdMode();
 
       await this.ensureTrackingAuthorization();
       await this.refreshProduct();
@@ -448,6 +460,54 @@ class AdsService {
       return true;
     } catch {
       return false;
+    }
+  }
+
+  /**
+   * Impression-level revenue is the only per-impression signal that names
+   * the mediation network that actually paid. AdMob's mediation report stays
+   * the source of truth for production; this log is for dev builds.
+   */
+  private async attachRevenueListeners(): Promise<void> {
+    if (this.revenueListenersAttached) return;
+    this.revenueListenersAttached = true;
+    try {
+      await AdMob.addListener(RewardAdPluginEvents.AdImpression, (data) => {
+        this.logImpressionRevenue("rewarded", data);
+      });
+      await AdMob.addListener(InterstitialAdPluginEvents.AdImpression, (data) => {
+        this.logImpressionRevenue("interstitial", data);
+      });
+      await AdMob.addListener(BannerAdPluginEvents.AdPaid, (data) => {
+        this.logImpressionRevenue("banner", data);
+      });
+    } catch {
+      // Revenue logging is optional and must never block ads.
+    }
+  }
+
+  private logImpressionRevenue(
+    format: "rewarded" | "interstitial" | "banner",
+    data: AdMobRevenueData,
+  ): void {
+    if (!IS_DEV_BUILD) return;
+    const network = data?.networkName?.trim() || "admob";
+    const micros = data?.valueMicros ?? 0;
+    const currency = data?.currencyCode || "USD";
+    console.info(
+      `[ads] ${format} impression | network=${network} | revenue=${(micros / 1_000_000).toFixed(6)} ${currency} | adUnit=${data?.adUnitId ?? "n/a"}`,
+    );
+  }
+
+  private logBuildAdMode(): void {
+    if (!IS_DEV_BUILD) return;
+    console.info(
+      `[ads] dev build | test ad units=${USE_TEST_ADS ? "yes" : "no"} | test devices=${TEST_DEVICE_IDS.length}`,
+    );
+    if (!USE_TEST_ADS && TEST_DEVICE_IDS.length === 0) {
+      console.warn(
+        "[ads] Live ad units on a dev build with no registered test device. Set VITE_ADMOB_TESTING_DEVICES to avoid invalid traffic.",
+      );
     }
   }
 

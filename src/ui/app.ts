@@ -35,6 +35,7 @@ import {
 } from "../core/storage";
 import { sounds } from "../core/audio";
 import { ads } from "../core/ads";
+import { IS_DEV_BUILD, USE_TEST_ADS } from "../config/ads";
 import { haptic } from "../core/platform";
 import { APP_VERSION } from "../version";
 import { icon } from "./icons";
@@ -1306,7 +1307,7 @@ export class ReelHangmanApp {
             <div class="about-mark">${icon("clapper")}</div>
             <div class="about-copy">
               <h2>Hangman Movie Trivia</h2>
-              <p>Version ${APP_VERSION} · ${PUZZLES.length} hand-written clues</p>
+              <p>Version ${APP_VERSION}${IS_DEV_BUILD ? ` · dev build (${USE_TEST_ADS ? "test ads" : "live ads"})` : ""} · ${PUZZLES.length} hand-written clues</p>
             </div>
             <p class="about-note">Built for movie lovers who quote the credits. No accounts, no data selling, and no nonsense—just you, the clue, and the letters.</p>
             <p class="about-fine">Movie titles, show titles, and names are used for trivia purposes and belong to their respective owners.</p>

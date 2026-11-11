@@ -103,6 +103,15 @@ cd android
 
 The APK is written to `android/app/build/outputs/apk/debug/app-debug.apk`.
 
+For day-to-day development, use the dev pipeline instead:
+
+```powershell
+.\build-apk-dev.ps1            # test ads, writes release\dev\ReelHangman-<version>-dev.apk
+.\build-apk-dev.ps1 -Install   # same, then adb install -r
+```
+
+It builds Vite in `development` mode with `.env.development`, so it never requests the live ad units in `.env`, never bumps versions, and the Settings screen shows `dev build (test ads)`. Production keeps using `npm run build` plus `build-apk.ps1` (or your Play AAB pipeline).
+
 To open the native project in Android Studio:
 
 ```bash
@@ -139,7 +148,7 @@ Hangman Movie Trivia includes:
 - Google AdMob interstitial, capped to one per 3 completed rounds and 90 seconds
 - A one-time Remove Ads purchase via Google Play Billing / StoreKit 2
 
-The Android AdMob app ID and both Android ad unit IDs are configured. The debug build keeps `VITE_ADMOB_USE_TEST=true`, so it requests test ads and cannot earn revenue. Set it to `false` for a release build. iOS still uses Google test IDs until the iOS AdMob app and units are configured. A new AdMob account may return “Account not approved yet” until Google completes account verification; ads will not fill until then.
+The Android AdMob app ID and ad unit IDs are configured. Dev builds load `.env.development`, which keeps `VITE_ADMOB_USE_TEST=true`, so they request Google's test ads and cannot earn revenue or generate invalid traffic. Store builds load `.env` and must set `VITE_ADMOB_USE_TEST=false`. To verify live or mediation units on one device, list its AdMob test device id in `VITE_ADMOB_TESTING_DEVICES`. iOS still uses Google test IDs until the iOS AdMob app and units are configured. A new AdMob account may return “Account not approved yet” until Google completes account verification; ads will not fill until then.
 
 Full setup instructions: [docs/ADS_SETUP.md](docs/ADS_SETUP.md).
 
@@ -149,7 +158,7 @@ The ad-free product ID is:
 com.reelhangman.game.removeads
 ```
 
-The current debug APK uses test ads; it is not a production monetization build. A release build also requires the Remove Ads product, UMP messages, and store-signed testing.
+The dev APK uses test ads; it is not a production monetization build. A release build also requires the Remove Ads product, UMP messages, and store-signed testing.
 
 ## Project layout
 

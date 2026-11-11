@@ -12,6 +12,7 @@ Tài liệu này dùng cho app **Hangman Movie Trivia**.
 ## 0. Checklist trước khi build
 
 - [ ] Đã sửa xong code
+- [ ] Nếu vừa chạy `build-apk-dev.ps1`: đã chạy lại `npm run build` + `npx cap sync android` (dev assets đang nằm trong `android/app/src/main/assets/public`)
 - [ ] Đã cập nhật ngân hàng câu hỏi (nếu có)
 - [ ] `npm run validate:data` chạy thành công
 - [ ] `.env` đang là `VITE_ADMOB_USE_TEST=false`
@@ -118,6 +119,7 @@ Trong `package.json`:
 ### Có tự tăng không?
 
 - `.\build-apk.ps1`: **có**, tự tăng version và versionCode.
+- `.\build-apk-dev.ps1`: **không** (chỉ build APK dev với test ads, không dùng cho AAB).
 - Android Studio → **Generate Signed App Bundle**: **không tự tăng**.
 - `npm run build`: **không tăng**.
 - `npx cap sync android`: **không tăng**.

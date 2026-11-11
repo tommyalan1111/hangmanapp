@@ -11085,7 +11085,7 @@ export const ACTORS: Puzzle[] = [
   {
     id: "actors-jim-carrey-21",
     category: "actors",
-    answer: "THE NUMBER 23",
+    answer: "TWENTY THREE",
     clue: "Jim Carrey: What dark psychological thriller features Jim Carrey obsessed with the number twenty-three?",
     difficulty: 1,
   },
@@ -11890,7 +11890,7 @@ export const ACTORS: Puzzle[] = [
   {
     id: "actors-joaquin-phoenix-39",
     category: "actors",
-    answer: "I'M STILL HERE",
+    answer: "IM STILL HERE",
     clue: "Joaquin Phoenix: What mockumentary directed by Casey Affleck stars Joaquin Phoenix pretending to quit acting to pursue hip-hop?",
     difficulty: 1,
   },
@@ -12079,7 +12079,7 @@ export const ACTORS: Puzzle[] = [
   {
     id: "actors-johnny-depp-16",
     category: "actors",
-    answer: "21 JUMP STREET",
+    answer: "TWENTY ONE JUMP STREET",
     clue: "Johnny Depp: What police television series made Johnny Depp a teen idol in the 1980s?",
     difficulty: 2,
   },
@@ -18673,7 +18673,7 @@ export const ACTORS: Puzzle[] = [
   {
     id: "actors-paul-rudd-18",
     category: "actors",
-    answer: "ANCHORMAN 2 THE LEGEND CONTINUES",
+    answer: "ANCHORMAN TWO THE LEGEND CONTINUES",
     clue: "Paul Rudd: What comedy sequel film features Paul Rudd returning as dimwitted sportscaster Brian Fantana in Anchorman 2?",
     difficulty: 2,
   },
