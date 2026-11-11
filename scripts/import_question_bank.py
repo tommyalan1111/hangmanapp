@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -103,24 +104,45 @@ def clean_answer(raw: object) -> tuple[str | None, str]:
         return "BEE BEE", "short answer normalized"
     if answer == "C4":
         return "C FOUR", "short answer normalized"
+    # Hangman can only display A-Z, 0-9, space, apostrophe, comma, dot, hyphen,
+    # so punctuation in real titles is spelled out or dropped.
+    if re.search(r"[&!/]", answer):
+        answer = re.sub(r"&", " AND ", answer)
+        answer = re.sub(r"[!/]", " ", answer)
+        answer = re.sub(r"\s+", " ", answer).strip()
+        return answer, "punctuation normalized"
     return answer, ""
+
+
+def esbuild_command() -> list[str]:
+    """Return a cross-platform esbuild invocation.
+
+    The local binary is roughly 13x faster than `npx`, which re-resolves the
+    package on every run. Note that `shell=True` combined with an argument list
+    only runs the first item on macOS/Linux, which silently skipped esbuild.
+    """
+    if ESBUILD.exists():
+        return [str(ESBUILD)]
+    local_bin = ROOT / "node_modules" / ".bin" / ("esbuild.cmd" if os.name == "nt" else "esbuild")
+    if local_bin.exists():
+        return [str(local_bin)]
+    return ["npx", "esbuild"]
 
 
 def load_current_puzzles() -> list[dict]:
     try:
-        # Thêm encoding="utf-8" để tránh lỗi đọc ký tự đặc biệt trên Windows
         subprocess.run(
-            ["npx", "esbuild", "src/data/index.ts", "--bundle", "--platform=node",
+            [*esbuild_command(), "src/data/index.ts", "--bundle", "--platform=node",
              "--format=cjs", f"--outfile={BUNDLE}", "--log-level=error"],
-            cwd=ROOT, check=True, capture_output=True, text=True, encoding="utf-8", shell=True,
+            cwd=ROOT, check=True, capture_output=True, text=True, encoding="utf-8",
         )
-        
+
         script = (
             f"const {{PUZZLES}} = require({json.dumps(str(BUNDLE))});"
             "process.stdout.write(JSON.stringify(PUZZLES));"
         )
         result = subprocess.run(
-            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True, encoding="utf-8", shell=True,
+            ["node", "-e", script], cwd=ROOT, check=True, capture_output=True, text=True, encoding="utf-8",
         )
         return json.loads(result.stdout)
     finally:
