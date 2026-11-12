@@ -51,6 +51,12 @@ export const TEST_DEVICE_IDS: string[] = String(
  */
 export const BANNER_ENABLED = import.meta.env.VITE_BANNER_ENABLED !== "false";
 
+/**
+ * Show the bottom banner during a round as well as on the menu screens.
+ * Set VITE_BANNER_ON_GAME=false to keep the play area ad-free.
+ */
+export const BANNER_ON_GAME_SCREEN = import.meta.env.VITE_BANNER_ON_GAME !== "false";
+
 const LIVE_REWARDED_ANDROID = "ca-app-pub-1345063149639557/4582294056";
 const LIVE_INTERSTITIAL_ANDROID = "ca-app-pub-1345063149639557/4853756790";
 const TEST_REWARDED_ANDROID = "ca-app-pub-3940256099942544/5224354917";

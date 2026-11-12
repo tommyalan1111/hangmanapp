@@ -175,6 +175,9 @@ class AdsService {
         BannerAdPluginEvents.SizeChanged,
         (size) => {
           this.bannerHeight = size.height;
+          if (IS_DEV_BUILD) {
+            console.info(`[ads] banner size ${size.width}x${size.height}`);
+          }
           this.callbacks.onBannerStateChange?.(
             this.bannerVisible,
             size.height || this.bannerFallbackHeight,
@@ -508,6 +511,15 @@ class AdsService {
       console.warn(
         "[ads] Live ad units on a dev build with no registered test device. Set VITE_ADMOB_TESTING_DEVICES to avoid invalid traffic.",
       );
+    }
+    try {
+      const styles = getComputedStyle(document.documentElement);
+      const injectedBottom = styles.getPropertyValue("--safe-area-inset-bottom").trim() || "unset";
+      console.info(
+        `[ads] safe-area bottom=${injectedBottom} | viewport=${window.innerWidth}x${window.innerHeight}`,
+      );
+    } catch {
+      // Diagnostics only.
     }
   }
 

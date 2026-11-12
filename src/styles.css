@@ -89,12 +89,22 @@ a:focus-visible {
   bottom: 0;
   left: 0;
   z-index: 2;
-  height: var(--banner-height, 0px);
+  height: calc(
+    var(--banner-height, 0px) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px))
+  );
   pointer-events: none;
 }
 
+/* The native banner is anchored above the system navigation bar, while the
+   WebView runs edge-to-edge underneath it. Capacitor's SystemBars plugin
+   injects --safe-area-inset-bottom for exactly this case; env() alone is not
+   populated by every Android WebView. Reserve both values, otherwise the ad
+   covers the last row of the UI. */
 .banner-active .screen {
-  height: calc(100% - var(--banner-height, 0px));
+  height: calc(
+    100% - var(--banner-height, 0px) -
+      var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px))
+  );
 }
 
 @media (min-width: 720px) {
@@ -990,6 +1000,44 @@ a:focus-visible {
   overflow: hidden;
 }
 
+/* Banner during a round. The banner dock takes its own strip at the bottom,
+   so the play area gets a shorter stage, the inline rewarded hint instead of
+   the pill under the gallows, and no double bottom inset. */
+.banner-active .game-screen .game-main {
+  padding-bottom: 8px;
+}
+
+.banner-active .game-screen .game-tip {
+  display: none;
+}
+
+.banner-active .game-screen .clue-card {
+  margin-bottom: 2px;
+  padding: 9px 12px;
+}
+
+.banner-active .game-screen .stage {
+  min-height: 82px;
+}
+
+.banner-active .game-screen .stage .rewarded-hint {
+  display: none;
+}
+
+.banner-active .game-screen .rewarded-hint-inline {
+  display: inline-flex;
+}
+
+.banner-active .game-screen .hangman {
+  width: min(272px, 68vw);
+  max-height: min(23vh, 190px);
+}
+
+.banner-active .game-screen .word-wrap {
+  min-height: 56px;
+  padding: 2px 1px 4px;
+}
+
 .game-header {
   display: grid;
   flex: none;
@@ -1450,9 +1498,9 @@ a:focus-visible {
   background: none;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   cursor: pointer;
 }

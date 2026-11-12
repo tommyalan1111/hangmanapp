@@ -150,12 +150,14 @@ The bottom banner is controlled by one flag in `src/config/ads.ts`:
 
 ```ts
 export const BANNER_ENABLED = import.meta.env.VITE_BANNER_ENABLED !== "false";
+export const BANNER_ON_GAME_SCREEN = import.meta.env.VITE_BANNER_ON_GAME !== "false";
 ```
 
 - `BANNER_ENABLED = true` (or leave it as the default) — show the banner.
 - Set `VITE_BANNER_ENABLED=false` in `.env`, or hardcode `false` — hide the banner entirely.
+- `VITE_BANNER_ON_GAME=false` keeps a round ad-free: the banner is hidden on the game screen and only shows on the menu screens.
 
-The banner is adaptive, anchored to the bottom edge, and automatically hidden while a round is in progress. It is also removed when the player owns the Remove Ads purchase.
+The banner is adaptive and anchored to the bottom edge. When it is visible on the game screen, the stage shrinks and the rewarded hint moves to the action row so the keyboard stays visible. It is also removed when the player owns the Remove Ads purchase.
 
 ## 5. Offline fallback
 

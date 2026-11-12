@@ -35,7 +35,7 @@ import {
 } from "../core/storage";
 import { sounds } from "../core/audio";
 import { ads } from "../core/ads";
-import { IS_DEV_BUILD, USE_TEST_ADS } from "../config/ads";
+import { BANNER_ON_GAME_SCREEN, IS_DEV_BUILD, USE_TEST_ADS } from "../config/ads";
 import { haptic } from "../core/platform";
 import { APP_VERSION } from "../version";
 import { icon } from "./icons";
@@ -676,7 +676,8 @@ export class ReelHangmanApp {
 
   private syncBanner(): void {
     if (!ads.isSupported()) return;
-    if (this.save.removeAds || this.screen === "game") {
+    const keepGameClear = this.screen === "game" && !BANNER_ON_GAME_SCREEN;
+    if (this.save.removeAds || keepGameClear) {
       void ads.hideBanner();
     } else if (ads.isBannerEnabled()) {
       void ads.showBanner();
@@ -688,6 +689,19 @@ export class ReelHangmanApp {
     if (!frame) return;
     frame.style.setProperty("--banner-height", `${Math.max(0, height)}px`);
     frame.classList.toggle("banner-active", visible && height > 0);
+  }
+
+  /**
+   * Dev-only: web builds never create a native banner, so the browser cannot
+   * show the reserved strip by itself. Open `/?banner=80` while running
+   * `npm run dev` to simulate a bottom banner of that height (ad height plus
+   * the bottom safe-area inset, roughly 50–80px on Android).
+   */
+  private simulateBannerIfRequested(): void {
+    if (!IS_DEV_BUILD) return;
+    const requested = Number(new URLSearchParams(window.location.search).get("banner") ?? "0");
+    if (!Number.isFinite(requested) || requested <= 0) return;
+    this.updateBannerDock(true, Math.min(requested, 160));
   }
 
   private render(): void {
@@ -720,6 +734,7 @@ export class ReelHangmanApp {
 
     this.root.innerHTML = `<div class="app-frame${reduced ? " reduce-motion" : ""}" data-screen="${this.screen}"><div class="banner-dock" aria-hidden="true"></div>${content}${this.resetConfirm ? this.confirmOverlay() : ""}</div>`;
     this.syncBanner();
+    this.simulateBannerIfRequested();
 
     const titles: Record<Screen, string> = {
       home: "Hangman Movie Trivia — Movie & TV Hangman",
