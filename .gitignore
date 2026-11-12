@@ -28,3 +28,4 @@ ios/App/App.xcodeproj/xcuserdata/
 *.jks
 keystore.properties
 .DS_Store
+release/*.apk
