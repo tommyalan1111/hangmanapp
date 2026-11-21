@@ -9,7 +9,7 @@ Hangman Movie Trivia
 ## Short description (max 80 characters)
 
 ```text
-Movie & TV hangman trivia with 18,593 clues. Daily challenge. Offline play.
+Movie & TV hangman trivia with 17,748 clues. Daily challenge. Offline play.
 ```
 
 ## Full description (max 4,000 characters)
@@ -19,11 +19,11 @@ Hangman Movie Trivia is a love letter to the movies — and to the letters that 
 
 Pick a category, read the clue, and guess the film, show, actor, actress, character, director, or famous screen family one letter at a time. Six wrong guesses and the credits roll.
 
-18,593 clues. Seven categories. One more reason to argue about movies.
+17,748 clues. Seven categories. One more reason to argue about movies.
 
 WHAT'S INSIDE
 
-• 18,593 movie and TV clues across Movies, TV Series, Actors, Actresses, Characters, Directors, and Film Families.
+• 17,748 movie and TV clues across Movies, TV Series, Actors, Actresses, Characters, Directors, and Film Families.
 • A new Daily Feature every day, worth double points.
 • Six takes per round, with a clean, readable keyboard built for one-handed play.
 • Hints that reveal a missing letter for 200 points — or watch an optional rewarded video for a free one.

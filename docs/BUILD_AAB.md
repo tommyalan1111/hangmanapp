@@ -61,7 +61,7 @@ npm run validate:data
 Kết quả mong đợi:
 
 ```text
-Puzzle bank: 18593 entries
+Puzzle bank: 17748 entries
 Puzzle bank is valid.
 ```
 
